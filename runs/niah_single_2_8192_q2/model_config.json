@@ -1,0 +1,234 @@
+{
+  "num_layers": 43,
+  "query_head_count": 64,
+  "kv_head_count": 1,
+  "attention_head_dim": 512,
+  "sliding_window_size": 128,
+  "indexer_head_count": 64,
+  "indexer_head_dim": 128,
+  "sparse_top_k": 512,
+  "expert_count": 256,
+  "expert_used": 6,
+  "hidden_size": 4096,
+  "csa_compression_ratio": 4,
+  "hca_compression_ratio": 128,
+  "query_compression_dim": 1024,
+  "kv_layout_description": "MLA (kv_heads=1, head_dim=512); CSA ratio-4 + HCA ratio-128 interleaved; SWA window 128 on layers 0-1.",
+  "layer_map": [
+    {
+      "layer_id": 0,
+      "attention_type": "SWA",
+      "compression_ratio": 0
+    },
+    {
+      "layer_id": 1,
+      "attention_type": "SWA",
+      "compression_ratio": 0
+    },
+    {
+      "layer_id": 2,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 3,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 4,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 5,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 6,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 7,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 8,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 9,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 10,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 11,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 12,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 13,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 14,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 15,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 16,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 17,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 18,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 19,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 20,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 21,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 22,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 23,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 24,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 25,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 26,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 27,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 28,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 29,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 30,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 31,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 32,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 33,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 34,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 35,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 36,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 37,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 38,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 39,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 40,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    },
+    {
+      "layer_id": 41,
+      "attention_type": "HCA",
+      "compression_ratio": 128
+    },
+    {
+      "layer_id": 42,
+      "attention_type": "CSA",
+      "compression_ratio": 4
+    }
+  ]
+}

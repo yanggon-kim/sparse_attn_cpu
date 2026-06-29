@@ -1,0 +1,27 @@
+ds4: context buffers 47.89 MiB (ctx=2816, backend=cpu, prefill_chunk=0, raw_kv_rows=128, compressed_kv_rows=706)
+ds4: using CPU generation with layer-major prefill
+ds4: prefill layer 1/43ds4: prefill layer 2/43ds4: prefill layer 3/43ds4: prefill layer 4/43ds4: prefill layer 5/43ds4: prefill layer 6/43ds4: prefill layer 7/43ds4: prefill layer 8/43ds4: prefill layer 9/43ds4: prefill layer 10/43ds4: prefill layer 11/43ds4: prefill layer 12/43ds4: prefill layer 13/43ds4: prefill layer 14/43ds4: prefill layer 15/43ds4: prefill layer 16/43ds4: prefill layer 17/43ds4: prefill layer 18/43ds4: prefill layer 19/43ds4: prefill layer 20/43ds4: prefill layer 21/43ds4: prefill layer 22/43ds4: prefill layer 23/43ds4: prefill layer 24/43ds4: prefill layer 25/43ds4: prefill layer 26/43ds4: prefill layer 27/43ds4: prefill layer 28/43ds4: prefill layer 29/43ds4: prefill layer 30/43ds4: prefill layer 31/43ds4: prefill layer 32/43ds4: prefill layer 33/43ds4: prefill layer 34/43ds4: prefill layer 35/43ds4: prefill layer 36/43ds4: prefill layer 37/43ds4: prefill layer 38/43ds4: prefill layer 39/43ds4: prefill layer 40/43ds4: prefill layer 41/43ds4: prefill layer 42/43ds4: prefill layer 43/43ds4: prefill 2309/2309 done
+ds4: prefill: 1.46 t/s, generation: 0.62 t/s
+	Command being timed: "<WORKDIR>/ds4/ds4 --cpu -m <WORKDIR>/models/DeepSeek-V4-Flash-IQ2XXS-w2Q2K-AProjQ8-SExpQ8-OutQ8-chat-v2-imatrix.gguf --prompt-file <WORKDIR>/experiment/overhead_prompt.txt -c 2816 -t 64 --temp 0 -n 16"
+	User time (seconds): 25468.42
+	System time (seconds): 563.23
+	Percent of CPU this job got: 1613%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 26:53.21
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 76822740
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 49
+	Minor (reclaiming a frame) page faults: 37380487
+	Voluntary context switches: 14127849
+	Involuntary context switches: 46887
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 536
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

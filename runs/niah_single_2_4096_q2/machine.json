@@ -1,0 +1,12 @@
+{
+  "hostname": "<host>",
+  "kernel_version": "5.15.0-153-generic",
+  "cpu_model": "INTEL(R) XEON(R) SILVER 4514Y",
+  "physical_core_count": "16",
+  "socket_count": "2",
+  "logical_cpu_count": 64,
+  "numa_node_count": "2",
+  "total_ram_bytes": 270132654080,
+  "available_ram_bytes_at_finish": 236040089600,
+  "compiler": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0"
+}

@@ -1,0 +1,11 @@
+{
+  "benchmark": "RULER",
+  "task": "niah_single_2",
+  "task_group": "retrieval",
+  "context_length_target": 4096,
+  "num_samples": 1,
+  "max_new_tokens": 128,
+  "decoding": "greedy",
+  "tokenizer": "DeepSeek-V4-Flash",
+  "ruler_commit": "38da79d79519ef87aa46ae804f838e1eab7f86d7"
+}

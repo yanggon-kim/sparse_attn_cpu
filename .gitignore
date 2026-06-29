@@ -1,0 +1,11 @@
+# Model weights (download from antirez/deepseek-v4-gguf; ~81 GB)
+*.gguf
+models/
+# Tokenizer (download from deepseek-ai/DeepSeek-V4-Flash; not redistributed)
+tokenizer/
+# Cloned external benchmark repo (pointer + commit in benchmark/README.md)
+benchmark/RULER/
+# Tooling / caches
+shim/
+**/__pycache__/
+*.pyc

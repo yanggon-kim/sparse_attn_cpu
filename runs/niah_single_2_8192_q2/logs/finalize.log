@@ -1,0 +1,2 @@
+finalized niah_single_2_8192_q2: correct=False gen_tokens=0 prompt_tokens=None prefill=Nonet/s gen=Nonet/s
+finalized niah_single_2_8192_q2: correct=True gen_tokens=128 prompt_tokens=7485 prefill=Nonet/s gen=Nonet/s

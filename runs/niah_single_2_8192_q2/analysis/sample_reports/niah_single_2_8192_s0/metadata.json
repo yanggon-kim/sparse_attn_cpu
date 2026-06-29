@@ -1,0 +1,22 @@
+{
+  "sample_id": "niah_single_2_8192_s0",
+  "benchmark": "RULER",
+  "benchmark_version": "38da79d79519ef87aa46ae804f838e1eab7f86d7",
+  "split": "validation",
+  "task_type": "retrieval",
+  "task_subtype": "niah_single_2",
+  "source_record_id": 20346,
+  "context_length_target": 8192,
+  "context_length_characters": 35221,
+  "reported_length_tokens": 7604,
+  "prompt_file": "<WORKDIR>/experiment/prompts/niah_single_2_8192_s0.txt",
+  "prompt_sha256": "42875557336ea7734f414cd64bc9ce29fe80d0c358111e0063f26f38bf9ccb4e",
+  "reference_answer": [
+    "7210606"
+  ],
+  "reference_answer_hash": "cc4fcd6366b185fd173f5dfb0bbf5d057011c4aef0b4d70f12c30437538b069e",
+  "answer_prefix": " The special magic number for discreet-commodity mentioned in the provided text is",
+  "needle_value": "7210606",
+  "token_position_answer_hf": 4267,
+  "target_max_new_tokens": 128
+}
