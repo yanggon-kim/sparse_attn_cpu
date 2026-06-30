@@ -9,7 +9,8 @@ AI agent — can reproduce the whole thing from scratch by following this README
 
 > **TL;DR result.** With a fixed top-k = 512, the indexer's per-token selection is strongly temporally
 > local, and it becomes *more* structured (less random) as context grows: adjacent-step overlap
-> 0.87 → 0.79 → 0.72 at 4K/8K/16K, while the **locality lift over a random selector rises 1.7× → 2.9× → 5.7×**.
+> 0.87 → 0.79 → 0.72 → 0.66 at 4K/8K/16K/40K, while the **locality lift over a random selector rises
+> 1.7× → 2.9× → 5.7× → 13.2×** (roughly doubling per ~2× of context).
 > The needle's KV block is pinned in 95–100% of layer×step cells. Selection is semantic, not recency.
 > All measurements are reproducible from `runs/*/traces/` via `scripts/analyze_locality.py`.
 
@@ -50,7 +51,7 @@ AI agent — can reproduce the whole thing from scratch by following this README
 
 - **Benchmark:** official **NVIDIA/RULER** — commit `38da79d79519ef87aa46ae804f838e1eab7f86d7` (Apache-2.0).
 - **Task:** `niah_single_2` (single needle-in-a-haystack: a word *key* → number *value*, hidden in a
-  Paul Graham essay haystack). One sample at each context length **4K / 8K / 16K**.
+  Paul Graham essay haystack). One sample at each context length **4K / 8K / 16K / 40K**.
 - **Length calibration tokenizer:** `deepseek-ai/DeepSeek-V4-Flash` (`PreTrainedTokenizerFast`,
   `tokenizer.json`). RULER sizes the haystack with this tokenizer; the actual ds4 token count is
   recorded per run (`context_length_actual_tokens`).
@@ -116,12 +117,14 @@ For decode step `t` and CSA layer `l`, let `U[t,l]` = the set of selected compre
 
 | Context | n_candidates | kept | adjacent overlap | retention@64 | **lift vs random** | working-set@64 | wall clock |
 |--------:|-------------:|-----:|-----------------:|-------------:|-------------------:|---------------:|-----------:|
-| 4K  | ~1008 | 51% | 0.87 | 0.76 | 1.7× | 2.6% of 64·top-k | 54 min |
-| 8K  | ~1887 | 27% | 0.79 | 0.61 | 2.9× | 3.8% | 1h45 |
-| 16K | ~4080 | 13% | 0.72 | 0.50 | **5.7×** | 5.6% | 4h09 |
+| 4K  | ~1008  | 51% | 0.87 | 0.76 | 1.7× | 2.6% of 64·top-k | 54 min |
+| 8K  | ~1887  | 27% | 0.79 | 0.61 | 2.9× | 3.8% | 1h45 |
+| 16K | ~4080  | 13% | 0.72 | 0.50 | 5.7× | 5.6% | 4h09 |
+| 40K | ~10222 |  5% | 0.66 | 0.43 | **13.2×** | 7.3% | 12h58 |
 
-Hardware: 2× Intel Xeon Silver 4514Y (64 threads, AVX-512/AMX), 251 GB RAM; CPU prefill ≈ 1.1–1.35 tok/s,
-peak RSS 81–93 GB, no swapping. Full write-up: [`EXPERIMENT_SUMMARY.md`](EXPERIMENT_SUMMARY.md).
+Hardware: 2× Intel Xeon Silver 4514Y (64 threads, AVX-512/AMX), 251 GB RAM; CPU prefill ≈ 0.88–1.35 tok/s
+(slower at longer context due to the O(n²) indexer cost), peak RSS 81–107 GB, no swapping.
+Full write-up: [`EXPERIMENT_SUMMARY.md`](EXPERIMENT_SUMMARY.md).
 
 ## 7. Repository layout
 ```
