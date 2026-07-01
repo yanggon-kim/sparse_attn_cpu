@@ -11,9 +11,9 @@ AI agent — can reproduce the whole thing from scratch by following this README
 > local, and it becomes *more* structured (less random) as context grows: adjacent-step overlap
 > 0.87 → 0.79 → 0.72 → 0.66 → 0.67 at 4K/8K/16K/40K/64K, while the **locality lift over a random
 > selector rises 1.7× → 2.9× → 5.7× → 13.2× → 21.4×**. The needle's KV block is pinned in 88–100% of
-> layer×step cells (28–2× over chance). Selection is semantic, not recency. At 64K the model *missed*
-> the needle even though the indexer still selected its block 88% of the time — the failure is
-> downstream of selection.
+> layer×step cells (28–2× over chance). Selection is semantic, not recency. (At 64K RULER marks the
+> answer wrong, but that's a 128-token truncation artifact — the model wrote 6 of the needle's 7 digits
+> before the cap — not a retrieval failure.)
 > All measurements are reproducible from `runs/*/traces/` via `scripts/analyze_locality.py`.
 
 ---
@@ -115,7 +115,7 @@ For decode step `t` and CSA layer `l`, let `U[t,l]` = the set of selected compre
 - **Random baseline** `E[overlap] ≈ top_k / n_candidates`; **locality lift** = observed / random.
 - **Recency baseline** = the most-recent `top_k` compressed entries (separates semantics from recency).
 
-## 6. Results (this run, n = 1 per length; needle retrieved at 4K–40K, missed at 64K)
+## 6. Results (this run, n = 1 per length; needle retrieved at 4K–40K; 64K answer truncated at 128 tokens)
 
 | Context | n_candidates | kept | adjacent overlap | retention@64 | **lift vs random** | working-set@64 | wall clock |
 |--------:|-------------:|-----:|-----------------:|-------------:|-------------------:|---------------:|-----------:|
@@ -125,10 +125,13 @@ For decode step `t` and CSA layer `l`, let `U[t,l]` = the set of selected compre
 | 40K | ~10222 |  5% | 0.66 | 0.43 | 13.2× | 7.3% | 12h58 |
 | 64K | ~16370 |  3% | 0.67 | 0.46 | **21.4×** | — | 24h10 |
 
-At **64K the model missed the needle** (the only failure). The trace shows the indexer *still* selected
-the needle's KV block in **88%** of layer×step cells (28× the 3.1% chance rate) — so the failure is
-**downstream** of sparse selection (lossy ratio-4 compression + IQ2 quantization + YaRN positions past
-the 65,536 native context), not the indexer dropping the needle. A useful correct-vs-incorrect contrast.
+At 64K RULER scored the answer **incorrect, but this is a truncation artifact, not a retrieval failure**:
+the generation ends mid-answer — `"...special magic numbers for roasted-poetry is: 510724"` — i.e. the
+model wrote **6 of the 7 digits** of the needle `5107245` and hit the `max_new_tokens=128` cap
+(`finish_reason=length`) one token short. It reasoned longer at 64K and ran out of output budget
+(16K/40K finished with EOS at 118/107 tokens). The trace confirms the mechanism worked: the indexer
+still selected the needle's KV block in **88%** of layer×step cells (28× the 3.1% chance rate). A larger
+token budget would score 64K correct — so there is **no evidence of a genuine long-context breakdown** here.
 
 Hardware: 2× Intel Xeon Silver 4514Y (64 threads, AVX-512/AMX), 251 GB RAM; CPU prefill ≈ 0.75–1.35 tok/s
 (slower at longer context due to the O(n²) indexer cost; 64K took ~24 h), peak RSS 81–122 GB, no swapping.
