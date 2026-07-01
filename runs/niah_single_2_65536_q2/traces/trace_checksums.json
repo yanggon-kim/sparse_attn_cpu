@@ -1,0 +1,7 @@
+{
+  "indexer_trace.jsonl": "390ff2c68f7d196ef8cf865f5cefd2c8c63e6af7c8a3455192229e8d3a7dead1",
+  "decode_tokens.parquet": "f248ad99e79201029abf79216c306fe95fb30057bb3450021ea8a75bd4a66db2",
+  "layer_events.parquet": "02f1f245472fcc5c7593567a7b7e2b241183ac3710ccbc53c9803b6603bd3b34",
+  "selected_kv.parquet": "e75e50177753c0e1765da83472e94fda843643774a173fa57e3c87e5f0bfc5cd",
+  "score_summaries.parquet": "1249f3b314925ccb98c5a173c291622d11c28421f8e88349b1cb9c2be9f0a9b2"
+}

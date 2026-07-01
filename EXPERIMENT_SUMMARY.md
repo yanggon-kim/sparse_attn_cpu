@@ -4,9 +4,10 @@
 **Benchmark:** official NVIDIA/RULER `niah_single_2` · **Decode:** greedy, 128 tokens, deterministic.
 
 ## What was run
-Four samples — one `niah_single_2` retrieval prompt at **4K, 8K, 16K, 40K** tokens — traced at the
+Five samples — one `niah_single_2` retrieval prompt at **4K, 8K, 16K, 40K, 64K** tokens — traced at the
 CSA lightning-indexer top-k selection point during autoregressive decode. All three **correctly
-retrieved the needle**. Wall-clock: 54 min / 1h45 / 4h09 / 12h58 (40K added later), peak RSS 80–107 GB, no swapping.
+retrieved the needle at 4K–40K; **at 64K the model missed** (see Correctness below). Wall-clock:
+54 min / 1h45 / 4h09 / 12h58 / 24h10, peak RSS 80–122 GB, no swapping.
 Each run emits the immutable trace (`traces/*.parquet`), per-metric analysis, tables, plots, and a
 per-sample revisit package. The raw trace is the primary evidence; every number below is reproducible
 from it via `scripts/analyze_locality.py`.
@@ -21,7 +22,8 @@ and the selection becomes far more structured than chance:
 | 4K  | ~1008  | 51% | **0.869** | 1.7× | 0.43 |
 | 8K  | ~1887  | 27% | **0.790** | 2.9× | 0.30 |
 | 16K | ~4080  | 13% | **0.718** | 5.7× | 0.16 |
-| 40K | ~10222 |  5% | **0.659** | **13.2×** | 0.12 |
+| 40K | ~10222 |  5%  | **0.659** | **13.2×** | 0.12 |
+| 64K | ~16370 |  3%  | **0.670** | **21.4×** | 0.11 | *(needle missed)* |
 
 ## Answers to the research questions (doc §1)
 1. **Adjacent-token locality.** 72–87% of the compressed-KV indices selected at decode step *t* are
@@ -36,11 +38,16 @@ and the selection becomes far more structured than chance:
    (semantic position agreement, *not* physical sharing) is moderate and falls with context: 0.49 → 0.22.
 4. **Task dependence.** Only retrieval (`niah_single_2`) this pass; multi-hop/aggregation deferred.
 5. **Context-length dependence.** Adjacent overlap drifts **down** with context (0.87→0.72) because
-   more candidates allow more churn, but locality **lift** rises sharply (1.7×→5.7×→13.2× at 40K,
-   roughly doubling per step) — relative to
+   more candidates allow more churn, but locality **lift** rises sharply (1.7×→2.9×→5.7×→13.2×→21.4×
+   at 4K→64K) — relative to
    chance the selection gets *more* structured at longer context.
-6. **Correctness dependence.** All three correct; correct-vs-incorrect contrast needs the (deferred)
-   larger sample set.
+6. **Correctness dependence.** Correct at 4K–40K, **incorrect at 64K** — and the trace localizes the
+   failure: at 64K the indexer **still selected the needle's KV block in 88% of layer×step cells (28×
+   the 3.1% chance rate)**, so the miss is **not** a sparse-selection failure. The needle was mostly
+   kept available; the breakdown is downstream of selection (lossy ratio-4 compression + IQ2
+   quantization + YaRN position extrapolation beyond the 65,536 native context). Needle-block retention
+   does erode gently with length (100→100→95→95→88%; layers-every-step 21→19→15→15→14), but at 64K it
+   stays far above chance while the answer fails.
 7. **Systems relevance.** Reuse is near-total: logical cold-access fraction is 1.4% (4K) → 4.0% (16K),
    i.e. ~96–99% of block accesses re-touch a previously-used block. The **working set is tiny**: a
    64-step decode window touches only 2.6% (4K) / 3.8% (8K) / 5.6% (16K) of `64×top-k` distinct blocks.
@@ -56,6 +63,7 @@ block is selected during decode:
 | 8K  | **100%** | 27%  | 19/21 |
 | 16K | **95%**  | 12.5%| 15/21 |
 | 40K | **95%**  | 5.0% | 15/21 |
+| 64K *(missed)* | **88%** | 3.1% | 14/21 |
 
 The indexer pins the answer-bearing KV block as a permanent member of the per-token hot set, far above
 chance — a direct mechanistic explanation for both the high temporal locality and the correct retrieval.
@@ -70,7 +78,10 @@ reaches back to semantically relevant *old* positions (the planted needle is old
 - "On RULER `niah_single_2` at 16K context, the median CSA layer re-selected **71.8%** of its compressed
   KV entries between adjacent decode tokens — **5.7×** the random-selection expectation."
 - "At 40K context (only **5%** of ~10,222 compressed candidates kept), adjacent-token overlap was **65.9%**
-  — **13.2×** the random expectation; the locality lift roughly doubles for each ~2× of context (1.7→2.9→5.7→13.2×)."
+  — **13.2×** the random expectation; the locality lift rises monotonically with context (1.7→2.9→5.7→13.2→21.4× at 4K→64K)."
+- "At 64K the model failed to retrieve the needle, yet the indexer still selected the needle's compressed
+  KV block in **88%** of layer×step cells (**28×** the random rate) — the retrieval failure is downstream
+  of sparse selection, not caused by it."
 - "The 64-token working set was **5.6%** of `64×top-k` at 16K — strong reuse of a small hot set."
 - "Selection is semantic, not recency-driven: adjacent overlap 0.72 vs recency-baseline 0.16 at 16K,
   with only 6% of selections in the most-recent 1% of context."
@@ -78,7 +89,9 @@ reaches back to semantically relevant *old* positions (the planted needle is old
 ## Caveats (doc §41)
 Q2 quantized runtime (not full precision); CPU reference path (not GPU production); **logical** KV
 reuse (not physical cache hits); cross-layer overlap = semantic agreement, not shared tensors;
-**n=1 sample per context length** → point estimates only, no cross-sample confidence intervals.
+**n=1 sample per context length** → point estimates only, no cross-sample confidence intervals (the
+64K correctness finding is a single sample and should be confirmed with more; 64K also runs slightly
+beyond the 65,536 native context via YaRN, which may itself contribute to the miss).
 
 ## Minimum acceptance criteria (doc §37) — status
 Benchmark selected+documented ✓ · end-to-end run ✓ · token & per-layer CSA traces ✓ · selected

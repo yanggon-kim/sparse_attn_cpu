@@ -9,7 +9,7 @@ Writes:
 import json, hashlib, os, sys
 
 BASE = "<WORKDIR>/experiment"
-LENGTHS = [4096, 8192, 16384, 40960]
+LENGTHS = [4096, 8192, 16384, 40960, 65536]
 TASK = "niah_single_2"
 OUT_PROMPTS = os.path.join(BASE, "prompts")
 os.makedirs(OUT_PROMPTS, exist_ok=True)

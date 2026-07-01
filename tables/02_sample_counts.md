@@ -5,4 +5,5 @@
 | RULER       | niah_single_2 |     16384 |         1 | True      |
 | RULER       | niah_single_2 |     40960 |         1 | True      |
 | RULER       | niah_single_2 |      4096 |         1 | True      |
+| RULER       | niah_single_2 |     65536 |         1 | False     |
 | RULER       | niah_single_2 |      8192 |         1 | True      |
