@@ -40,13 +40,16 @@ AI agent — can reproduce the whole thing from scratch by following this README
 
 - **Engine:** `antirez/ds4` ("DwarfStar"), a single-file C inference engine for DeepSeek-V4 — commit
   `80ebbc396aee40eedc1d829222f3362d10fa4c6c` (MIT).
-- **Instrumentation:** apply `docs/ds4_instrumentation.patch` (124-line addition to `ds4.c`). It adds an
-  env-gated, buffered JSONL logger at the indexer top-k site (`indexer_log_selection`), emitting one
-  record per CSA layer per token. **It does not change model outputs** (verified: tracing on/off gives
-  byte-identical greedy tokens).
-  - Env controls: `DS4_TRACE_OUTPUT` (dir), `DS4_TRACE_LEVEL` (0 meta / 1 selected / 2 boundary /
+- **Instrumentation:** apply `docs/ds4_instrumentation.patch` (addition to `ds4.c`). It adds env-gated,
+  buffered JSONL loggers at **two** selection sites: the CSA indexer top-k (`indexer_log_selection`) and
+  the MoE router top-6 (`moe_log_selection`), each emitting one record per layer per token. **It does not
+  change model outputs** (verified: tracing on/off gives byte-identical greedy tokens).
+  - KV env controls: `DS4_TRACE_OUTPUT` (dir), `DS4_TRACE_LEVEL` (0 meta / 1 selected / 2 boundary /
     3 full-score subset), `DS4_TRACE_DECODE_ONLY=1` (skip prefill — essential, else 16K ≈ 2 GB),
     `DS4_TRACE_FULL_SCORE_SAMPLE_RATE`, `DS4_TRACE_FLUSH_INTERVAL`.
+  - MoE expert trace: set `DS4_MOE_TRACE=1` (alongside `DS4_TRACE_OUTPUT`) → writes `moe_trace.jsonl`
+    (`{layer,pos,token,is_hash,sel[6],weights[6]}`) from the same decode pass. Analyze with
+    `scripts/ingest_moe_trace.py` + `scripts/analyze_moe_locality.py`; see `docs/moe_selection_locality.md`.
 - **Build:** `make cpu` (gcc, `-O3 -ffast-math -march=native`). Helper: `scripts/build_cpu.sh`.
 
 ## 3. Benchmark
@@ -142,7 +145,9 @@ Full write-up: [`EXPERIMENT_SUMMARY.md`](EXPERIMENT_SUMMARY.md).
 EXPERIMENT_SUMMARY.md      headline findings + answers to the research questions
 benchmark_decision.md      benchmark selection note (RULER decision tree)
 docs/00_doc/               the original experiment specification (first instruction)
-docs/ds4_instrumentation.patch   the ds4.c instrumentation (apply to antirez/ds4)
+docs/ds4_instrumentation.patch   the ds4.c instrumentation (KV indexer + MoE; apply to antirez/ds4)
+docs/moe_selection_locality.md   MoE routed-expert selection locality write-up (4K/8K/16K)
+docs/moe_locality_4k8k16k/       MoE + KV run summaries, per-layer tables, and plots
 docs/ATTRIBUTION.md        third-party components + licenses
 scripts/                   the full run + analysis pipeline
 benchmark/prompts/         the 3 generated prompts + samples.jsonl

@@ -1,0 +1,211 @@
+{
+  "run_id": "niah_single_2_16384_moe_q2",
+  "context_length": 16384,
+  "n_expert": 256,
+  "n_used": 6,
+  "random_baseline_overlap": 0.0234375,
+  "n_layers_total": 43,
+  "n_hash_layers": 3,
+  "n_learned_layers": 40,
+  "n_decode_steps": 117,
+  "learned": {
+    "n_layers": 40,
+    "adjacent_overlap_mean": 0.37399425287356325,
+    "adjacent_jaccard_mean": 0.25647689953724423,
+    "churn_mean": 0.6260057471264368,
+    "weighted_overlap_mean": 0.35158138568890324,
+    "locality_lift_mean": 15.957088122605342,
+    "retention": {
+      "lag_1": 0.37399425287356325,
+      "lag_2": 0.26971014492753626,
+      "lag_4": 0.21434365781710918,
+      "lag_8": 0.16743119266055045,
+      "lag_16": 0.13386963696369636,
+      "lag_32": 0.1526470588235294,
+      "lag_64": 0.1444182389937107
+    },
+    "working_set_ratio": {
+      "w1": 1.0,
+      "w2": 0.8103276353276355,
+      "w4": 0.6638532763532764,
+      "w8": 0.5366319444444445,
+      "w16": 0.42010550213675213,
+      "w32": 0.30678863960113956,
+      "w64": 0.1949135283119658
+    },
+    "reuse_cold_fraction_mean": 0.1628917378917379,
+    "persistence_mean_run_mean": 1.61471448669937,
+    "n_distinct_experts_mean": 114.35
+  },
+  "hash": {
+    "n_layers": 3,
+    "adjacent_overlap_mean": 0.020593869731800763,
+    "adjacent_jaccard_mean": 0.011285266457680252,
+    "churn_mean": 0.9794061302681992,
+    "weighted_overlap_mean": 0.01660283910512683,
+    "locality_lift_mean": 0.8786717752234997,
+    "retention": {
+      "lag_1": 0.020593869731800763,
+      "lag_2": 0.03526570048309178,
+      "lag_4": 0.02212389380530973,
+      "lag_8": 0.04026503567787971,
+      "lag_16": 0.024202420242024198,
+      "lag_32": 0.03790849673202615,
+      "lag_64": 0.03773584905660378
+    },
+    "working_set_ratio": {
+      "w1": 1.0,
+      "w2": 0.9855175688509025,
+      "w4": 0.948955365622032,
+      "w8": 0.8853276353276353,
+      "w16": 0.7703584995251663,
+      "w32": 0.5855146011396012,
+      "w64": 0.3708526234567902
+    },
+    "reuse_cold_fraction_mean": 0.29534662867996203,
+    "persistence_mean_run_mean": 1.0208511224349264,
+    "n_distinct_experts_mean": 207.33333333333334
+  },
+  "layer_groups_learned": {
+    "shallow": {
+      "layers": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "n_layers": 13,
+      "adjacent_overlap_mean": 0.36527409372236963,
+      "adjacent_jaccard_mean": 0.2479221927497788,
+      "churn_mean": 0.6347259062776304,
+      "weighted_overlap_mean": 0.34787370772056125,
+      "locality_lift_mean": 15.585027998821081,
+      "retention": {
+        "lag_1": 0.36527409372236963,
+        "lag_2": 0.2738015607580825,
+        "lag_4": 0.21409121851599724,
+        "lag_8": 0.18619148435662194,
+        "lag_16": 0.14788017263264785,
+        "lag_32": 0.16711915535444946,
+        "lag_64": 0.16303821964199325
+      },
+      "working_set_ratio": {
+        "w1": 1.0,
+        "w2": 0.814650449265834,
+        "w4": 0.6672419460881,
+        "w8": 0.5378588647819417,
+        "w16": 0.4185500219154065,
+        "w32": 0.3057986795967565,
+        "w64": 0.19347194827964057
+      },
+      "reuse_cold_fraction_mean": 0.16458470304624154,
+      "persistence_mean_run_mean": 1.5856812492487515,
+      "n_distinct_experts_mean": 115.53846153846153
+    },
+    "middle": {
+      "layers": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "n_layers": 13,
+      "adjacent_overlap_mean": 0.390473032714412,
+      "adjacent_jaccard_mean": 0.2698149551597826,
+      "churn_mean": 0.6095269672855879,
+      "weighted_overlap_mean": 0.36802897658317246,
+      "locality_lift_mean": 16.66018272914823,
+      "retention": {
+        "lag_1": 0.390473032714412,
+        "lag_2": 0.2964325529542921,
+        "lag_4": 0.2323576128885863,
+        "lag_8": 0.17936956010350508,
+        "lag_16": 0.1344249809596344,
+        "lag_32": 0.1542986425339366,
+        "lag_64": 0.13957426221577166
+      },
+      "working_set_ratio": {
+        "w1": 1.0,
+        "w2": 0.8021586675432831,
+        "w4": 0.6479015998246768,
+        "w8": 0.5186280955511725,
+        "w16": 0.40385300241069466,
+        "w32": 0.2937349331580101,
+        "w64": 0.186911023449485
+      },
+      "reuse_cold_fraction_mean": 0.15494192417269337,
+      "persistence_mean_run_mean": 1.6695214543882888,
+      "n_distinct_experts_mean": 108.76923076923077
+    },
+    "deep": {
+      "layers": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "n_layers": 14,
+      "adjacent_overlap_mean": 0.36678981937602634,
+      "adjacent_jaccard_mean": 0.25203521847610505,
+      "churn_mean": 0.6332101806239738,
+      "weighted_overlap_mean": 0.3397514665433992,
+      "locality_lift_mean": 15.649698960043766,
+      "retention": {
+        "lag_1": 0.36678981937602634,
+        "lag_2": 0.24109730848861283,
+        "lag_4": 0.19785082174462704,
+        "lag_8": 0.13892529488859762,
+        "lag_16": 0.12034417727487036,
+        "lag_32": 0.1376750700280112,
+        "lag_64": 0.1316262353998203
+      },
+      "working_set_ratio": {
+        "w1": 1.0,
+        "w2": 0.813899063899064,
+        "w4": 0.6755189255189257,
+        "w8": 0.5522105209605209,
+        "w16": 0.43664148351648346,
+        "w32": 0.31982918701668694,
+        "w64": 0.20368303571428567
+      },
+      "reuse_cold_fraction_mean": 0.16870166870166875,
+      "persistence_mean_run_mean": 1.5907817371923763,
+      "n_distinct_experts_mean": 118.42857142857143
+    }
+  },
+  "caveats": [
+    "IQ2 quantized runtime (not full precision)",
+    "CPU reference path (not GPU)",
+    "n=1 sample per context length (no cross-sample CIs)",
+    "expert pool fixed at n_expert; context length varies token content/position, not the sparsity regime (unlike the KV indexer)",
+    "first n_hash layers are deterministic token-id hash routing (reported separately)"
+  ]
+}

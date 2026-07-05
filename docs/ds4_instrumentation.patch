@@ -1,13 +1,164 @@
-# DeepSeek-V4 indexer trace instrumentation for antirez/ds4
+# DeepSeek-V4 indexer + MoE trace instrumentation for antirez/ds4
 # Upstream: https://github.com/antirez/ds4  commit 80ebbc396aee40eedc1d829222f3362d10fa4c6c (MIT)
 # Apply from the ds4 repo root:  git apply ds4_instrumentation.patch  (or: patch -p1 < ...)
-# Adds env-gated (DS4_TRACE_*) JSONL logging of CSA indexer top-k KV selections; build: make cpu
+# Adds env-gated JSONL logging of (a) CSA indexer top-k KV selections (DS4_TRACE_*) and
+# (b) MoE routed-expert top-6 selections (DS4_MOE_TRACE=1 -> <DS4_TRACE_OUTPUT>/moe_trace.jsonl).
+# Build: make cpu
 # ---
 diff --git a/ds4.c b/ds4.c
-index 640511e..bfdc0dd 100644
+index 640511e..6301693 100644
 --- a/ds4.c
 +++ b/ds4.c
-@@ -9091,6 +9091,124 @@ static void layer_attention_prefix_batch(
+@@ -7432,6 +7432,81 @@ static void layer_topk_selected_experts_from_probs(
+ 
+ static void print_vec_stats(const char *name, const float *x, uint64_t n);
+ 
++/* --- MoE routed-expert selection trace (research instrumentation) -----------
++ * When DS4_MOE_TRACE=1, every routed-MoE top-k expert selection on the CPU
++ * decode path is appended as one JSONL record to <DS4_TRACE_OUTPUT>/moe_trace.jsonl:
++ *   {"sv":1,"phase":P,"layer":L,"pos":Pos,"token":T,"n_expert":256,"n_used":6,
++ *    "is_hash":0/1,"sel":[...6 expert ids...],"weights":[...6...]}
++ * "sel" lists which experts the router chose (of DS4_N_EXPERT) for the token at
++ * position Pos in layer L. is_hash=1 marks the deterministic hash-routed early
++ * layers. Reuses DS4_TRACE_OUTPUT / DS4_TRACE_DECODE_ONLY / DS4_TRACE_FLUSH_INTERVAL.
++ * Gated + buffered; only the decode path calls it (prefill passes phase<0). */
++#define DS4_MOE_SCHEMA_VERSION 1u
++static FILE *g_moe_log = NULL;
++static int g_moe_log_init = 0;
++static int g_moe_log_enabled = 0;
++static pthread_mutex_t g_moe_log_mutex = PTHREAD_MUTEX_INITIALIZER;
++static uint32_t g_moe_flush_interval = 64;
++static uint64_t g_moe_record_count = 0;
++static int g_moe_decode_only = 0;
++
++static void moe_log_close(void) {
++    if (g_moe_log) { fflush(g_moe_log); fclose(g_moe_log); g_moe_log = NULL; }
++}
++
++static void moe_log_init_locked(void) {
++    g_moe_log_init = 1;
++    const char *en = getenv("DS4_MOE_TRACE");
++    if (!(en && en[0] && atoi(en) != 0)) return;   /* opt-in only */
++    const char *fi = getenv("DS4_TRACE_FLUSH_INTERVAL");
++    if (fi && fi[0]) { int v = atoi(fi); if (v > 0) g_moe_flush_interval = (uint32_t)v; }
++    const char *dco = getenv("DS4_TRACE_DECODE_ONLY");
++    if (dco && dco[0] && atoi(dco) != 0) g_moe_decode_only = 1;
++    char path[1400]; path[0] = 0;
++    const char *outdir = getenv("DS4_TRACE_OUTPUT");
++    const char *legacy = getenv("DS4_MOE_LOG");     /* explicit file path override */
++    if (legacy && legacy[0]) {
++        snprintf(path, sizeof(path), "%s", legacy);
++    } else if (outdir && outdir[0]) {
++        snprintf(path, sizeof(path), "%s/moe_trace.jsonl", outdir);
++    } else {
++        snprintf(path, sizeof(path), "ds4_moe_trace.jsonl");
++    }
++    g_moe_log = fopen(path, "w");
++    if (!g_moe_log) { fprintf(stderr, "DS4 MoE trace: cannot open %s\n", path); return; }
++    atexit(moe_log_close);
++    g_moe_log_enabled = 1;
++}
++
++/* One JSONL record per routed-MoE expert selection. phase: 0=prefill, 1=decode. */
++static void moe_log_selection(uint32_t il, uint32_t pos, int token,
++                              const int *selected, const float *weights,
++                              int n_used, int is_hash, int phase) {
++    pthread_mutex_lock(&g_moe_log_mutex);
++    if (!g_moe_log_init) moe_log_init_locked();
++    FILE *f = g_moe_log;
++    if (!f || !g_moe_log_enabled || (g_moe_decode_only && phase == 0)) {
++        pthread_mutex_unlock(&g_moe_log_mutex);
++        return;
++    }
++    fprintf(f, "{\"sv\":%u,\"phase\":%d,\"layer\":%u,\"pos\":%u,\"token\":%d,"
++               "\"n_expert\":%u,\"n_used\":%d,\"is_hash\":%d",
++            (unsigned)DS4_MOE_SCHEMA_VERSION, phase, il, pos, token,
++            (unsigned)DS4_N_EXPERT, n_used, is_hash);
++    fprintf(f, ",\"sel\":[");
++    for (int i = 0; i < n_used; i++) fprintf(f, "%s%d", i ? "," : "", selected[i]);
++    fprintf(f, "]");
++    if (weights) {
++        fprintf(f, ",\"weights\":[");
++        for (int i = 0; i < n_used; i++) fprintf(f, "%s%.6g", i ? "," : "", weights[i]);
++        fprintf(f, "]");
++    }
++    fprintf(f, "}\n");
++    g_moe_record_count++;
++    if ((g_moe_record_count % g_moe_flush_interval) == 0) fflush(f);
++    pthread_mutex_unlock(&g_moe_log_mutex);
++}
++
+ /* Single-token routed MoE.  It selects six experts, runs IQ2_XXS gate/up,
+  * applies SwiGLU and router weights, then accumulates Q2_K down projections. */
+ static void layer_routed_moe_one(
+@@ -7542,7 +7617,9 @@ static void layer_routed_moe_one_prealloc(
+         float               clamp,
+         float              * mid_all,
+         block_q8_K         * xq,
+-        block_q8_K         * midq) {
++        block_q8_K         * midq,
++        uint32_t            pos,
++        int                 trace_phase) {
+     int selected[DS4_MAX_EXPERT_USED];
+     float expert_weight[DS4_MAX_EXPERT_USED];
+     const uint64_t expert_in_dim = layer->ffn_gate_exps->dim[0];
+@@ -7561,6 +7638,12 @@ static void layer_routed_moe_one_prealloc(
+         layer_topk_selected_experts(selected, expert_weight, model, layer, x);
+     }
+ 
++    if (trace_phase >= 0) {
++        moe_log_selection(il, pos, token, selected, expert_weight,
++                          (int)DS4_N_EXPERT_USED,
++                          layer->ffn_gate_tid2eid ? 1 : 0, trace_phase);
++    }
++
+     matvec_experts_mid_prequant(mid_all, model,
+                                 layer->ffn_gate_exps,
+                                 layer->ffn_up_exps,
+@@ -7916,7 +7999,8 @@ static void layer_ffn_one_decode_scratch(
+         int                      token,
+         const float            * steering_dirs,
+         float                    steering_scale,
+-        ds4_cpu_decode_scratch * scratch) {
++        ds4_cpu_decode_scratch * scratch,
++        uint32_t                 pos) {
+     const uint32_t n_hc = DS4_N_HC;
+     const bool profile = getenv("DS4_DECODE_PROFILE_DETAIL") != NULL;
+     const double t_start = profile ? now_sec() : 0.0;
+@@ -7953,7 +8037,9 @@ static void layer_ffn_one_decode_scratch(
+                                   DS4_SWIGLU_CLAMP_EXP,
+                                   scratch->routed_mid_all,
+                                   scratch->routed_xq,
+-                                  scratch->routed_midq);
++                                  scratch->routed_midq,
++                                  pos,
++                                  1);
+     if (profile) t_routed = now_sec() - t0;
+ 
+     t0 = profile ? now_sec() : 0.0;
+@@ -8083,7 +8169,9 @@ static void routed_moe_tokens_worker(void *vctx, uint64_t t0, uint64_t t1) {
+                                       DS4_SWIGLU_CLAMP_EXP,
+                                       routed_mid,
+                                       routed_xq,
+-                                      routed_midq);
++                                      routed_midq,
++                                      0,
++                                      -1);
+     }
+ 
+     free(routed_midq);
+@@ -8175,7 +8263,9 @@ static void layer_ffn_shared_batch(
+                                           DS4_SWIGLU_CLAMP_EXP,
+                                           routed_mid,
+                                           routed_xq,
+-                                          routed_midq);
++                                          routed_midq,
++                                          0,
++                                          -1);
+         }
+     }
+     if (profile) t_routed = now_sec() - t0;
+@@ -9091,6 +9181,124 @@ static void layer_attention_prefix_batch(
  
  /* Ratio-4 layers use an auxiliary indexer to select which compressed rows are
   * visible to attention.  This is the CPU allocation-owning helper. */
@@ -132,7 +283,7 @@ index 640511e..bfdc0dd 100644
  static bool *indexer_allowed_decode_one(
          const ds4_model         * model,
          const ds4_layer_weights * layer,
-@@ -9106,6 +9224,7 @@ static bool *indexer_allowed_decode_one(
+@@ -9106,6 +9314,7 @@ static bool *indexer_allowed_decode_one(
      const uint32_t top_k = DS4_N_INDEXER_TOP_K < n_comp ? DS4_N_INDEXER_TOP_K : n_comp;
      if (top_k == n_comp) {
          for (uint32_t i = 0; i < n_comp; i++) allowed[i] = true;
@@ -140,7 +291,7 @@ index 640511e..bfdc0dd 100644
          return allowed;
      }
  
-@@ -9147,6 +9266,8 @@ static bool *indexer_allowed_decode_one(
+@@ -9147,6 +9356,8 @@ static bool *indexer_allowed_decode_one(
          allowed[best] = true;
      }
  
@@ -149,7 +300,7 @@ index 640511e..bfdc0dd 100644
      free(scores);
      free(weights);
      free(q);
-@@ -9172,6 +9293,7 @@ static bool *indexer_allowed_decode_one_decode_scratch(
+@@ -9172,6 +9383,7 @@ static bool *indexer_allowed_decode_one_decode_scratch(
      const uint32_t top_k = DS4_N_INDEXER_TOP_K < n_comp ? DS4_N_INDEXER_TOP_K : n_comp;
      if (top_k == n_comp) {
          for (uint32_t i = 0; i < n_comp; i++) allowed[i] = true;
@@ -157,7 +308,7 @@ index 640511e..bfdc0dd 100644
          return allowed;
      }
  
-@@ -9213,6 +9335,8 @@ static bool *indexer_allowed_decode_one_decode_scratch(
+@@ -9213,6 +9425,8 @@ static bool *indexer_allowed_decode_one_decode_scratch(
          allowed[best] = true;
      }
  
@@ -166,3 +317,34 @@ index 640511e..bfdc0dd 100644
      return allowed;
  }
  
+@@ -9820,7 +10034,7 @@ static void layer_forward_raw_swa_one(
+ 
+     t0 = profile ? now_sec() : 0.0;
+     layer_ffn_one_decode_scratch(out_hc, model, layer, scratch->after_attn_hc, il, token,
+-                                 steering_dirs, steering_ffn_scale, scratch);
++                                 steering_dirs, steering_ffn_scale, scratch, pos);
+     if (profile) t_ffn = now_sec() - t0;
+ 
+     if (profile) {
+@@ -16407,7 +16621,9 @@ static void metal_graph_trace_layer_stages(
+                                   DS4_SWIGLU_CLAMP_EXP,
+                                   routed_mid_all,
+                                   routed_xq,
+-                                  routed_midq);
++                                  routed_midq,
++                                  0,
++                                  -1);
+     if (layer->ffn_gate_tid2eid) {
+         layer_hash_selected_experts(selected, model, layer, token);
+         layer_hash_router_weights_one(expert_weight, model, layer, cpu_ffn_norm, selected);
+@@ -16632,7 +16848,9 @@ static int metal_graph_decode_test(
+                                   DS4_SWIGLU_CLAMP_EXP,
+                                   routed_mid_all,
+                                   routed_xq,
+-                                  routed_midq);
++                                  routed_midq,
++                                  0,
++                                  -1);
+     if (layer->ffn_gate_tid2eid) {
+         layer_hash_selected_experts(selected, model, layer, token);
+         layer_hash_router_weights_one(expert_weight, model, layer, cpu_ffn_norm, selected);
