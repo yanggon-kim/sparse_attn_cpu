@@ -69,11 +69,45 @@ an expert cache needs capacity for the tail, not just the top few. (`plots/moe_0
 | 8K | 0.373 | 0.270 | 0.207 | 0.173 | 0.176 | 0.150 | 0.127 |
 | 16K | 0.374 | 0.270 | 0.214 | 0.167 | 0.134 | 0.153 | 0.144 |
 
+## Finding 5 — per-layer routing structure: is adjacent overlap really "temporal"?
+Adjacent overlap (Findings 1–4) conflates two things. A layer can look temporally local simply because it
+has **favorite experts** — a concentrated marginal usage distribution — even if consecutive tokens were
+independent. Looking at each layer's expert decisions *over the whole sequence* (not just t vs t−1) separates
+them. Analysis: `scripts/analyze_moe_concentration.py`; figure `plots/moe_06_per_layer_concentration.png`;
+per-run numbers in `moe_locality_4k8k16k/<ctx>/moe_concentration.json`.
+
+**Every learned layer is concentrated; hash layers are not.** Over a decode, each of the 40 learned layers
+routes with a clear preferred committee: the single most-used expert fires for **22%–85%** of tokens
+(uniform = 2.3%), just **7–32 experts cover 50%** of the layer's routing, normalized entropy 0.63–0.85
+(< 1.0). The 3 hash layers are near-uniform (top-expert rate 0.12–0.16, ~50 experts for 50%, entropy 0.92) —
+the negative control. Every learned layer still *touches ~half* the 256-pool (88–171 distinct experts), so
+the shape is **concentrated core + long tail**, never a fixed 6. Peakiest: L15, L14 (top-expert rate 0.85,
+7 experts = 50%); flattest learned: L39 (0.22), L23 (0.25); peaky layers cluster mid-stack (L11–18, L24–26).
+
+**Static-vs-dynamic decomposition.** Split each layer's overlap into *static preference* — the overlap you'd
+get if consecutive tokens were independent draws from that layer's own usage distribution,
+`(Σ p_i²)/6` with `p_i` = per-expert usage rate — and *dynamic correlation* = observed / static. For the
+learned layers (consistent across 4K/8K/16K): observed **0.374**, static **~0.17** (7.4× the uniform 0.023),
+dynamic **~2.3×**. So the ~16× "locality lift" factors as **≈7.4× static preference × ≈2.3× temporal
+correlation**. Both are real: static concentration is the larger *multiplier* off random; the step-to-step
+correlation adds *at least as much* overlap in absolute terms (observed−static ≈ 0.20 vs static−uniform ≈ 0.14).
+
+**Two modes, and a division of labor.** `corr(static, observed) = +0.86` and
+`corr(dynamic-mult, concentration) = −0.86`: the extra stickiness is strongest exactly where concentration is
+weakest. Learned layers span two mechanisms that both land near 0.37 — **"specialist" layers** (peaky:
+L14/15/24/26) get overlap mostly from static preference (dynamic ≈ 1.5×), while **"context-tracking" layers**
+(broad: L9/20/21/23) have the highest dynamic multipliers (3.1–3.2×). By depth: concentration falls
+shallow→deep (top-expert rate 0.58→0.48) while the dynamic multiplier rises (2.18→2.49) — **early learned
+layers route by fixed specialists, deep layers route by context**; the middle third has the highest overall
+overlap. Hash layers even have dynamic multiplier < 1 (observed *below* their marginal) — deterministic
+token-id routing on ever-changing tokens is slightly anti-correlated step to step.
+
 ## What ships here
 `moe_locality_4k8k16k/` holds, per context, the MoE + KV run summaries
 (`moe_metrics_run_summary.json`, `kv_metrics_run_summary.json`), the per-layer MoE table
-(`moe_metrics_sample_layer.parquet`), the generation (`generations.jsonl`), and the 5 MoE + 3 KV plots under
-`plots/`. The raw `moe_trace.jsonl` (~tens of MB) and `selected_experts.parquet` are kept local; all numbers
+(`moe_metrics_sample_layer.parquet`), the per-layer concentration + decomposition
+(`moe_concentration.json`), the generation (`generations.jsonl`), and the 6 MoE + 3 KV plots under
+`plots/` (including `moe_06_per_layer_concentration.png`). The raw `moe_trace.jsonl` (~tens of MB) and `selected_experts.parquet` are kept local; all numbers
 above reproduce from the summaries via the scripts named in **Setup**. The KV summaries here are the
 sparse-attention locality collected in the *same* runs — they reproduce the earlier 4K/8K/16K KV points
 (adjacent overlap 0.868 / 0.790 / 0.718; lift 1.72× / 2.92× / 5.72×).
