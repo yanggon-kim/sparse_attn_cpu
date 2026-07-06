@@ -109,11 +109,13 @@ xs = [ctx_label(c) for c, _, _ in runs]
 ov = [s.get("learned", {}).get("adjacent_overlap_mean", float("nan")) for _, _, s in runs]
 lift = [s.get("learned", {}).get("locality_lift_mean", float("nan")) for _, _, s in runs]
 ax.plot(xs, ov, "-o", color=BLUE, label="adjacent overlap (learned)")
-ax.set(xlabel="context length", ylabel="adjacent overlap", title="MoE locality vs context length")
+ax.set(xlabel="context length", ylabel="adjacent overlap", title="MoE locality vs context length (flat — fixed 256-expert pool)")
 ax.set_ylim(0, 1); ax.grid(alpha=.3)
 ax2 = ax.twinx()
 ax2.plot(xs, lift, "-s", color=GREEN, label="locality lift ×")
 ax2.set_ylabel("locality lift (× random)")
+# 0-based lift axis so the near-constant lift is not visually exaggerated by autoscale
+ax2.set_ylim(0, max([l for l in lift if l == l] + [1]) * 1.3)
 lines = ax.get_lines() + ax2.get_lines()
 ax.legend(lines, [l.get_label() for l in lines], fontsize=8, loc="center right")
 fig.tight_layout(); fig.savefig(os.path.join(out_dir, "moe_05_context_scaling.png"), dpi=120)

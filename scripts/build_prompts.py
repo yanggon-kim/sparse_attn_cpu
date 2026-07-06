@@ -9,7 +9,7 @@ Writes:
 import json, hashlib, os, sys
 
 BASE = "<WORKDIR>/experiment"
-LENGTHS = [4096, 8192, 16384, 40960, 65536]
+LENGTHS = [4096, 8192, 16384, 32768, 40960, 65536, 98304]
 TASK = "niah_single_2"
 OUT_PROMPTS = os.path.join(BASE, "prompts")
 os.makedirs(OUT_PROMPTS, exist_ok=True)
@@ -51,7 +51,7 @@ def main():
             "answer_prefix": rec["answer_prefix"],
             "needle_value": rec["outputs"][0] if rec["outputs"] else None,
             "token_position_answer_hf": rec.get("token_position_answer"),
-            "target_max_new_tokens": 128,
+            "target_max_new_tokens": 256,
         })
     with open(os.path.join(OUT_PROMPTS, "samples.jsonl"), "w") as f:
         for s in samples:
