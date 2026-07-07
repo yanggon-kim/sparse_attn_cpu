@@ -3,7 +3,7 @@
 A companion to the CSA lightning-indexer KV-selection study. DeepSeek-V4 is sparse in **two** places per
 layer: the attention selects a small set of past KV entries (the KV study), and the **feed-forward MoE**
 routes each token to **6 of 256** experts. This run measures the temporal locality of that *expert*
-selection, collected from the **same ds4 CPU decode pass** as the KV indexer trace, over a 4K/8K/16K/32K sweep.
+selection, collected from the **same ds4 CPU decode pass** as the KV indexer trace, over a 4K/8K/16K/32K/64K sweep.
 
 ## Setup
 - **Engine:** instrumented `antirez/ds4` (single-file C, CPU), DeepSeek-V4-Flash **IQ2** (~81 GB), 64 threads,
@@ -11,7 +11,7 @@ selection, collected from the **same ds4 CPU decode pass** as the KV indexer tra
   MoE); enable MoE tracing with `DS4_MOE_TRACE=1` alongside the existing `DS4_TRACE_*` vars → the engine
   writes `<DS4_TRACE_OUTPUT>/moe_trace.jsonl`, one record per (layer, decode step):
   `{sv,phase,layer,pos,token,n_expert,n_used,is_hash,sel[6],weights[6]}`.
-- **Task:** RULER `niah_single_2` at 4K / 8K / 16K / 32K, one sample each (all four retrieve the needle correctly).
+- **Task:** RULER `niah_single_2` at 4K / 8K / 16K / 32K / 64K, one sample each (all five retrieve the needle correctly).
 - **Coverage:** MoE routes on **every** layer's FFN (43 layers) — denser than the CSA indexer's 21 layers.
   **40** layers use learned biased top-6 routing; the **first 3** use deterministic token-id **hash** routing
   and are reported separately throughout. Config: 256 experts, 6 active, +1 shared.
@@ -32,13 +32,15 @@ persist step to step, **16×** the random baseline.
 | 8K | 0.373 | 2.24 | 0.256 | 0.627 | 15.9× |
 | 16K | 0.374 | 2.24 | 0.256 | 0.626 | 16.0× |
 | 32K | 0.348 | 2.09 | 0.235 | 0.652 | 14.9× |
+| 64K | 0.369 | 2.21 | 0.252 | 0.631 | 15.7× |
 
 ## Finding 2 — it is context-independent (unlike KV selection)
 The single sharpest contrast with the attention side. KV-selection locality **rises** with context (the
 candidate pool grows, so lift climbs 1.7×→5.7× over 4K→16K in the KV study). MoE routing does **not**: its
 pool is **fixed at 256 experts** regardless of context, so the regime is identical at every length —
-adjacent overlap **0.376 / 0.373 / 0.374 / 0.348** at 4K / 8K / 16K / 32K — flat within ~0.03 with no
-systematic trend (the 32K dip is within n=1 content variation), vs KV's 0.868→0.672 over the same span. See
+adjacent overlap **0.376 / 0.373 / 0.374 / 0.348 / 0.369** at 4K / 8K / 16K / 32K / 64K — flat within ~0.03
+(the 32K dip recovers at 64K, so it is n=1 content variation), vs KV's 0.868→0.668 with lift climbing
+1.72×→21.37× over the same span. See
 `plots/moe_05_context_scaling.png`.
 
 **Implication:** context length is the right sweep axis for KV locality but *not* for MoE locality. For
@@ -71,6 +73,7 @@ an expert cache needs capacity for the tail, not just the top few. (`plots/moe_0
 | 8K | 0.373 | 0.270 | 0.207 | 0.173 | 0.176 | 0.150 | 0.127 |
 | 16K | 0.374 | 0.270 | 0.214 | 0.167 | 0.134 | 0.153 | 0.144 |
 | 32K | 0.348 | 0.258 | 0.205 | 0.180 | 0.180 | 0.143 | 0.136 |
+| 64K | 0.369 | 0.272 | 0.214 | 0.171 | 0.163 | 0.164 | 0.160 |
 
 ## Finding 5 — per-layer routing structure: is adjacent overlap really "temporal"?
 Adjacent overlap (Findings 1–4) conflates two things. A layer can look temporally local simply because it
@@ -90,7 +93,7 @@ the shape is **concentrated core + long tail**, never a fixed 6. Peakiest: L15, 
 **Static-vs-dynamic decomposition.** Split each layer's overlap into *static preference* — the overlap you'd
 get if consecutive tokens were independent draws from that layer's own usage distribution,
 `(Σ p_i²)/6` with `p_i` = per-expert usage rate — and *dynamic correlation* = observed / static. For the
-learned layers (consistent across all four lengths 4K/8K/16K/32K): observed **0.35–0.38**, static **~0.17**
+learned layers (consistent across all five lengths 4K/8K/16K/32K/64K): observed **0.35–0.38**, static **~0.17**
 (7.4× the uniform 0.023), dynamic **~2.3×** (corr(static,observed) ≈ +0.85, corr(dynamic,concentration) ≈ −0.82). So the ~16× "locality lift" factors as **≈7.4× static preference × ≈2.3× temporal
 correlation**. Both are real: static concentration is the larger *multiplier* off random; the step-to-step
 correlation adds *at least as much* overlap in absolute terms (observed−static ≈ 0.20 vs static−uniform ≈ 0.14).
@@ -113,10 +116,11 @@ token-id routing on ever-changing tokens is slightly anti-correlated step to ste
 `plots/` (including `moe_06_per_layer_concentration.png`). The raw `moe_trace.jsonl` (~tens of MB) and `selected_experts.parquet` are kept local; all numbers
 above reproduce from the summaries via the scripts named in **Setup**. The KV summaries here are the
 sparse-attention locality collected in the *same* runs — the KV points scale monotonically with context
-(adjacent overlap 0.868 / 0.790 / 0.718 / 0.672; lift 1.72× / 2.92× / 5.72× / 10.53× at 4K/8K/16K/32K).
+(adjacent overlap 0.868 / 0.790 / 0.718 / 0.672 / 0.668; lift 1.72× / 2.92× / 5.72× / 10.53× / 21.37× at
+4K/8K/16K/32K/64K).
 
 ## Caveats
 Single sample per length; IQ2 quantized / CPU reference path (quantization may shift the router's top-6 vs
 full precision); logical expert ids (not a physical cache — an upper bound that ignores expert-load timing
 and bandwidth); greedy decode on one retrieval task; the 3 hash layers are deterministic token-id routing.
-Because the expert pool is fixed, the 4K–32K axis varies token content/position, not the sparsity regime.
+Because the expert pool is fixed, the 4K–64K axis varies token content/position, not the sparsity regime.

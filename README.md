@@ -146,8 +146,8 @@ EXPERIMENT_SUMMARY.md      headline findings + answers to the research questions
 benchmark_decision.md      benchmark selection note (RULER decision tree)
 docs/00_doc/               the original experiment specification (first instruction)
 docs/ds4_instrumentation.patch   the ds4.c instrumentation (KV indexer + MoE; apply to antirez/ds4)
-docs/moe_selection_locality.md   MoE routed-expert selection locality write-up (4K/8K/16K/32K)
-docs/moe_locality_sweep/         MoE + KV run summaries, per-layer tables, and plots (4K/8K/16K/32K)
+docs/moe_selection_locality.md   MoE routed-expert selection locality write-up (4K/8K/16K/32K/64K)
+docs/moe_locality_sweep/         MoE + KV run summaries, per-layer tables, and plots (4K/8K/16K/32K/64K)
 docs/ATTRIBUTION.md        third-party components + licenses
 scripts/                   the full run + analysis pipeline
 benchmark/prompts/         the 3 generated prompts + samples.jsonl
