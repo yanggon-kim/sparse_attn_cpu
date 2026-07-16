@@ -27,6 +27,30 @@ frequency; pool size `N` = max candidates visible (final pool).
 to **~20% at 64K**. The sparser the regime (longer context), the more concentrated the selection — so the hot
 set is a *shrinking fraction* of the (growing) pool.
 
+## Forward sweep — coverage at a fixed hot-set budget
+The inverse view: fix the hot set at a given **% of the candidate pool** and read off what fraction of top-k
+accesses it covers (access-weighted, mean over the 21 CSA layers). Cell = % of accesses covered.
+
+| hot set (% of pool) | 4K | 8K | 16K | 32K | 64K |
+|---|--:|--:|--:|--:|--:|
+| 1% | 2.0 | 3.7 | 7.9 | 15.0 | 27.8 |
+| 2% | 4.1 | 7.4 | 15.4 | 27.7 | 46.5 |
+| 5% | 10.2 | 18.4 | 34.7 | 54.1 | 75.1 |
+| 10% | 20.1 | 34.9 | 57.5 | 76.7 | 90.7 |
+| 15% | 29.8 | 49.2 | 72.0 | 87.6 | 96.0 |
+| 20% | 39.5 | 60.8 | 81.5 | 93.2 | 98.1 |
+| 25% | 48.6 | 70.3 | 87.9 | 96.3 | 99.1 |
+| 30% | 57.0 | 77.9 | 92.0 | 98.1 | 99.6 |
+| 40% | 71.7 | 88.3 | 96.6 | 99.6 | 99.9 |
+| 50% | 83.2 | 94.4 | 98.7 | 100.0 | 100.0 |
+| 75% | 97.9 | 99.6 | 100.0 | 100.0 | 100.0 |
+| 100% | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 |
+
+The longer the context, the more **front-loaded** the coverage: at 64K, **10% of the pool covers ~91%** of
+accesses and 20% covers ~98%; at 4K the same budgets cover only 20% / 40% (top-512 of ~1,030 keeps ~half the
+pool each step → near-linear, no concentrated hot core). Full grid per run in
+`moe_locality_sweep/<ctx>/hotset_coverage.json` (`coverage_by_pool_pct`).
+
 ## Four notes
 1. **Fraction shrinks (80%→20%), absolute size grows (~819→~3,344 positions).** The pool grows faster than the
    fraction shrinks; a physical cache is ~1.6× (4K) → ~6.5× (64K) the per-step 512-budget.

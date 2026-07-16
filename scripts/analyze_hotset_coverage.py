@@ -27,6 +27,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 ALPHAS = [0.90, 0.95, 0.99, 0.999]
+POOL_PCT_GRID = [1, 2, 3, 5, 7, 10, 15, 20, 25, 30, 40, 50, 60, 75, 100]
 PALETTE = ["#1f6feb", "#8250df", "#c55a11", "#1a7f37", "#b54708"]
 
 
@@ -70,10 +71,21 @@ def per_layer_coverage(sel_layer, pool_N):
             else:
                 lo = mid + 1
         B_n = lo
+    # Forward sweep: coverage achieved by a hot set of a fixed % of the pool
+    cov_by_pool_pct = {}
+    for p in POOL_PCT_GRID:
+        n = int(round(p / 100.0 * pool_N))
+        if n < 1:
+            cov_by_pool_pct[p] = 0.0
+        elif n >= distinct:
+            cov_by_pool_pct[p] = 1.0
+        else:
+            cov_by_pool_pct[p] = float(cum[n - 1])
     return {
         "n_steps": n_steps, "pool_N": int(pool_N), "distinct_selected": distinct,
         "distinct_pct_of_pool": 100.0 * distinct / pool_N,
         "A": A, "B_n": int(B_n), "B_pct_of_pool": 100.0 * B_n / pool_N,
+        "cov_by_pool_pct": cov_by_pool_pct,
         # coverage curve sampled at fixed % grid for plotting (x = % of pool, y = coverage)
         "curve_x_pct": [100.0 * (i + 1) / pool_N for i in range(0, distinct, max(1, distinct // 200))],
         "curve_y_cov": [float(cum[i]) for i in range(0, distinct, max(1, distinct // 200))],
@@ -108,6 +120,12 @@ def analyze_run(run_dir):
         "B99_pct_mean": mean_pct(("B_pct_of_pool",))[0],
         "B99_pct_range": mean_pct(("B_pct_of_pool",))[1:],
         "distinct_pct_mean": mean_pct(("distinct_pct_of_pool",))[0],
+        "coverage_by_pool_pct": {
+            str(p): {"mean": mean_pct(("cov_by_pool_pct", p))[0],
+                     "min": mean_pct(("cov_by_pool_pct", p))[1],
+                     "max": mean_pct(("cov_by_pool_pct", p))[2]}
+            for p in POOL_PCT_GRID
+        },
         "per_layer": per_layer,
     }
     json.dump(summ, open(os.path.join(run_dir, "analysis", "hotset_coverage.json"), "w"), indent=2,
@@ -135,6 +153,14 @@ def main():
               f"distinct={s['distinct_pct_mean']:.1f}%")
     results.sort(key=lambda s: s["context_length"] or 0)
     lab = lambda c: f"{c//1024}K" if c else "?"
+
+    # Combined forward-sweep table: coverage (% of top-k accesses) at each hot-set pool-% budget
+    cols = [lab(s["context_length"]) for s in results]
+    print("\n=== coverage (% of top-k accesses) vs hot-set budget (% of candidate pool), mean over CSA layers ===")
+    print("pool% | " + " | ".join(f"{c:>6}" for c in cols))
+    for p in POOL_PCT_GRID:
+        row = [100.0 * s["coverage_by_pool_pct"][str(p)]["mean"] for s in results]
+        print(f"{p:>4}% | " + " | ".join(f"{v:6.1f}" for v in row))
 
     # Plot 1: coverage curve per context (use the median-layer curve via a representative layer = middle CSA)
     fig, ax = plt.subplots(figsize=(7.5, 4.6))
