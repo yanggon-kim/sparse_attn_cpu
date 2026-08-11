@@ -148,6 +148,8 @@ docs/00_doc/               the original experiment specification (first instruct
 docs/ds4_instrumentation.patch   the ds4.c instrumentation (KV indexer + MoE; apply to antirez/ds4)
 docs/moe_selection_locality.md   MoE routed-expert selection locality write-up (4K/8K/16K/32K/64K)
 docs/kv_hotset_coverage.md       Hot-set sizing: % of candidates to cover 99% of the top-k KV selection
+docs/longbench_locality.md       LongBench validation: R1/R2/R3 on a real benchmark (36 runs, error bars)
+docs/longbench_sweep/            LongBench aggregate, sample manifest, and figures
 docs/moe_locality_sweep/         MoE + KV run summaries, per-layer tables, and plots (4K/8K/16K/32K/64K)
 docs/ATTRIBUTION.md        third-party components + licenses
 scripts/                   the full run + analysis pipeline
