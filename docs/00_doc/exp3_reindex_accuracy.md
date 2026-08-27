@@ -69,8 +69,11 @@ items) and an **MMLU-Pro** stratified subset (1,000 items) via lm-eval-harness o
 Fetch the official DeepSeek-V3.2 numbers for these from the HF model card / tech report (record URL,
 date, prompt format) into `docs/reindex_accuracy/official_numbers.json`. **Gate**: `clean` within the
 official range (or within 1 point where only a point estimate is published) per benchmark; if not, fix
-the prompt template / max tokens / scorer before any re-index run — otherwise the comparison is
-meaningless. Same for GLM-5.2 if it is added.
+the prompt template / max tokens / scorer **once** and re-run; if `clean` is still outside the range,
+**stop and report** (`GPU_CAMPAIGN.md` §5(d)) — otherwise the comparison is meaningless. If official numbers
+cannot be found for a benchmark, that is a §5(b) stop for that benchmark (say which; the others proceed).
+On pass write `docs/00_doc/reports/exp3_clean_<date>.md` and continue to the controls and permuted runs
+without pausing. Same for GLM-5.2 if it is added.
 
 ## 5. Metrics
 
@@ -103,3 +106,5 @@ meaningless. Same for GLM-5.2 if it is added.
 - [ ] `perm_log.jsonl` replay maps every logged `sel` index back into `[0, pos]` with no duplicates
 - [ ] no swap touches a block/slot at or beyond `seq_len - 64`; no cross-request swap (assert in code)
 - [ ] `results.csv` row count = benchmarks × modes × impls; every row has `run_ids`
+- [ ] gate report `docs/00_doc/reports/exp3_reindex_<date>.md` written; then the final report
+      (`reports/final_<date>.md`, `GPU_CAMPAIGN.md` §6)

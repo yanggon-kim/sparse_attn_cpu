@@ -17,8 +17,10 @@ committed.*
   `index_topk_pattern` string with `"S"` = skip). Checkpoint indexer weights of skipped layers are
   dropped at load (`:1566-1575`). Expected for GLM-5.2: `F = 4`, offset 2 → **VERIFY** from `config.json`.
 - **GLM-5 (plain)**: whether it has DSA at all is not established locally. Decide from its `config.json`:
-  `index_topk` present → same path, run it; absent → dense attention, no indexer, **skip GLM-5** and
-  say so in the summary. Do not spend GPU-h on a download before this check.
+  `index_topk` present → same path, run it; absent → dense attention, no indexer, **skip GLM-5**, say so
+  in the summary and in the exp2 gate report, and continue with GLM-5.2 only (this is a method-changing
+  VERIFY outcome — `GPU_CAMPAIGN.md` §5(b) — report it, but GLM-5.2 alone still satisfies exp2).
+  Do not spend GPU-h on a download before this check.
 
 ## 2. What to record (additions to the exp1 record)
 
@@ -41,6 +43,8 @@ by construction — a step's shared layers agree with their producer at 1.0).
 
 ## 3. Verification (smoke gate, 8K RULER prompt, 256 steps)
 
+Self-check as in exp1 §3: green → ladder; one retry on failure, then stop.
+
 - [ ] the set of layers with `topk_computed == true` equals the skip-rule prediction from the config
 - [ ] for a skipped layer, `sel` equals `sel` of `shared_from_layer` at the same step, bit-for-bit
 - [ ] all exp1 §3 checks (range, count, hook-on == hook-off, batch attribution, full chain)
@@ -59,3 +63,5 @@ If budget is short, drop 128K first, then the ld kind at 16K/32K.
 - `side_by_side.png`: adjacent overlap and lift vs context, one line per model, V4-CPU dotted.
 - `glm_sweep_summary.md`: the config dicts, the skip-rule layer list, the (a) vs (b) delta, and the
   one-sentence generality claim for the paper (with run ids).
+- Gate (self-check): side-by-side curves and the summary committed → `docs/00_doc/reports/exp2_<date>.md`,
+  then continue to exp3.

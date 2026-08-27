@@ -47,6 +47,9 @@ files (`traces/by_req/<sample_id>.jsonl`) so batched decode splits into ds4-styl
 
 ## 3. Verification (smoke gate, 8K RULER prompt, 256 steps, batch 1)
 
+Self-check: all boxes green → write `docs/00_doc/reports/exp1_smoke_<date>.md`, commit, start the ladder (§5).
+A red box → fix once and re-run; a second failure is a stop (`GPU_CAMPAIGN.md` §5(a)).
+
 - [ ] all `sel` in `[0, pos]`; `len(sel) <= 2048`; `len(sel) == min(2048, n_comp)` for `n_comp >= 2048`
 - [ ] 61 records per decode step per request; `pos` increases by exactly 1 per step
 - [ ] hook-on vs hook-off `token_ids` identical (write `IDENTICAL` to `runs/smoke_identity.txt`)
@@ -66,7 +69,7 @@ files (`traces/by_req/<sample_id>.jsonl`) so batched decode splits into ds4-styl
 | `traces/indexer_trace.jsonl` `{sv:2, phase, layer, ratio, pos, n_comp, top_k, valid_k, sel[], scores[]?, rank_k_score?, rank_kp1_score?}` | records of §2 for one request; `ratio: 1` (V3.2 has no compression; `original_token_range(c,1) = [c,c]`); `phase: 1`; rank scores only when scores were logged |
 | `traces/moe_trace.jsonl` `{sv:2, phase, layer, pos, token, n_expert:256, n_used:8, is_hash:false, sel[8], weights[8]}` | MoE records; `is_hash` always false (V3.2 has no hash layers); dense layers 0–2 omitted |
 | `outputs/generations.jsonl` (one line) `{run_id, sample_id, prompt_token_count, generated_token_count, generated_token_ids[], generated_text, finish_reason, benchmark_prediction, reference_answer[], is_correct, score}` | vLLM `RequestOutput` + benchmark scorer |
-| `run_manifest.json` `{schema_version:"1", trace_schema_version:2, run_id, backend:"cuda", model_name:"DeepSeek-V3.2", model_path, quantization:"fp8 (native)", benchmark_name, task_subset, context_length_target, context_length_actual_tokens, max_new_tokens, decode_parameters{temperature:0, greedy:true, seed, batch_size}, vllm_commit, gpu:"8xH200", timing{wall_clock_seconds, gpu_hours}, is_correct}` | the runner; `context_length_target` is the ladder rung (8192…131072) — `analyze_hotset_coverage.py` reads it |
+| `run_manifest.json` `{schema_version:"1", trace_schema_version:2, run_id, backend:"cuda", model_name:"DeepSeek-V3.2", model_path, quantization:"fp8 (native)", benchmark_name, task_subset, context_length_target, context_length_actual_tokens, max_new_tokens, decode_parameters{temperature:0, greedy:true, seed, batch_size}, vllm_commit, gpu:"8x<detected model>" (from node.json), timing{wall_clock_seconds, gpu_hours}, is_correct}` | the runner; `context_length_target` is the ladder rung (8192…131072) — `analyze_hotset_coverage.py` reads it |
 | `model_config.json` `{num_layers:61, sparse_top_k:2048, indexer_head_count:64, indexer_head_dim:128, expert_count:256, expert_used:8, layer_map:[{layer_id, attention_type:"CSA", compression_ratio:1} x 61]}` | constant; `attention_type` must be `"CSA"` for every indexer layer (`validate_trace.py` counts them; `ingest_trace.py` treats non-CSA as dense) |
 | `logs/time_and_stderr.log` | vLLM stderr (token latencies are optional; the regex `decode eval N took X ms` is ds4-only) |
 
@@ -82,9 +85,10 @@ baseline becomes `k / n_comp`.
 | kind **ld** (long-decode) | same prompts, `min_tokens=2048, max_tokens=2048, ignore_eos=True` → >= 2K decode steps for retention curves; use long-form prompts (summarization/QA) for ld to avoid degenerate repetition; 5–10 per rung suffice |
 
 n ≈ 20 per rung (bf) + 5–10 (ld). Decode batch 8–16 requests with attribution; `max_model_len` = rung +
-2,304. Order: 8K first (both kinds, full chain, review), then 16K … 128K. Prefill is fast on GPU; the
-128K rung is limited by KV memory (~48 KB/token/61 layers → 16 x 130K tokens ≈ 100 GB, fine on 8 x H200
-after ~690 GB weights).
+2,304. Order: 8K first (both kinds, full chain, self-check of the §3 gate, gate report file), then 16K … 128K
+without pausing. Prefill is fast on GPU; the 128K rung is limited by KV memory (~48 KB/token/61 layers →
+16 x 130K tokens ≈ 100 GB, fine on a >= 1 TB node after ~690 GB weights; reduce the decode batch if the
+detected per-GPU HBM leaves less room).
 
 ## 6. Outputs → `docs/gpu_sweep/`
 
@@ -95,3 +99,5 @@ after ~690 GB weights).
   testcase reads: `MEASURED_OVERLAP`, `MEASURED_TOP10`).
 - plots (`generate_kv_plots.py`, `generate_moe_plots.py`, `generate_longbench_plots.py`) and
   `gpu_sweep_summary.md` with the V4-CPU curve overlaid for comparison; every number tagged with run ids.
+- Ladder gate (self-check): the three CSVs, plots and the summary committed with run ids for every rung →
+  `docs/00_doc/reports/exp1_ladder_<date>.md`, then continue to exp2.

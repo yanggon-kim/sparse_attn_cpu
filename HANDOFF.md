@@ -33,8 +33,10 @@ R1 KV top-k locality, R2 MoE routing locality, R3 hot-set coverage (% of pool to
   `v32/DeepSeek-V3.2-UD-TQ1_0.gguf` (151 GB, dense, NO DSA indexer — useless for sparse data);
   `v32_4L/DeepSeek-V3.2-4Layers-Q8_0.gguf` (16 GB, arch deepseek32 WITH indexer; dev-only).
 - `work/llama.cpp/` — pinned to 683f0c72e (2026-07-09) with local patches (see §5). Not pushed anywhere.
-- `01_github/sparse_attn_cpu/` — published repo (git@github.com:yanggon-kim/sparse_attn_cpu). HEAD d5c18b9 + the GPU-campaign commit of 2026-08-27 (unpushed; `docs/00_doc/GPU_CAMPAIGN.md`, `exp0..exp3`,
-  refreshed path-scrubbed copy of this HANDOFF.md — refresh it when this file changes and a commit is due).
+- `01_github/sparse_attn_cpu/` — published repo (git@github.com:yanggon-kim/sparse_attn_cpu). HEAD = the
+  2026-08-27 GPU-campaign commits (e9e6610 package; + the "no review stops / generic GPU" revision), pushed to
+  origin main. Holds `docs/00_doc/GPU_CAMPAIGN.md`, `exp0..exp3`, and a path-scrubbed copy of this HANDOFF.md
+  (refresh it when this file changes and a commit is due).
 - `01_github/versel_distribute/` — static site → https://versel-distribute.vercel.app. Local HEAD deaaaa9,
   clean, **6 commits behind origin/main (e00b92a, user's Part X/Part III-of-05_ramulator edits; none
   touch `04_sparse_attn/02_part3*`, `03_part4*`; `index.html` 1 line)** — rebase before any push.
@@ -83,14 +85,15 @@ aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, poole
   `llama-eval-callback`) works at short context but crashes on prompts >~256 tokens
   (`ops.cpp set_rows: leaf_90 uninitialized`) while `llama-server` handles the same prompt fine.
   Fix path: hook the trace into llama-server's decode path instead. PARKED — user pivoted to GPU.
-- GPU campaign (decided, not started): rent **8× H200 SXM** (vendor now allows 8), native FP8
+- GPU campaign (decided, not started): rent **8 GPUs with >= ~1 TB HBM total (H200/B200-class; GPU type
+  NOT decided yet — exp0 detects it and picks kernels)**, native FP8
   `deepseek-ai/DeepSeek-V3.2`, vLLM TP8, `enforce_eager=True`; ladder 8K/16K/32K/64K/128K input,
   **~2K decode steps** per run, n≈20/rung; RULER + LongBench v1 + LongBench v2 + InfiniteBench;
   decode-only trace + sampled prefill. Budget ~1,000 GPU-h. GLM-5/5.2 (~750B, also DSA) fit the
   same node → cross-model generality opportunity. Guide: `sparse_attn_cpu/docs/vllm_selection_history_collection_guide.md`.
 
 ## 4. Recent decisions and why
-- Stay on **native FP8 / 8× H200** (not H100: 640 GB < ~690 GB weights; not 6/7 GPUs: 128 heads &
+- Stay on **native FP8 / 8 GPUs, >= ~1 TB HBM** (GPU model open, 2026-08-27; not H100: 640 GB < ~690 GB weights; not 6/7 GPUs: 128 heads &
   256 experts don't divide; not QuantTrio AWQ: it 4-bit-quantizes the indexer itself — verified
   `indexer.wq_b.qweight` in its tensor map). NVFP4 builds are Blackwell-only.
 - Hot-set "hotness" = per-layer selection frequency over the decode (offline oracle ranking,
@@ -160,6 +163,11 @@ Trace records: `indexer_trace.jsonl {phase,layer,pos,n_comp,top_k,sel[],scores[]
    (block-granular A vs entry-granular B re-index, ds4-mirrored modes/controls, benchmark set + official-number
    gate, `docs/reindex_accuracy/{results.csv,per_item.jsonl,README.md}`). Citations verified against vLLM
    checkout `5559679` (`<VLLM_CHECKOUT>`).
+   **Revised 2026-08-27 (user decisions):** GPU type generic (8 GPUs, >= ~1 TB HBM; exp0 §1 detects model/SM/
+   driver/HBM and picks kernels — first VERIFY item); execution mode = run start to finish **without review
+   stops**: gates are self-checks, per-gate report is a file `docs/00_doc/reports/<phase>_<date>.md` + HANDOFF
+   Status line + per-experiment summary md; stop only for §5 (a)–(d) (gate fails after one retry / method-
+   changing VERIFY outcome / undecided decision incl. budget > 20 % overrun / clean run outside official range).
 1. Remaining pre-node prep (no GPU needed): pre-build prompt sets (RULER 8K–128K via `prepare.py`,
    LongBench v1/v2, InfiniteBench manifests in the `longbench_samples.jsonl` schema); optionally draft
    `scripts/vllm_to_ds4_run.py` (adapter of exp1 §4) and test it on a synthetic trace (`scripts/_synth_test.py`).
@@ -171,7 +179,7 @@ Trace records: `indexer_trace.jsonl {phase,layer,pos,n_comp,top_k,sel[],scores[]
 4. If the CPU V3.2 tracer is resumed: move the `dsa_trace_cb` hook into `llama-server`.
 
 ## 7b. GPU campaign — prerequisites the user must supply before it can start
-Rental account/credentials for 8× H200 SXM (~1,000 GPU-h budget) and the go date; confirmation of the
+Rental account/credentials for an 8-GPU node with >= ~1 TB HBM (H200/B200-class; ~1,000 GPU-h budget) and the go date; confirmation of the
 model (`deepseek-ai/DeepSeek-V3.2` native FP8, plus GLM-5/5.2 if wanted); HF token if any target repo is
 gated; the session URL for the commit trailer. Everything else (vLLM pin, hook points, schema adapter,
 ladder, benchmarks, re-index implementations, gates) is specified in `GPU_CAMPAIGN.md` + `exp0..exp3`

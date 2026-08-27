@@ -3,13 +3,23 @@
 *Gate to pass before any measurement: a 3-token TP8 generation of DeepSeek-V3.2 with the hook installed
 and the hook's unit checks green. Budget: <= 5 GPU-h (most of it model download and weight loading).*
 
-## 1. Inventory the node (record everything in `<WORKDIR>/node.json`)
+## 1. Inventory the node (record everything in `<WORKDIR>/node.json`) — first step, GPU type unknown
+
+The GPU type was **not decided** when this was written. Detect it first and choose kernels accordingly:
 
 ```bash
-nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv   # expect 8x H200 141 GB (or B200)
-nvcc --version; python3 -c "import torch;print(torch.__version__, torch.version.cuda)"
+nvidia-smi --query-gpu=name,memory.total,driver_version,compute_cap --format=csv   # 8 GPUs, sum(memory) >= ~1 TB
+nvcc --version; python3 -c "import torch;print(torch.__version__, torch.version.cuda, torch.cuda.get_device_capability())"
 df -h /  /nvme* 2>/dev/null; free -h; nproc
 ```
+- Requirement: 8 GPUs, total HBM >= ~1 TB (H200/B200-class, >= ~128 GB each) so DeepSeek-V3.2 FP8 (~690 GB)
+  + KV fits at TP = 8. H100 (640 GB total) does not fit — a §5(c) stop of `GPU_CAMPAIGN.md`; 6/7 GPUs do not
+  divide 128 heads / 256 experts.
+- Kernel choice by SM: Hopper (sm_90, H200) and Blackwell (sm_100, B200) take different FlashMLA sparse /
+  `fp8_ds_mla` kernel paths in vLLM; after the §2 install, confirm the sparse MLA backend is selected for the
+  detected SM (`VLLM_LOGGING_LEVEL=DEBUG` load log, or the backend-selection code in
+  `vllm/v1/attention/backends/mla/`) and record `gpu_name`, `sm`, `driver`, `cuda`, `hbm_per_gpu_gb`,
+  `attn_backend` in `node.json`. Use the same `gpu` string in every `run_manifest.json`.
 - Decide the trace root now: a local NVMe with >= 1.5 TB free. Export `WORKDIR=<that path>/sparse_attn_gpu`
   and create `$WORKDIR/{models,runs,prompts,logs}`. `/` must never be the trace target.
 
@@ -91,5 +101,8 @@ $WORKDIR/runs/<run_id>/{run_manifest.json, model_config.json, prompts/, outputs/
 ## 7. Gate
 
 All of §4 and §5 green, `node.json` written, `HANDOFF.md` "Status" gets a dated line
-"exp0 passed on <node>, vLLM <commit>, DSv3.2 loaded in <min> min, <GB>/GPU". Then go to
-`exp1_dsv32_gather_index.md` §5 (smoke run).
+"exp0 passed on <node: GPU model x8, SM, driver/CUDA>, vLLM <commit>, DSv3.2 loaded in <min> min, <GB>/GPU",
+and the gate report `docs/00_doc/reports/exp0_<date>.md` is written and committed (`GPU_CAMPAIGN.md` §6).
+This is a self-check: on pass, continue directly to `exp1_dsv32_gather_index.md` §3/§5 (smoke run) — no
+review pause. Stop only under a §5 condition of `GPU_CAMPAIGN.md` (e.g. GPUs too small, sparse kernels
+unsupported on the SM, model gated with no token, smoke failing after one retry).
