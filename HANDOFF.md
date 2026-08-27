@@ -1,8 +1,11 @@
 <!-- Repo copy of the project-root HANDOFF.md. Paths scrubbed per repo convention:
-     <PROJECT> = the local project root; <WORKDIR> = <PROJECT>/work; <CLAUDE_MEMORY_DIR> = the Claude auto-memory dir. -->
+     <PROJECT> = the local project root; <WORKDIR> = <PROJECT>/work; <RAMULATOR_WS>, <VLLM_CHECKOUT>,
+     <CLAUDE_MEMORY_DIR> = sibling checkouts / the Claude auto-memory dir on the CPU box. -->
+
 # HANDOFF.md — DeepSeek sparse-selection locality study
 
-Written 2026-08-25 for an agent with no memory of prior sessions. Read this first, then
+Written 2026-08-25 for an agent with no memory of prior sessions; refined 2026-08-27 by the
+`deepseek-owner` agent (onboarding survey: repo states, cross-checks, ds4 hook, consumers). Read this first, then
 `<CLAUDE_MEMORY_DIR>/memory/deepseek-v4-kv-locality-experiment.md`
 (the auto-memory file: full history of runs, numbers, gotchas — the single most important doc).
 
@@ -17,14 +20,24 @@ R1 KV top-k locality, R2 MoE routing locality, R3 hot-set coverage (% of pool to
 - `work/experiment/` — the whole pipeline. `runs/<id>/{traces,outputs,analysis,prompts,logs}`;
   `scripts/`; `prompts/`; `benchmark/{RULER,longbench}`; `analysis_moe/` (RULER-sweep plots);
   `analysis_longbench/` (aggregate + plots). `EXPERIMENT_SUMMARY.md` = RULER write-up.
-- `work/ds4/` — antirez/ds4 C engine (HEAD 80ebbc3) **+ uncommitted instrumentation in `ds4.c`**
-  (KV logger `indexer_log_selection`, MoE logger `moe_log_selection`). Binary `./ds4`, build `make cpu`.
+- `work/ds4/` — antirez/ds4 C engine (HEAD 80ebbc3) **+ uncommitted local changes in `ds4.c` only**
+  (+410/−8 lines, 2026-08-27 survey): (a) instrumentation — KV logger `indexer_log_selection`, MoE
+  logger `moe_log_selection` (= `sparse_attn_cpu/docs/ds4_instrumentation.patch`, still reverse-applies
+  clean); (b) the **v5 re-index correctness hook** added 2026-08-24 by the ramulator project
+  (`kv_perm_apply`, env `DS4_PERM_MODE/SEED/PERIOD/FRAC/HCA/LOG/IDENTITY`; default MODE=0 = inert).
+  Patch copy: `ramulator2/examples/v5_ds4_reindex_correctness/ds4_reindex_hook.patch` (absolute-path
+  headers, needs `-p7`; it is 2 lines behind ds4.c — lacks the `DS4_PERM_IDENTITY` control).
+  Keep both; never revert. Binaries (untracked): `ds4` (built 08-24 10:15, hook without IDENTITY),
+  `ds4_new` (current source), `ds4_nofm` (current source, `-fno-fast-math`). `make cpu` rebuilds `ds4`.
 - `work/models/` — `DeepSeek-V4-Flash-IQ2XXS-...gguf` (81 GB, the workhorse);
   `v32/DeepSeek-V3.2-UD-TQ1_0.gguf` (151 GB, dense, NO DSA indexer — useless for sparse data);
   `v32_4L/DeepSeek-V3.2-4Layers-Q8_0.gguf` (16 GB, arch deepseek32 WITH indexer; dev-only).
 - `work/llama.cpp/` — pinned to 683f0c72e (2026-07-09) with local patches (see §5). Not pushed anywhere.
-- `01_github/sparse_attn_cpu/` — published repo (git@github.com:yanggon-kim/sparse_attn_cpu). HEAD fea819f.
-- `01_github/versel_distribute/` — static site → https://versel-distribute.vercel.app (HEAD deaaaa9).
+- `01_github/sparse_attn_cpu/` — published repo (git@github.com:yanggon-kim/sparse_attn_cpu). HEAD d5c18b9 + the GPU-campaign commit of 2026-08-27 (unpushed; `docs/00_doc/GPU_CAMPAIGN.md`, `exp0..exp3`,
+  refreshed path-scrubbed copy of this HANDOFF.md — refresh it when this file changes and a commit is due).
+- `01_github/versel_distribute/` — static site → https://versel-distribute.vercel.app. Local HEAD deaaaa9,
+  clean, **6 commits behind origin/main (e00b92a, user's Part X/Part III-of-05_ramulator edits; none
+  touch `04_sparse_attn/02_part3*`, `03_part4*`; `index.html` 1 line)** — rebase before any push.
   Has its own `CLAUDE.md` (READ IT): plain HTML, relative links only, every report self-contained,
   `index.html` is the only nav; "apply the edit rule" = add `<a class="report-link">` for new pages.
 - `papers/`, `00_doc/`, `study_deepseek_v4_vllm/`, `PLAN.md`, `RESULTS.md` — background docs.
@@ -41,6 +54,27 @@ R1 KV top-k locality, R2 MoE routing locality, R3 hot-set coverage (% of pool to
   (<~500 steps) falsely show a plateau. Always decode ≥1–2K steps for retention curves.
 - Vercel reports Part III (KV, `04_sparse_attn/02_part3_cpu_kv_locality/`) and Part IV (MoE,
   `03_part4_moe_locality/`) include RULER + LongBench sections. Parts I/II/V/VI/VII are the user's own.
+- **Re-index correctness runs for the ramulator v5 design (2026-08-23/24, run by that project with
+  the hook above, 4K NIAH, `-n 128`, ~55 min each on 64 threads):** identity control bit-identical to
+  baseline; one-time random row permutation 127/128 tokens identical, needle retrieved, selection Jaccard
+  0.967 in original-index space; periodic swaps and the `-fno-fast-math` control both diverge at step 35
+  → residual = summation-order noise. Raw runs (90 MB, not ours to delete):
+  `<RAMULATOR_WS>/tmp_v5_gather/ds4_reindex/`; write-up
+  `ramulator2/00_doc/01_design/v5/v5_reindex_correctness_ds4.md`.
+- Two RULER run series exist: the *published* `niah_single_2_{4096,8192,16384,32768,65536}_moe_q2`
+  (`-n 256`, 117–163 steps, KV+MoE traces) and the older `niah_single_2_{4096,8192,16384,40960,65536}_q2`
+  (`-n 128`; 40K adj 0.659 / lift 13.2×, 64K 0.670 / 21.4×). Quote the `_moe_q2` series; the ramulator
+  digest's §2 table still shows the old series (see §8). `runs/niah_single_2_98304_q2` is an **aborted**
+  96K attempt (died in prefill at layer 34/43, no outputs, 468 KB) — the runner will redo it if asked.
+
+**Cross-checked 2026-08-27 (owner onboarding, no reruns):** RULER adj overlap
+0.868/0.790/0.718/0.672/0.668 and lift 1.72/2.92/5.72/10.53/21.37× = `runs/niah_single_2_{L}_moe_q2/
+analysis/metrics_run_summary.json` (`overall_adjacent_overlap_mean`, `overall_locality_lift_mean`);
+hot-set A@99 79.5/65.7/47.5/31.4/20.4 % of pool (pool 1,030/1,912/4,095/8,039/16,393; per-layer range
+9.9–38.4 % at 64K) = `analysis/hotset_coverage.json` (`A99_pct_mean`, `A99_pct_range`); LongBench
+aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, pooled 0.801, A@99
+92.0/78.7/61.4 % = `analysis_longbench/longbench_aggregate.json` (identical to the published copy in
+`sparse_attn_cpu/docs/longbench_sweep/`). All match the Vercel/GitHub write-ups.
 
 **In progress / parked:**
 - DeepSeek-V3.2 on CPU: engine patched and loads, but the only CPU-fittable GGUF (Unsloth TQ1_0) is
@@ -82,6 +116,12 @@ R1 KV top-k locality, R2 MoE routing locality, R3 hot-set coverage (% of pool to
   versel remote diverges often (user commits there) → `git fetch && git rebase origin/main` before push.
   WebFetch caches 15 min: verify live pages with a `?v=` query string.
 - Vercel Part I is the user's B200/vLLM study — never edit its numbers.
+- **Scripts have no `--help` and act on any argv**: `generate_longbench_plots.py X` writes plots into a
+  directory named `X`; `build_longbench_prompts.py` ignores args and regenerates `prompts/longbench/` +
+  the manifest (deterministic, seed 42 — verified byte-identical 2026-08-27); `aggregate_longbench.py`
+  rewrites the aggregate JSON (deterministic). `analyze_hotset_coverage.py`/`analyze_moe_concentration.py`
+  with no run dirs print empty tables. Read the script header instead of probing with `--help`.
+  (A stray `scripts/--help/` directory from such a probe may still exist — safe to delete.)
 
 ## 6. Frequently used commands
 ```bash
@@ -111,16 +151,32 @@ Trace records: `indexer_trace.jsonl {phase,layer,pos,n_comp,top_k,sel[],scores[]
 `moe_trace.jsonl {phase,layer,pos,token,is_hash,sel[6],weights[6]}`.
 
 ## 7. Next steps (priority)
-1. **GPU campaign prep before the rental clock starts**: adapt the vLLM collection guide into a runnable
-   V3.2 collector (hook `topk_indices_buffer` in `sparse_attn_indexer`, per-request attribution,
-   strip -1 padding), pre-build prompt sets (RULER 8K–128K, LongBench v1/v2, InfiniteBench, manifests
-   in the `longbench_samples.jsonl` schema), point ingest at the new JSONL. First hour on node = smoke
-   one 8K run, run full analysis chain, then launch ladder shortest-first.
-2. Check whether GLM-5/5.2 in vLLM expose the same indexer hook → add as second model if so.
+0. **GPU campaign package written (2026-08-27, not executed):** `01_github/sparse_attn_cpu/docs/00_doc/
+   GPU_CAMPAIGN.md` is the top-level file to hand to the agent on the rented 8-GPU node (its §8 has the
+   ready-to-paste prompt); it links `exp0_environment.md` (pin/install vLLM, models, TP8 smoke, hook unit
+   checks), `exp1_dsv32_gather_index.md` (V3.2 hook at `flashmla_sparse.py:838 forward_mqa`, adapter to the
+   ds4 run-dir schema so ingest/validate/analyze run unchanged, 8K–128K ladder, bf/ld run kinds),
+   `exp2_glm_gather_index.md` (GLM-5.2 index-share handling, GLM-5 DSA check), `exp3_reindex_accuracy.md`
+   (block-granular A vs entry-granular B re-index, ds4-mirrored modes/controls, benchmark set + official-number
+   gate, `docs/reindex_accuracy/{results.csv,per_item.jsonl,README.md}`). Citations verified against vLLM
+   checkout `5559679` (`<VLLM_CHECKOUT>`).
+1. Remaining pre-node prep (no GPU needed): pre-build prompt sets (RULER 8K–128K via `prepare.py`,
+   LongBench v1/v2, InfiniteBench manifests in the `longbench_samples.jsonl` schema); optionally draft
+   `scripts/vllm_to_ds4_run.py` (adapter of exp1 §4) and test it on a synthetic trace (`scripts/_synth_test.py`).
+2. GLM-5/5.2 hook = same code path (`GlmMoeDsaForCausalLM`); the only open point is whether plain GLM-5 has
+   `index_topk` (checked on the node, exp2 §1).
 3. Optional: ROUGE-score the LongBench generations (`runs/lb_*/outputs/generations.jsonl`) for a
    quality-sanity table; optional 128K CPU RULER point (~75 h, needs prompt via
    `benchmark/RULER prepare.py --max_seq_length 131072` + `build_prompts.py` LENGTHS edit).
 4. If the CPU V3.2 tracer is resumed: move the `dsa_trace_cb` hook into `llama-server`.
+
+## 7b. GPU campaign — prerequisites the user must supply before it can start
+Rental account/credentials for 8× H200 SXM (~1,000 GPU-h budget) and the go date; confirmation of the
+model (`deepseek-ai/DeepSeek-V3.2` native FP8, plus GLM-5/5.2 if wanted); HF token if any target repo is
+gated; the session URL for the commit trailer. Everything else (vLLM pin, hook points, schema adapter,
+ladder, benchmarks, re-index implementations, gates) is specified in `GPU_CAMPAIGN.md` + `exp0..exp3`
+(see §7 item 0); the GPU agent resolves the "VERIFY ON THE NODE" list (GPU_CAMPAIGN.md §7) itself.
+Traces land on the node's NVMe (1–2 TB); only analysis artifacts come back into `sparse_attn_cpu/docs/`.
 
 ## 8. Interfaces / dependencies
 - Engines: antirez/ds4 (MIT, 80ebbc3) with `docs/ds4_instrumentation.patch` (in sparse_attn_cpu; reverse-
@@ -131,3 +187,16 @@ Trace records: `indexer_trace.jsonl {phase,layer,pos,n_comp,top_k,sel[],scores[]
   — reused by KV, MoE, and hot-set analyses).
 - Publishing convention: analysis artifacts + scripts go to sparse_attn_cpu (`docs/*_sweep/`), raw traces
   stay local; report pages to versel (assets in sibling `assets/`, verify with html.parser + live fetch).
+- **Consumers of these numbers (read-only for us; report changes to main, never edit):**
+  - Ramulator `01_ramulator/01_github/ramulator2/examples/v5_reindex_gather_testcase.py` —
+    `MEASURED_OVERLAP = {4096: 0.869, 8192: 0.790, 16384: 0.718, 32768: 0.672, 65536: 0.668}` and
+    `MEASURED_TOP10 = {0.201, 0.349, 0.575, 0.767, 0.907}` (coverage of the hottest 10 % of the pool,
+    `docs/kv_hotset_coverage.md` 10 % row) calibrate its synthetic selection process. (4K 0.869 is the
+    old-series value; published 0.868 — immaterial.)
+  - Ramulator digest `ramulator2/00_doc/01_design/v5/ref_dsv4_kv_locality_study.md`: §3–§6 match our
+    artifacts; **§2 table is the old `_q2` series (4K/8K/16K/40K/64K, "128 decode tokens", 64K adj 0.670,
+    lift 13.2× at 40K)**, not the published 32K/64K `_moe_q2` points (0.672/0.668, 10.53×/21.37×).
+    `v5_reindex_correctness_ds4.md` §2 calls `ds4_nofm` "the unmodified engine" — it is built from the
+    hooked source (hook inert at MODE=0), and its hook patch lacks the `DS4_PERM_IDENTITY` lines.
+  - Evaluation `ramulator2/00_doc/03_evaluation/` (§6 hit-ratio inputs) and the paper's §3.3
+    (`00_doc/02_writing_paper/`) quote the digest; any re-measurement must be announced to both.
