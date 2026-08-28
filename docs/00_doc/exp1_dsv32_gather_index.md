@@ -76,6 +76,8 @@ A red box → fix once and re-run; a second failure is a stop (`GPU_CAMPAIGN.md`
 The analysis is index-set agnostic (`locality_lib.py`), so `ratio: 1` and k = 2048 flow through; random
 baseline becomes `k / n_comp`.
 Exact formulas per statistic, output JSON keys, the −1-padding / batching / granularity pitfalls: `locality_metrics.md`.
+After analysis, export every run with `scripts/export_v6_traces.py` (format: `v6_export_format.md`; V3.2 units
+`ratio = 1`, `k = 2048`, `pos` = query position) — the ramulator v6 policy study replays these files.
 
 ## 5. Ladder and run kinds
 
