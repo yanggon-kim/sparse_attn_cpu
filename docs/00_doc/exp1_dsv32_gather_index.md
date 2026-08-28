@@ -75,6 +75,7 @@ A red box → fix once and re-run; a second failure is a stop (`GPU_CAMPAIGN.md`
 
 The analysis is index-set agnostic (`locality_lib.py`), so `ratio: 1` and k = 2048 flow through; random
 baseline becomes `k / n_comp`.
+Exact formulas per statistic, output JSON keys, the −1-padding / batching / granularity pitfalls: `locality_metrics.md`.
 
 ## 5. Ladder and run kinds
 

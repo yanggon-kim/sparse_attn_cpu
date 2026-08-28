@@ -4,7 +4,7 @@
 
 # HANDOFF.md — DeepSeek sparse-selection locality study
 
-Written 2026-08-25 for an agent with no memory of prior sessions; refined 2026-08-27 by the
+Written 2026-08-25 for an agent with no memory of prior sessions; refined 2026-08-27/28 by the
 `deepseek-owner` agent (onboarding survey: repo states, cross-checks, ds4 hook, consumers). Read this first, then
 `<CLAUDE_MEMORY_DIR>/memory/deepseek-v4-kv-locality-experiment.md`
 (the auto-memory file: full history of runs, numbers, gotchas — the single most important doc).
@@ -163,6 +163,8 @@ Trace records: `indexer_trace.jsonl {phase,layer,pos,n_comp,top_k,sel[],scores[]
    (block-granular A vs entry-granular B re-index, ds4-mirrored modes/controls, benchmark set + official-number
    gate, `docs/reindex_accuracy/{results.csv,per_item.jsonl,README.md}`). Citations verified against vLLM
    checkout `5559679` (`<VLLM_CHECKOUT>`).
+   **2026-08-28:** `docs/00_doc/locality_metrics.md` = the metric reference (formulas from the code, JSON keys,
+   V3.2 adapter caveats, V4 worked table) linked from GPU_CAMPAIGN §2 and exp1 §4; committed + pushed.
    **Revised 2026-08-27 (user decisions):** GPU type generic (8 GPUs, >= ~1 TB HBM; exp0 §1 detects model/SM/
    driver/HBM and picks kernels — first VERIFY item); execution mode = run start to finish **without review
    stops**: gates are self-checks, per-gate report is a file `docs/00_doc/reports/<phase>_<date>.md` + HANDOFF

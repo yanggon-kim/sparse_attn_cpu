@@ -29,6 +29,7 @@ quant); V3.2 is the model the paper is built around and it never ran on the CPU 
   locality) → `analyze_hotset_coverage.py` (R3), plus `ingest_moe_trace.py` / `analyze_moe_locality.py`
   (R2), `generate_*_plots.py`, `aggregate_longbench.py`. They consume one run directory in the ds4 schema
   (defined in `exp1_dsv32_gather_index.md` §4). **Reuse them unchanged**; adapt the trace, not the scripts.
+  Metric definitions, JSON keys, and the V3.2 adapter caveats: `locality_metrics.md` (read before computing any statistic).
 - `docs/vllm_selection_history_collection_guide.md`: a source-read (never executed) hook guide for
   V4 in vLLM @ `2b753ad20`. Its collector pattern is reusable; its schema is not (see the adapter).
 - `HANDOFF.md`: CPU-side history, gotchas, and the original GPU plan.
