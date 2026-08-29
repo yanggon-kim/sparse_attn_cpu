@@ -1,0 +1,362 @@
+[
+ {
+  "file": "hotness_coverage_16k.csv",
+  "model_tag": "v32",
+  "rung": 16384,
+  "run_ids": [
+   "v32_ib_longbook_qa_eng_16384_ld00",
+   "v32_ib_longbook_qa_eng_16384_ld01",
+   "v32_lb1_gov_report_16384_ld00",
+   "v32_lb1_gov_report_16384_ld02",
+   "v32_lb1_gov_report_16384_ld03",
+   "v32_lb1_gov_report_16384_ld04",
+   "v32_lb1_qmsum_16384_ld01",
+   "v32_lb1_qmsum_16384_ld05"
+  ],
+  "pool_N_mean": 13678.25,
+  "A99_pct_mean": 66.45805075298205,
+  "A99_pct_min": 54.99397817242708,
+  "A99_pct_max": 75.20486692678485,
+  "n_layers": 61
+ },
+ {
+  "file": "hotness_coverage_32k.csv",
+  "model_tag": "v32",
+  "rung": 32768,
+  "run_ids": [
+   "v32_ib_longbook_qa_eng_32768_ld00",
+   "v32_ib_longbook_qa_eng_32768_ld01",
+   "v32_lb1_gov_report_32768_ld02",
+   "v32_lb1_gov_report_32768_ld03",
+   "v32_lb1_qmsum_32768_ld00",
+   "v32_lb1_qmsum_32768_ld01",
+   "v32_lb1_qmsum_32768_ld04",
+   "v32_lb1_qmsum_32768_ld05"
+  ],
+  "pool_N_mean": 26507.0,
+  "A99_pct_mean": 46.619780614645535,
+  "A99_pct_min": 32.397446879508095,
+  "A99_pct_max": 62.96350192875985,
+  "n_layers": 61
+ },
+ {
+  "file": "hotness_coverage_64k.csv",
+  "model_tag": "v32",
+  "rung": 65536,
+  "run_ids": [
+   "v32_ib_longbook_qa_eng_65536_ld00",
+   "v32_ib_longbook_qa_eng_65536_ld01",
+   "v32_ib_longbook_sum_eng_65536_ld00",
+   "v32_ib_longbook_sum_eng_65536_ld01",
+   "v32_ib_longbook_sum_eng_65536_ld02",
+   "v32_ib_longbook_sum_eng_65536_ld03",
+   "v32_ib_longbook_sum_eng_65536_ld04",
+   "v32_ib_longbook_sum_eng_65536_ld05"
+  ],
+  "pool_N_mean": 65131.125,
+  "A99_pct_mean": 24.759229539969283,
+  "A99_pct_min": 20.880900044013472,
+  "A99_pct_max": 28.966712075449678,
+  "n_layers": 61
+ },
+ {
+  "file": "hotness_coverage_128k.csv",
+  "model_tag": "v32",
+  "rung": 131072,
+  "run_ids": [
+   "v32_ib_longbook_qa_eng_131072_ld00",
+   "v32_ib_longbook_qa_eng_131072_ld01",
+   "v32_ib_longbook_sum_eng_131072_ld00",
+   "v32_ib_longbook_sum_eng_131072_ld01",
+   "v32_ib_longbook_sum_eng_131072_ld02",
+   "v32_ib_longbook_sum_eng_131072_ld03",
+   "v32_ib_longbook_sum_eng_131072_ld04",
+   "v32_ib_longbook_sum_eng_131072_ld05"
+  ],
+  "pool_N_mean": 112996.375,
+  "A99_pct_mean": 17.827164148836125,
+  "A99_pct_min": 13.819454482956187,
+  "A99_pct_max": 25.337566590827752,
+  "n_layers": 61
+ },
+ {
+  "file": "hotness_retention.csv",
+  "model_tag": "v32",
+  "rung": 65536,
+  "run_ids": [
+   "v32_ib_longbook_qa_eng_65536_ld00",
+   "v32_ib_longbook_qa_eng_65536_ld01",
+   "v32_ib_longbook_sum_eng_65536_ld00",
+   "v32_ib_longbook_sum_eng_65536_ld01",
+   "v32_ib_longbook_sum_eng_65536_ld02",
+   "v32_ib_longbook_sum_eng_65536_ld03",
+   "v32_ib_longbook_sum_eng_65536_ld04",
+   "v32_ib_longbook_sum_eng_65536_ld05"
+  ],
+  "pool_N_mean": null,
+  "A99_pct_mean": null,
+  "A99_pct_min": null,
+  "A99_pct_max": null,
+  "n_layers": 61
+ },
+ {
+  "file": "hotness_retention.csv",
+  "model_tag": "v32",
+  "rung": 131072,
+  "run_ids": [
+   "v32_ib_longbook_qa_eng_131072_ld00",
+   "v32_ib_longbook_qa_eng_131072_ld01",
+   "v32_ib_longbook_sum_eng_131072_ld00",
+   "v32_ib_longbook_sum_eng_131072_ld01",
+   "v32_ib_longbook_sum_eng_131072_ld02",
+   "v32_ib_longbook_sum_eng_131072_ld03",
+   "v32_ib_longbook_sum_eng_131072_ld04",
+   "v32_ib_longbook_sum_eng_131072_ld05"
+  ],
+  "pool_N_mean": null,
+  "A99_pct_mean": null,
+  "A99_pct_min": null,
+  "A99_pct_max": null,
+  "n_layers": 61
+ },
+ {
+  "file": "hotness_coverage_glm52_16k.csv",
+  "model_tag": "glm52",
+  "rung": 16384,
+  "run_ids": [
+   "glm52_ib_longbook_qa_eng_16384_ld00",
+   "glm52_ib_longbook_qa_eng_16384_ld01",
+   "glm52_lb1_gov_report_16384_ld00",
+   "glm52_lb1_gov_report_16384_ld02",
+   "glm52_lb1_gov_report_16384_ld03",
+   "glm52_lb1_gov_report_16384_ld04",
+   "glm52_lb1_qmsum_16384_ld01",
+   "glm52_lb1_qmsum_16384_ld05"
+  ],
+  "pool_N_mean": 13622.25,
+  "A99_pct_mean": 68.6390729596437,
+  "A99_pct_min": 58.554573001663634,
+  "A99_pct_max": 76.9293583568621,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_coverage_glm52_32k.csv",
+  "model_tag": "glm52",
+  "rung": 32768,
+  "run_ids": [
+   "glm52_ib_longbook_qa_eng_32768_ld00",
+   "glm52_ib_longbook_qa_eng_32768_ld01",
+   "glm52_lb1_gov_report_32768_ld02",
+   "glm52_lb1_gov_report_32768_ld03",
+   "glm52_lb1_qmsum_32768_ld00",
+   "glm52_lb1_qmsum_32768_ld01",
+   "glm52_lb1_qmsum_32768_ld04",
+   "glm52_lb1_qmsum_32768_ld05"
+  ],
+  "pool_N_mean": 26181.75,
+  "A99_pct_mean": 50.38039155641275,
+  "A99_pct_min": 39.33160290776186,
+  "A99_pct_max": 65.98970099415071,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_coverage_glm52_64k.csv",
+  "model_tag": "glm52",
+  "rung": 65536,
+  "run_ids": [
+   "glm52_ib_longbook_qa_eng_65536_ld00",
+   "glm52_ib_longbook_qa_eng_65536_ld01",
+   "glm52_ib_longbook_sum_eng_65536_ld00",
+   "glm52_ib_longbook_sum_eng_65536_ld01",
+   "glm52_ib_longbook_sum_eng_65536_ld02",
+   "glm52_ib_longbook_sum_eng_65536_ld03",
+   "glm52_ib_longbook_sum_eng_65536_ld04",
+   "glm52_ib_longbook_sum_eng_65536_ld05"
+  ],
+  "pool_N_mean": 65229.375,
+  "A99_pct_mean": 32.22390690672732,
+  "A99_pct_min": 28.160280282535926,
+  "A99_pct_max": 36.05794300877911,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_coverage_glm52_128k.csv",
+  "model_tag": "glm52",
+  "rung": 131072,
+  "run_ids": [
+   "glm52_ib_longbook_qa_eng_131072_ld00",
+   "glm52_ib_longbook_qa_eng_131072_ld01",
+   "glm52_ib_longbook_sum_eng_131072_ld00",
+   "glm52_ib_longbook_sum_eng_131072_ld01",
+   "glm52_ib_longbook_sum_eng_131072_ld02",
+   "glm52_ib_longbook_sum_eng_131072_ld03",
+   "glm52_ib_longbook_sum_eng_131072_ld04",
+   "glm52_ib_longbook_sum_eng_131072_ld05"
+  ],
+  "pool_N_mean": 113138.0,
+  "A99_pct_mean": 25.17201345336784,
+  "A99_pct_min": 18.97794643899391,
+  "A99_pct_max": 33.438691627148316,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_retention_glm52.csv",
+  "model_tag": "glm52",
+  "rung": 65536,
+  "run_ids": [
+   "glm52_ib_longbook_qa_eng_65536_ld00",
+   "glm52_ib_longbook_qa_eng_65536_ld01",
+   "glm52_ib_longbook_sum_eng_65536_ld00",
+   "glm52_ib_longbook_sum_eng_65536_ld01",
+   "glm52_ib_longbook_sum_eng_65536_ld02",
+   "glm52_ib_longbook_sum_eng_65536_ld03",
+   "glm52_ib_longbook_sum_eng_65536_ld04",
+   "glm52_ib_longbook_sum_eng_65536_ld05"
+  ],
+  "pool_N_mean": null,
+  "A99_pct_mean": null,
+  "A99_pct_min": null,
+  "A99_pct_max": null,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_retention_glm52.csv",
+  "model_tag": "glm52",
+  "rung": 131072,
+  "run_ids": [
+   "glm52_ib_longbook_qa_eng_131072_ld00",
+   "glm52_ib_longbook_qa_eng_131072_ld01",
+   "glm52_ib_longbook_sum_eng_131072_ld00",
+   "glm52_ib_longbook_sum_eng_131072_ld01",
+   "glm52_ib_longbook_sum_eng_131072_ld02",
+   "glm52_ib_longbook_sum_eng_131072_ld03",
+   "glm52_ib_longbook_sum_eng_131072_ld04",
+   "glm52_ib_longbook_sum_eng_131072_ld05"
+  ],
+  "pool_N_mean": null,
+  "A99_pct_mean": null,
+  "A99_pct_min": null,
+  "A99_pct_max": null,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_coverage_glm5_16k.csv",
+  "model_tag": "glm5",
+  "rung": 16384,
+  "run_ids": [
+   "glm5_ib_longbook_qa_eng_16384_ld00",
+   "glm5_ib_longbook_qa_eng_16384_ld01",
+   "glm5_lb1_gov_report_16384_ld00",
+   "glm5_lb1_gov_report_16384_ld02",
+   "glm5_lb1_gov_report_16384_ld03",
+   "glm5_lb1_gov_report_16384_ld04",
+   "glm5_lb1_qmsum_16384_ld01",
+   "glm5_lb1_qmsum_16384_ld05"
+  ],
+  "pool_N_mean": 13621.25,
+  "A99_pct_mean": 65.6905957808334,
+  "A99_pct_min": 57.47932979952559,
+  "A99_pct_max": 71.49834220260264,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_coverage_glm5_32k.csv",
+  "model_tag": "glm5",
+  "rung": 32768,
+  "run_ids": [
+   "glm5_ib_longbook_qa_eng_32768_ld00",
+   "glm5_ib_longbook_qa_eng_32768_ld01",
+   "glm5_lb1_gov_report_32768_ld02",
+   "glm5_lb1_gov_report_32768_ld03",
+   "glm5_lb1_qmsum_32768_ld00",
+   "glm5_lb1_qmsum_32768_ld01",
+   "glm5_lb1_qmsum_32768_ld04",
+   "glm5_lb1_qmsum_32768_ld05"
+  ],
+  "pool_N_mean": 26180.75,
+  "A99_pct_mean": 49.155138871872026,
+  "A99_pct_min": 41.94264074401062,
+  "A99_pct_max": 57.711704858800026,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_coverage_glm5_64k.csv",
+  "model_tag": "glm5",
+  "rung": 65536,
+  "run_ids": [
+   "glm5_ib_longbook_qa_eng_65536_ld00",
+   "glm5_ib_longbook_qa_eng_65536_ld01",
+   "glm5_ib_longbook_sum_eng_65536_ld00",
+   "glm5_ib_longbook_sum_eng_65536_ld01",
+   "glm5_ib_longbook_sum_eng_65536_ld02",
+   "glm5_ib_longbook_sum_eng_65536_ld03",
+   "glm5_ib_longbook_sum_eng_65536_ld04",
+   "glm5_ib_longbook_sum_eng_65536_ld05"
+  ],
+  "pool_N_mean": 65228.375,
+  "A99_pct_mean": 31.878814535135362,
+  "A99_pct_min": 29.95351508708339,
+  "A99_pct_max": 34.29406186125691,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_coverage_glm5_128k.csv",
+  "model_tag": "glm5",
+  "rung": 131072,
+  "run_ids": [
+   "glm5_ib_longbook_qa_eng_131072_ld00",
+   "glm5_ib_longbook_qa_eng_131072_ld01",
+   "glm5_ib_longbook_sum_eng_131072_ld00",
+   "glm5_ib_longbook_sum_eng_131072_ld01",
+   "glm5_ib_longbook_sum_eng_131072_ld02",
+   "glm5_ib_longbook_sum_eng_131072_ld03",
+   "glm5_ib_longbook_sum_eng_131072_ld04",
+   "glm5_ib_longbook_sum_eng_131072_ld05"
+  ],
+  "pool_N_mean": 113137.0,
+  "A99_pct_mean": 23.75448646973981,
+  "A99_pct_min": 20.861078958451905,
+  "A99_pct_max": 30.106591251249927,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_retention_glm5.csv",
+  "model_tag": "glm5",
+  "rung": 65536,
+  "run_ids": [
+   "glm5_ib_longbook_qa_eng_65536_ld00",
+   "glm5_ib_longbook_qa_eng_65536_ld01",
+   "glm5_ib_longbook_sum_eng_65536_ld00",
+   "glm5_ib_longbook_sum_eng_65536_ld01",
+   "glm5_ib_longbook_sum_eng_65536_ld02",
+   "glm5_ib_longbook_sum_eng_65536_ld03",
+   "glm5_ib_longbook_sum_eng_65536_ld04",
+   "glm5_ib_longbook_sum_eng_65536_ld05"
+  ],
+  "pool_N_mean": null,
+  "A99_pct_mean": null,
+  "A99_pct_min": null,
+  "A99_pct_max": null,
+  "n_layers": 78
+ },
+ {
+  "file": "hotness_retention_glm5.csv",
+  "model_tag": "glm5",
+  "rung": 131072,
+  "run_ids": [
+   "glm5_ib_longbook_qa_eng_131072_ld00",
+   "glm5_ib_longbook_qa_eng_131072_ld01",
+   "glm5_ib_longbook_sum_eng_131072_ld00",
+   "glm5_ib_longbook_sum_eng_131072_ld01",
+   "glm5_ib_longbook_sum_eng_131072_ld02",
+   "glm5_ib_longbook_sum_eng_131072_ld03",
+   "glm5_ib_longbook_sum_eng_131072_ld04",
+   "glm5_ib_longbook_sum_eng_131072_ld05"
+  ],
+  "pool_N_mean": null,
+  "A99_pct_mean": null,
+  "A99_pct_min": null,
+  "A99_pct_max": null,
+  "n_layers": 78
+ }
+]
