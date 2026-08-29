@@ -1,12 +1,8 @@
-<!-- Repo copy of the project-root HANDOFF.md. Paths scrubbed per repo convention:
-     <PROJECT> = the local project root; <WORKDIR> = <PROJECT>/work; <RAMULATOR_WS>, <VLLM_CHECKOUT>,
-     <CLAUDE_MEMORY_DIR> = sibling checkouts / the Claude auto-memory dir on the CPU box. -->
-
 # HANDOFF.md — DeepSeek sparse-selection locality study
 
 Written 2026-08-25 for an agent with no memory of prior sessions; refined 2026-08-27/28 by the
 `deepseek-owner` agent (onboarding survey: repo states, cross-checks, ds4 hook, consumers). Read this first, then
-`<CLAUDE_MEMORY_DIR>/memory/deepseek-v4-kv-locality-experiment.md`
+`~/.claude/projects/-home-yanggon-99-personal-project-05-deepseek/memory/deepseek-v4-kv-locality-experiment.md`
 (the auto-memory file: full history of runs, numbers, gotchas — the single most important doc).
 
 ## 1. Purpose
@@ -33,8 +29,8 @@ R1 KV top-k locality, R2 MoE routing locality, R3 hot-set coverage (% of pool to
   `v32/DeepSeek-V3.2-UD-TQ1_0.gguf` (151 GB, dense, NO DSA indexer — useless for sparse data);
   `v32_4L/DeepSeek-V3.2-4Layers-Q8_0.gguf` (16 GB, arch deepseek32 WITH indexer; dev-only).
 - `work/llama.cpp/` — pinned to 683f0c72e (2026-07-09) with local patches (see §5). Not pushed anywhere.
-- `01_github/sparse_attn_cpu/` — published repo (git@github.com:yanggon-kim/sparse_attn_cpu). HEAD = the
-  2026-08-27 GPU-campaign commits (e9e6610 package; + the "no review stops / generic GPU" revision), pushed to
+- `01_github/sparse_attn_cpu/` — published repo (git@github.com:yanggon-kim/sparse_attn_cpu). HEAD = fa69406
+  (2026-08-28 fig:hotness CSVs; before it 3c63760 v6 export script + format doc, before it the GPU-campaign commits e9e6610/4f1286f/21066cf), pushed to
   origin main. Holds `docs/00_doc/GPU_CAMPAIGN.md`, `exp0..exp3`, and a path-scrubbed copy of this HANDOFF.md
   (refresh it when this file changes and a commit is due).
 - `01_github/versel_distribute/` — static site → https://versel-distribute.vercel.app. Local HEAD deaaaa9,
@@ -61,7 +57,7 @@ R1 KV top-k locality, R2 MoE routing locality, R3 hot-set coverage (% of pool to
   baseline; one-time random row permutation 127/128 tokens identical, needle retrieved, selection Jaccard
   0.967 in original-index space; periodic swaps and the `-fno-fast-math` control both diverge at step 35
   → residual = summation-order noise. Raw runs (90 MB, not ours to delete):
-  `<RAMULATOR_WS>/tmp_v5_gather/ds4_reindex/`; write-up
+  `<OTHER>/01_ramulator/tmp_v5_gather/ds4_reindex/`; write-up
   `ramulator2/00_doc/01_design/v5/v5_reindex_correctness_ds4.md`.
 - Two RULER run series exist: the *published* `niah_single_2_{4096,8192,16384,32768,65536}_moe_q2`
   (`-n 256`, 117–163 steps, KV+MoE traces) and the older `niah_single_2_{4096,8192,16384,40960,65536}_q2`
@@ -77,6 +73,22 @@ hot-set A@99 79.5/65.7/47.5/31.4/20.4 % of pool (pool 1,030/1,912/4,095/8,039/16
 aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, pooled 0.801, A@99
 92.0/78.7/61.4 % = `analysis_longbench/longbench_aggregate.json` (identical to the published copy in
 `sparse_attn_cpu/docs/longbench_sweep/`). All match the Vercel/GitHub write-ups.
+
+- **v6 trace exports for the ramulator policy study (2026-08-28, sparse_attn_cpu 3c63760):**
+  `work/experiment/exports/v6/<run_id>.npz` + `.manifest.json` for the 42 V4 runs (5 RULER `_moe_q2`,
+  36 `lb_*`, `longform_p16k_g4k_q2`; 18,799 steps, 102 MB total; all uint16, k = 512, ratio = 4, 21 CSA
+  layers) + `retention_curves.json` (9 families). Format: `sparse_attn_cpu/docs/00_doc/v6_export_format.md`.
+  Regenerate: `python3 work/experiment/scripts/export_v6_traces.py` (~4 min; `--only <run_id>`; log
+  `exports/v6_export.log`). Verified: adjacent overlap recomputed from the 64K npz = 0.6682 =
+  `metrics_run_summary.json`. **Gotcha: `n_comp = (pos + 1) // ratio`, not `pos // ratio`** (asserted
+  against the jsonl for every run). Two multi_news runs (s0, s1) have rows with `valid_k < k` (pool < 512).
+  Consumer: ramulator-owner `examples/v6_policy/traces.py` on branch v6.
+
+- **fig:hotness data for the paper (2026-08-28, sparse_attn_cpu fa69406, pushed):** `docs/00_doc/data/
+  hotness_coverage_{64k,32k,16k}.csv` (mean/min/max over 21 CSA layers of `coverage_by_pool_pct`, RULER
+  `_moe_q2` runs), `hotness_retention.csv` (64K RULER lags 1–64 + `longform_p16k_g4k_q2` lags 1–2048, with
+  working-set ratios), `README.md` (provenance, units, V3.2-replaces-in-same-schema note). Regenerate:
+  `python3 work/experiment/scripts/export_hotness_fig_data.py` (copy in repo `scripts/`). Consumer: paper-owner.
 
 **In progress / parked:**
 - DeepSeek-V3.2 on CPU: engine patched and loads, but the only CPU-fittable GGUF (Unsloth TQ1_0) is
@@ -115,7 +127,7 @@ aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, poole
   for CPU (scheduler assert `cur_backend_id != -1`); `dsa_topk` tensor rename in
   `src/models/deepseek32.cpp` (~line 345); diagnostic prints in `ggml/src/ggml-backend.cpp:~1242` and
   `ggml/src/ggml-cpu/ops.cpp:~4946`. HF `unsloth/DeepSeek-V3.2-Exp-GGUF` is gated; use `-GGUF` (no Exp).
-- Repo hygiene: scrub `/home/yanggon/...work` → `<WORKDIR>` in anything committed to sparse_attn_cpu.
+- Repo hygiene: scrub `<HOME>/...work` → `<WORKDIR>` in anything committed to sparse_attn_cpu.
   versel remote diverges often (user commits there) → `git fetch && git rebase origin/main` before push.
   WebFetch caches 15 min: verify live pages with a `?v=` query string.
 - Vercel Part I is the user's B200/vLLM study — never edit its numbers.
@@ -162,7 +174,7 @@ Trace records: `indexer_trace.jsonl {phase,layer,pos,n_comp,top_k,sel[],scores[]
    `exp2_glm_gather_index.md` (GLM-5.2 index-share handling, GLM-5 DSA check), `exp3_reindex_accuracy.md`
    (block-granular A vs entry-granular B re-index, ds4-mirrored modes/controls, benchmark set + official-number
    gate, `docs/reindex_accuracy/{results.csv,per_item.jsonl,README.md}`). Citations verified against vLLM
-   checkout `5559679` (`<VLLM_CHECKOUT>`).
+   checkout `5559679` (`<OTHER>/03_vLLM/vllm`).
    **2026-08-28:** `docs/00_doc/locality_metrics.md` = the metric reference (formulas from the code, JSON keys,
    V3.2 adapter caveats, V4 worked table) linked from GPU_CAMPAIGN §2 and exp1 §4; committed + pushed.
    **Revised 2026-08-27 (user decisions):** GPU type generic (8 GPUs, >= ~1 TB HBM; exp0 §1 detects model/SM/
