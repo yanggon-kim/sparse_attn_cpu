@@ -1,0 +1,33 @@
+{
+  "schema_version": "1",
+  "trace_schema_version": 2,
+  "run_id": "v32_ib_longbook_sum_eng_65536_ld04",
+  "backend": "cuda",
+  "model_name": "DeepSeek-V3.2",
+  "model_path": "<WORKDIR>/models/DeepSeek-V3.2",
+  "quantization": "fp8 (native)",
+  "benchmark_name": "infinitebench",
+  "task_subset": "longbook_sum_eng",
+  "context_length_target": 65536,
+  "context_length_actual_tokens": 63129,
+  "max_new_tokens": 2048,
+  "decode_parameters": {
+    "temperature": 0,
+    "greedy": true,
+    "seed": 42,
+    "batch_size": 27
+  },
+  "vllm_commit": "2cf0a6915ce544dc493a0990f2ea38d81601128a (v0.28.0 tag; contains docs pin 5559679)",
+  "gpu": "8xNVIDIA B200",
+  "kind": "ld",
+  "timing": {
+    "wall_clock_seconds": 809.6,
+    "gpu_hours": 0.0666
+  },
+  "is_correct": null,
+  "sample_id": "ib_longbook_sum_eng_65536_ld04",
+  "request_id": "25",
+  "decode_steps_traced": 2048,
+  "moe_records": 118784,
+  "variant": "all_layers"
+}
