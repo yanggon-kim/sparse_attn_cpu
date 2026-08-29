@@ -1,0 +1,21 @@
+{
+ "run_id": "glm52_ib_longbook_sum_eng_131072_ld04_b",
+ "max_part_mb": 45,
+ "files": {
+  "run_manifest.json": "8368c829ab8bface3381933e1295cb3121b772ff984efba0003cff0225c3ef15",
+  "model_config.json": "830432a1ef12e5f7757918f915467be2d59c219306c1ad05e746b714e785e709",
+  "outputs/generations.jsonl": "cd6646994d274972e4512ced08e5cdaa98f60490f3ac4642398ce54e8cf50241",
+  "analysis/cross_layer_jaccard.parquet": "c100dfddf4c10916c690ec17624989749a1bff2aed2ffaf0cbb1ffd6da229599",
+  "analysis/extended_retention.json": "ee575c61f764d94a045d1d07a18758279811e57ba09117090ba3510e8fc39fb7",
+  "analysis/extended_retention.log": "bfb994b948b97749decc19021664e3310db28c307b3f0e6d638c7dd420bb2206",
+  "analysis/hotset_coverage.json": "3be463030ae2876438304a042ad257f3cd90e0239190d839836e82d39423a74a",
+  "analysis/metrics_run_summary.json": "2a79ad90a45d2249554c265314c29142d00f6f9eaae31aa16cabe386bc994e0b",
+  "analysis/metrics_sample_layer.parquet": "1eac303d0934da490519a548ac88d4e8e5f794cf12cb38f62e19871880d18c49",
+  "analysis/metrics_token_layer.parquet": "b2b881744708d05158d1ec85b2442f9f6a834cffc56a7e715c7b1f01c2d3eb07",
+  "analysis/moe_cross_layer_jaccard.parquet": "e56540743537701ae9ac683e4dc72d7d179cdd38914d6c7e6ee14255b8c7f86d",
+  "analysis/moe_metrics_run_summary.json": "0409744f931715af3ddb6f7ec5c72cea5160819bef32b4981193ec15ebb0b0bc",
+  "analysis/moe_metrics_sample_layer.parquet": "40fb778296ee8f7f179ed28b1e4d763151bd2c52fd867db8dc65d089c34bc2c6",
+  "analysis/validate.log": "a7a834c73e3b76994e0ddde67828950bf32f43d81ab48d174f0ecc4404b6e8e4"
+ },
+ "reassemble": "cat traces/<name>.jsonl.gz.part* | gunzip > traces/<name>.jsonl; then scripts/gpu/ingest_trace_fast.py <run_dir>"
+}
