@@ -12,7 +12,8 @@ Node: 8x NVIDIA B200 183 GB (1.47 TB HBM), SM 10.0, driver 595.91.07 / CUDA 13.2
 | exp1 ladder 8K-128K | PASS | 2026-08-28 22:35 UTC | 2026-08-29 03:45 UTC | `reports/exp1_ladder_20260829.md` | 23 |
 | exp2 GLM-5.2 + GLM-5 | PASS | 2026-08-29 03:45 UTC | 2026-08-29 08:40 UTC | `reports/exp2_20260829.md` | 48 |
 | exp3 tier 1 (PPL + RULER sanity, 3 models) | PASS | 2026-08-29 09:10 UTC | 2026-08-29 13:50 UTC | `reports/exp3_clean_20260829.md`, `reports/exp3_reindex_20260829.md` | 65 |
-| exp3 tier 2/3 (expansion) | deferred (user decision) | | | | |
+| exp3 tier 2 (V3.2 PPL ×30 docs, all modes/seeds; stopped before re-indexed generation) | PASS (PPL) / stopped | 2026-08-29 16:58 UTC | 2026-08-29 21:25 UTC | `reports/exp3_tier2_20260829.md` | 93 |
+| exp3 tier 2 GLM-5.2 / GLM-5, tier 3 | not run (user decision) | | | | |
 | final | DONE | | 2026-08-29 14:00 UTC | `reports/final_20260829.md` | 65 |
 
 ## Setup (2026-08-28, no GPU time spent)
@@ -116,3 +117,11 @@ GPU-h for probes ~8.
   (01bac9d..66a323e) because GitHub rejects a single >2 GB push. Trees verified identical to the local full-history
   branch `gpu-campaign-raw-traces` (tag `raw-traces-full`). Shards are <=45 MB gz parts with SHARDS.json sha256s;
   reassemble with `cat traces/<name>.jsonl.gz.part* | gunzip` then `scripts/gpu/ingest_trace_fast.py`.
+
+## exp3 tier 2 — DeepSeek-V3.2 (2026-08-29 16:58–21:25 UTC, ≈28 GPU-h) — PASS (PPL); stopped by the user after the PPL block
+- 30 books × 32K/64K/128K × all 10 modes (clean, clean2, identity, numeric, perm_once A/B × seeds 7/8/9) + WikiText-2 (93 windows) + PTB (32
+  windows): 38/40 rows equivalent to the rerun floor, all 30 long-book rows pass; the 2 flagged PTB impl-B rows are +0.1 % ≈ 1 SE with CIs
+  including 0. Tier-1's seed-7 outlier vanishes at n = 30 (+0.0010 [−0.0016, +0.0039]). `docs/reindex_accuracy/tier2/`.
+- Generation block reached `clean` 325/400 (niah/vt 25/25 everywhere, qa_1 18/17/14, LongBench-v2 14/25) and was stopped; no re-indexed
+  generation rows for tier 2 (tier-1 RULER rows remain that evidence). RULER `vt` needs a 256-token cap with our prompt format (fixed in script).
+- GLM-5.2 / GLM-5 tier 2 not started; `exp3_tier2.py --resume` continues from the JSON if ever resumed (≈10 h wall per model).

@@ -105,7 +105,7 @@ aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, poole
   bit-for-bit -> variants (a) all-78-layer view and (b) computing-only differ <= 0.01 overlap; GLM checkpoints are BF16 ->
   official `-FP8` repos; decode is NOT run-to-run deterministic (11 probes, `docs/reindex_accuracy/determinism_probes.md`)
   -> exp3 bit-identity replaced by teacher-forced PPL vs identical-rerun noise floor (user decision); GPQA gated -> dropped;
-  exp3 tiers 2/3 deferred; per-index scores not traced (score columns NaN); fast analysis twins `scripts/gpu/*_fast.py`.
+  exp3 tier 2 run for V3.2 only (PPL block: 30 docs × 3 lengths × 10 modes + WikiText-2/PTB, 38/40 rows in the rerun floor, `docs/reindex_accuracy/tier2/`, `reports/exp3_tier2_20260829.md`; generation block stopped by the user, GLM tier 2 / tier 3 not run); per-index scores not traced (score columns NaN); fast analysis twins `scripts/gpu/*_fast.py`.
   - **Data:** `docs/gpu_sweep/` (V3.2: R1/R2/R3/accuracy CSVs with per-run rows + CI columns, `sweep_v32.json`,
     `gpu_sweep_summary.md`, 4 PNGs) and `docs/glm_sweep/` (GLM-5.2 a/b + GLM-5, same layout, `side_by_side.png`);
     per run `docs/<sweep>/runs/<run_id>/{req,meta,run_manifest,model_config}.json, outputs/generations.jsonl,

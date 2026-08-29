@@ -105,3 +105,68 @@ Task accuracy is likewise unchanged (Table 2): on RULER needle retrieval and QA,
 | GLM-5 | 128K | entry-level, periodic re-index | 10/10 | +0.00 | 8/10 |
 
 ![ΔPPL per configuration](reindex_ppl_delta.png)
+
+## Addendum — tier 2 (DeepSeek-V3.2, 30 documents, all configurations at every length, three permutation seeds; 2026-08-29)
+
+*Source: `tier2/results.csv`, `tier2/tier2_v32.json`; `scripts/gpu/exp3_tier2.py` + `exp3_tier2_results.py`. Tier 2 was run for DeepSeek-V3.2 only and stopped after the perplexity block (user decision); the generation block has baseline rows only, so Table 2 above (tier 1) remains the task-accuracy evidence. GLM-5.2/GLM-5 tier 2 was not run.*
+
+**Text.** Scaling the DeepSeek-V3.2 measurement to 30 documents with every configuration at every prefix length and three permutation seeds (Table 3) confirms the tier-1 picture with intervals ~1.7× tighter. At 32K/64K/128K the identical rerun moves perplexity by −0.0013/−0.0019/−0.0018 (baseline 1.306/1.268/1.367); entry-level re-indexing by +0.0010/+0.0005/−0.0015 (seed 7), −0.0013/+0.0023/−0.0034 (seed 8) and −0.0013/+0.0023/−0.0002 (seed 9); block-level re-indexing by −0.0001…+0.0012, +0.0009…+0.0018 and −0.0028…−0.0005. All 30 long-document rows satisfy the noise-floor rule, and the single tier-1 exception (seed 7 at 32K, one document) disappears at this sample size (+0.0010 [−0.0016, +0.0039]). Per-token log-probability shifts are indistinguishable across configurations (90th percentile 0.048–0.051, 0.063–0.067 and 0.089–0.094 nats at the three lengths, rerun included). On the short anchors (WikiText-2, 93 windows; PTB, 32 windows) all configurations stay within ±0.008 PPL of the baseline (3.244 and 5.797); the two PTB entry-level rows at +0.006/+0.008 (≈1 SE, third seed −0.002) fall just outside a floor bound that is computed from the lower-variance rerun distribution — entry-level re-indexing changes the sparse-gather summation order exactly as a different batch composition does (token p90 0.20–0.24 vs 0.05–0.10), which the batch-composition control reproduces.
+
+## Table 3 — DeepSeek-V3.2 tier 2 perplexity (30 long documents; 93 WikiText-2 and 32 PTB windows; ΔPPL paired vs baseline, 95 % bootstrap CI)
+
+| dataset | prefix | configuration | n | PPL | ΔPPL [95 % CI] | token p90 | within floor |
+|---|---:|---|---:|---:|---|---:|:-:|
+| long books | 32K | baseline | 30 | 1.3058 | +0.0000 [+0.0000, +0.0000] | 0.000 | — |
+| long books | 32K | identical rerun (noise floor) | 30 | 1.3046 | -0.0013 [-0.0042, +0.0015] | 0.048 | — |
+| long books | 32K | identity re-index (hook on) | 30 | 1.3082 | +0.0023 [-0.0013, +0.0058] | 0.049 | ✓ |
+| long books | 32K | batch-composition control | 30 | 1.3070 | +0.0012 [-0.0018, +0.0039] | 0.049 | ✓ |
+| long books | 32K | block-level re-index (impl A), seed 7 | 30 | 1.3058 | -0.0001 [-0.0032, +0.0036] | 0.051 | ✓ |
+| long books | 32K | block-level re-index, seed 8 | 30 | 1.3068 | +0.0010 [-0.0017, +0.0041] | 0.051 | ✓ |
+| long books | 32K | block-level re-index, seed 9 | 30 | 1.3070 | +0.0012 [-0.0015, +0.0040] | 0.051 | ✓ |
+| long books | 32K | entry-level re-index (impl B), seed 7 | 30 | 1.3068 | +0.0010 [-0.0016, +0.0039] | 0.051 | ✓ |
+| long books | 32K | entry-level re-index, seed 8 | 30 | 1.3045 | -0.0013 [-0.0040, +0.0013] | 0.050 | ✓ |
+| long books | 32K | entry-level re-index, seed 9 | 30 | 1.3045 | -0.0013 [-0.0035, +0.0006] | 0.049 | ✓ |
+| long books | 64K | baseline | 30 | 1.2678 | +0.0000 [+0.0000, +0.0000] | 0.000 | — |
+| long books | 64K | identical rerun (noise floor) | 30 | 1.2659 | -0.0019 [-0.0060, +0.0012] | 0.065 | — |
+| long books | 64K | identity re-index (hook on) | 30 | 1.2699 | +0.0021 [-0.0007, +0.0054] | 0.066 | ✓ |
+| long books | 64K | batch-composition control | 30 | 1.2715 | +0.0037 [-0.0002, +0.0089] | 0.067 | ✓ |
+| long books | 64K | block-level re-index (impl A), seed 7 | 30 | 1.2696 | +0.0018 [-0.0018, +0.0060] | 0.065 | ✓ |
+| long books | 64K | block-level re-index, seed 8 | 30 | 1.2695 | +0.0017 [-0.0013, +0.0054] | 0.064 | ✓ |
+| long books | 64K | block-level re-index, seed 9 | 30 | 1.2687 | +0.0009 [-0.0020, +0.0036] | 0.065 | ✓ |
+| long books | 64K | entry-level re-index (impl B), seed 7 | 30 | 1.2683 | +0.0005 [-0.0033, +0.0042] | 0.063 | ✓ |
+| long books | 64K | entry-level re-index, seed 8 | 30 | 1.2700 | +0.0023 [-0.0005, +0.0054] | 0.063 | ✓ |
+| long books | 64K | entry-level re-index, seed 9 | 30 | 1.2701 | +0.0023 [-0.0028, +0.0079] | 0.065 | ✓ |
+| long books | 128K | baseline | 30 | 1.3674 | +0.0000 [+0.0000, +0.0000] | 0.000 | — |
+| long books | 128K | identical rerun (noise floor) | 30 | 1.3656 | -0.0018 [-0.0043, +0.0005] | 0.091 | — |
+| long books | 128K | identity re-index (hook on) | 30 | 1.3666 | -0.0008 [-0.0035, +0.0017] | 0.089 | ✓ |
+| long books | 128K | batch-composition control | 30 | 1.3659 | -0.0015 [-0.0039, +0.0008] | 0.093 | ✓ |
+| long books | 128K | block-level re-index (impl A), seed 7 | 30 | 1.3646 | -0.0028 [-0.0065, +0.0007] | 0.093 | ✓ |
+| long books | 128K | block-level re-index, seed 8 | 30 | 1.3652 | -0.0022 [-0.0051, +0.0005] | 0.092 | ✓ |
+| long books | 128K | block-level re-index, seed 9 | 30 | 1.3669 | -0.0005 [-0.0041, +0.0037] | 0.094 | ✓ |
+| long books | 128K | entry-level re-index (impl B), seed 7 | 30 | 1.3659 | -0.0015 [-0.0048, +0.0016] | 0.092 | ✓ |
+| long books | 128K | entry-level re-index, seed 8 | 30 | 1.3640 | -0.0034 [-0.0069, -0.0004] | 0.092 | ✓ |
+| long books | 128K | entry-level re-index, seed 9 | 30 | 1.3672 | -0.0002 [-0.0033, +0.0029] | 0.090 | ✓ |
+| PTB | 2K | baseline | 32 | 5.7974 | +0.0000 [+0.0000, +0.0000] | 0.000 | — |
+| PTB | 2K | identical rerun (noise floor) | 32 | 5.7968 | -0.0006 [-0.0046, +0.0037] | 0.096 | — |
+| PTB | 2K | identity re-index (hook on) | 32 | 5.7984 | +0.0010 [-0.0042, +0.0066] | 0.098 | ✓ |
+| PTB | 2K | batch-composition control | 32 | 5.7961 | -0.0013 [-0.0104, +0.0083] | 0.216 | ✓ |
+| PTB | 2K | block-level re-index (impl A), seed 7 | 32 | 5.7984 | +0.0010 [-0.0027, +0.0050] | 0.095 | ✓ |
+| PTB | 2K | block-level re-index, seed 8 | 32 | 5.7977 | +0.0003 [-0.0047, +0.0051] | 0.090 | ✓ |
+| PTB | 2K | block-level re-index, seed 9 | 32 | 5.7959 | -0.0015 [-0.0059, +0.0030] | 0.092 | ✓ |
+| PTB | 2K | entry-level re-index (impl B), seed 7 | 32 | 5.8034 | +0.0060 [-0.0053, +0.0170] | 0.238 | ✗ |
+| PTB | 2K | entry-level re-index, seed 8 | 32 | 5.7955 | -0.0019 [-0.0116, +0.0076] | 0.240 | ✓ |
+| PTB | 2K | entry-level re-index, seed 9 | 32 | 5.8055 | +0.0081 [-0.0033, +0.0197] | 0.242 | ✗ |
+| WikiText-2 | 2K | baseline | 93 | 3.2438 | +0.0000 [+0.0000, +0.0000] | 0.000 | — |
+| WikiText-2 | 2K | identical rerun (noise floor) | 93 | 3.2417 | -0.0021 [-0.0035, -0.0006] | 0.057 | — |
+| WikiText-2 | 2K | identity re-index (hook on) | 93 | 3.2423 | -0.0015 [-0.0028, -0.0001] | 0.057 | ✓ |
+| WikiText-2 | 2K | batch-composition control | 93 | 3.2421 | -0.0017 [-0.0047, +0.0010] | 0.170 | ✓ |
+| WikiText-2 | 2K | block-level re-index (impl A), seed 7 | 93 | 3.2428 | -0.0010 [-0.0023, +0.0003] | 0.055 | ✓ |
+| WikiText-2 | 2K | block-level re-index, seed 8 | 93 | 3.2424 | -0.0014 [-0.0027, -0.0002] | 0.054 | ✓ |
+| WikiText-2 | 2K | block-level re-index, seed 9 | 93 | 3.2421 | -0.0017 [-0.0032, -0.0004] | 0.052 | ✓ |
+| WikiText-2 | 2K | entry-level re-index (impl B), seed 7 | 93 | 3.2437 | -0.0001 [-0.0034, +0.0033] | 0.200 | ✓ |
+| WikiText-2 | 2K | entry-level re-index, seed 8 | 93 | 3.2410 | -0.0028 [-0.0069, +0.0013] | 0.200 | ✓ |
+| WikiText-2 | 2K | entry-level re-index, seed 9 | 93 | 3.2409 | -0.0029 [-0.0060, +0.0001] | 0.198 | ✓ |
+
+*✗ rows: PTB entry-level seeds 7 and 9, +0.1 % PPL, ≈1 SE, CIs include 0 (see `tier2/README.md`).*
+
+![ΔPPL tier 2](tier2/reindex_ppl_delta_tier2.png)
