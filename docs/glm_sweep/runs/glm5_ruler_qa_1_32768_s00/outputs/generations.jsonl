@@ -1,0 +1,1 @@
+{"run_id": "glm5_ruler_qa_1_32768_s00", "sample_id": "ruler_qa_1_32768_s00", "prompt_token_count": 33293, "generated_token_count": 2, "generated_token_ids": [48689, 154827], "generated_text": "France", "finish_reason": "stop", "benchmark_prediction": "France", "reference_answer": ["France", "France", "France", "France"], "is_correct": true, "score": 1.0, "request_id": "4"}

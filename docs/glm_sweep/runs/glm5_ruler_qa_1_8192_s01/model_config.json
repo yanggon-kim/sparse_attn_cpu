@@ -1,0 +1,482 @@
+{
+  "num_layers": 78,
+  "sparse_top_k": 2048,
+  "indexer_head_count": 32,
+  "indexer_head_dim": 128,
+  "expert_count": 256,
+  "expert_used": 8,
+  "first_k_dense": 3,
+  "index_topk_freq": null,
+  "index_skip_topk_offset": null,
+  "index_topk_pattern": null,
+  "layer_map": [
+    {
+      "layer_id": 0,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 1,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 2,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 3,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 4,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 5,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 6,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 7,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 8,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 9,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 10,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 11,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 12,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 13,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 14,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 15,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 16,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 17,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 18,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 19,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 20,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 21,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 22,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 23,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 24,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 25,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 26,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 27,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 28,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 29,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 30,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 31,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 32,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 33,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 34,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 35,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 36,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 37,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 38,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 39,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 40,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 41,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 42,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 43,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 44,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 45,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 46,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 47,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 48,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 49,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 50,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 51,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 52,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 53,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 54,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 55,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 56,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 57,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 58,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 59,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 60,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 61,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 62,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 63,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 64,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 65,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 66,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 67,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 68,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 69,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 70,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 71,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 72,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 73,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 74,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 75,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 76,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    },
+    {
+      "layer_id": 77,
+      "attention_type": "CSA",
+      "compression_ratio": 1,
+      "topk_computed": true
+    }
+  ]
+}

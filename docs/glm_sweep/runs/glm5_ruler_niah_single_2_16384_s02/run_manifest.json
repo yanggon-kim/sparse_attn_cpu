@@ -1,0 +1,33 @@
+{
+  "schema_version": "1",
+  "trace_schema_version": 2,
+  "run_id": "glm5_ruler_niah_single_2_16384_s02",
+  "backend": "cuda",
+  "model_name": "GLM-5",
+  "model_path": "<WORKDIR>/models/GLM-5-FP8",
+  "quantization": "fp8 (native)",
+  "benchmark_name": "ruler",
+  "task_subset": "niah_single_2",
+  "context_length_target": 16384,
+  "context_length_actual_tokens": 16178,
+  "max_new_tokens": 128,
+  "decode_parameters": {
+    "temperature": 0,
+    "greedy": true,
+    "seed": 42,
+    "batch_size": 28
+  },
+  "vllm_commit": "2cf0a6915ce544dc493a0990f2ea38d81601128a (v0.28.0 tag; contains docs pin 5559679)",
+  "gpu": "8xNVIDIA B200",
+  "kind": "bf",
+  "timing": {
+    "wall_clock_seconds": 862.6,
+    "gpu_hours": 0.0685
+  },
+  "is_correct": true,
+  "sample_id": "ruler_niah_single_2_16384_s02",
+  "request_id": "2",
+  "decode_steps_traced": 23,
+  "moe_records": 1725,
+  "variant": "all_layers"
+}
