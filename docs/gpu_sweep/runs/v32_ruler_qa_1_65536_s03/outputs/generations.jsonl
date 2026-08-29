@@ -1,0 +1,1 @@
+{"run_id": "v32_ruler_qa_1_65536_s03", "sample_id": "ruler_qa_1_65536_s03", "prompt_token_count": 64085, "generated_token_count": 3, "generated_token_ids": [52, 35452, 1], "generated_text": "Rollo", "finish_reason": "stop", "benchmark_prediction": "Rollo", "reference_answer": ["Rollo", "Rollo", "Rollo", "Rollo"], "is_correct": true, "score": 1.0, "request_id": "7"}

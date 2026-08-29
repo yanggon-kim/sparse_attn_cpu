@@ -1,0 +1,1 @@
+{"request_id": "4", "sample_id": "ruler_qa_1_32768_s00", "prompt_token_count": 32707, "generated_token_ids": [51725, 1], "generated_text": "France", "finish_reason": "stop", "benchmark_prediction": "France", "reference_answer": ["France", "France", "France", "France"], "is_correct": true, "score": 1.0, "source": "ruler", "task": "qa_1", "kind": "bf", "rung": 32768, "solo": false}
