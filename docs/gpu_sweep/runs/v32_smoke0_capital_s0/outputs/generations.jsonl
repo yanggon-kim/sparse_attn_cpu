@@ -1,0 +1,1 @@
+{"run_id": "v32_smoke0_capital_s0", "sample_id": "smoke0_capital", "prompt_token_count": 5, "generated_token_count": 3, "generated_token_ids": [11111, 16, 455], "generated_text": " Paris. The", "finish_reason": "length", "benchmark_prediction": "Paris. The", "reference_answer": ["Paris"], "is_correct": true, "score": 1.0, "request_id": "0"}

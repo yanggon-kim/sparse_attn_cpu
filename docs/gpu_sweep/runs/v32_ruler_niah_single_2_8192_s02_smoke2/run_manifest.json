@@ -1,0 +1,33 @@
+{
+  "schema_version": "1",
+  "trace_schema_version": 2,
+  "run_id": "v32_ruler_niah_single_2_8192_s02_smoke2",
+  "backend": "cuda",
+  "model_name": "DeepSeek-V3.2",
+  "model_path": "<WORKDIR>/models/DeepSeek-V3.2",
+  "quantization": "fp8 (native)",
+  "benchmark_name": "ruler",
+  "task_subset": "niah_single_2",
+  "context_length_target": 8192,
+  "context_length_actual_tokens": 8051,
+  "max_new_tokens": 256,
+  "decode_parameters": {
+    "temperature": 0,
+    "greedy": true,
+    "seed": 42,
+    "batch_size": 4
+  },
+  "vllm_commit": "2cf0a6915ce544dc493a0990f2ea38d81601128a (v0.28.0 tag; contains docs pin 5559679)",
+  "gpu": "8xNVIDIA B200",
+  "kind": "bf",
+  "timing": {
+    "wall_clock_seconds": 200.3,
+    "gpu_hours": 0.089
+  },
+  "is_correct": true,
+  "sample_id": "ruler_niah_single_2_8192_s02",
+  "request_id": "2",
+  "decode_steps_traced": 256,
+  "moe_records": 14848,
+  "variant": "all_layers"
+}
