@@ -1,0 +1,42 @@
+=== 01:48:35 reanalyze rung 8192
+=== 03:21:22 reanalyze done
+=== 03:21:22 hotset for rung 8192
+=== 03:29:39 sharding
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_niah_single_2_8192_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_niah_single_2_8192_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_niah_single_2_8192_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_niah_single_2_8192_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_qa_1_8192_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_qa_1_8192_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_qa_1_8192_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_qa_1_8192_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_gov_report_8192_s00: 21 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_gov_report_8192_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_qmsum_8192_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_multi_news_8192_s03: 21 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_multi_news_8192_ld00: 23 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_multi_news_8192_ld01: 23 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_qmsum_8192_ld02: 24 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_qmsum_8192_ld03: 24 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_gov_report_8192_ld04: 23 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb1_multi_news_8192_ld05: 23 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb2_single-document_8192_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb2_long-dialogue_8192_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb2_multi-document_8192_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb2_code_8192_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_passkey_8192_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_number_string_8192_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_choice_eng_8192_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_qa_eng_8192_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_qa_eng_8192_ld00: 24 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_qa_eng_8192_ld01: 23 entries
+=== 03:36:46 aggregate
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/R1_kv_locality.csv: 135 runs + 15 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/R2_moe_locality.csv: 135 runs + 15 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/R3_hotset_coverage.csv: 135 runs + 15 aggregates
+rung   8192: n=n=28 adj_overlap=0.843 lift=2.56 recency=0.491
+rung  16384: n=n=28 adj_overlap=0.790 lift=5.27 recency=0.385
+rung  32768: n=n=28 adj_overlap=0.751 lift=10.19 recency=0.32
+rung  65536: n=n=27 adj_overlap=0.741 lift=21.87 recency=0.302
+rung 131072: n=n=24 adj_overlap=0.723 lift=41.49 recency=0.307
+FINISH_RUNG_DONE

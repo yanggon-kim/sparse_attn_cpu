@@ -1,0 +1,11 @@
+03:53:42 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s00_smoke (free 1944G, running 0)
+03:54:02 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s00_smoke_b (free 1937G, running 1)
+03:54:22 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s00_solo_smoke (free 1927G, running 2)
+03:54:43 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s00_solo_smoke_b (free 1916G, running 3)
+03:55:03 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s01_smoke (free 1917G, running 3)
+03:55:23 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s01_smoke_b (free 1911G, running 4)
+03:55:43 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s02_smoke (free 1909G, running 5)
+03:56:03 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s02_smoke_b (free 1894G, running 5)
+03:56:24 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s03_smoke (free 1890G, running 5)
+03:56:44 start <WORKDIR>/runs/glm52_ruler_niah_single_2_8192_s03_smoke_b (free 1893G, running 6)
+QUEUE_DONE 03:59:34

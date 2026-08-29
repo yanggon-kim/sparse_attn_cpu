@@ -1,0 +1,843 @@
+You are given a meeting transcript and a query containing a question or instruction. Answer the query in one or more sentences.
+
+Transcript:
+Grad A: OK , we 're on .
+Professor B: Yeah .
+Grad A: So , I think this is gonna be a pretty short meeting because I have four agenda items , three of them were requested by Jane who is not gonna be at the meeting today .  So . {vocalsound} The uh first was transcription status . Does anyone besides Jane know what the transcription status is ?
+PhD F: Um , sort of , I do , peripherally .
+PhD C: Is that English ?
+PhD F: Um {disfmarker} Well first of all with IBM I got a note from Brian yesterday saying that they finally made the tape for the thing that we sent them a {pause} week or week and a half ago
+PhD D: That 's our system .
+Grad A: Ugh !
+PhD F: and that it 's gone out to the transcribers and hopefully next week we 'll have the transcription back from that .
+Grad A: C can I have a pen ?
+PhD F: Um {disfmarker} Jane seems to be um moving right along on the transcriptions from the ICSI side . She 's assigned , I think probably five or six m more meetings .
+PhD C: Yeah , I think we 're up to MR thirteen or something .
+PhD D: Mmm .
+PhD F: Yeah , so um , I guess she 's hired some new transcribers
+PhD D: Speaking {disfmarker}
+Grad E: Which meetings is she transcribing ?
+PhD F: and {disfmarker} Um well we 've {disfmarker} we 've run out of E D Us because a certain number of them are um , sort of awaiting to go to IBM .
+Grad E: OK .
+PhD C: For IBM , yeah .
+PhD D: Hmm .
+Grad E: OK .
+PhD F: and the rest are in process being transcribed uh here .
+PhD D: So does she have transcribers right now who are basically sitting idle because there 's no data back from IBM
+Grad E: So we 're doing some in parallel .
+Grad A: Yep .
+PhD F: No .
+Grad A: No , no .
+PhD F: Oh no no .
+Grad A: We haven't done that process .
+PhD D: no ?
+PhD F: No . We 're not waiting on them .
+Grad A: So . They ' r they 're doing the full transcription process .
+PhD D: Oh . Oh , OK .
+Grad E: So they 're just doing their own thing until {disfmarker}
+PhD F: Yeah .
+PhD D: Because I {disfmarker} I need to ask Jane whether it 's {disfmarker} it would be OK for her {disfmarker} um , s some of her people to transcribe uh some of the initial data we got from the SmartKom data collection , which is these short like five or seven minute sessions .
+PhD F: We 're doing it in parallel , yeah .
+Grad E: OK .
+PhD C: Yep .
+PhD D: Um and we want it {disfmarker} You know , we need {disfmarker} The {disfmarker} Again , we {disfmarker} we have a similar uh logistic set - up where we are supposed to send the data to Munich
+Grad A: Right .
+PhD D: and get it transcribed and get it back . But to get going we would like some of the data transcribed right away so we can get started .
+Grad A: Yep , sounds familiar .
+PhD D: And so um I wanted to ask Jane if {disfmarker} if uh , you know , maybe one of their transcribers could {disfmarker} could do {disfmarker} I mean since these are very short , that should really be uh ,
+Professor B: Mm - hmm .
+PhD D: um {disfmarker} It 's {disfmarker}
+PhD C: There 's only two channels . So it 's only {disfmarker} Yeah .
+PhD D: Yeah .
+PhD C: As the synthesis doesn't have to be transcribed I think .
+PhD D: It 's only two {disfmarker} Right , s
+PhD C: So .
+PhD D: Yeah . So {disfmarker} So it 's basically one channel to transcribe . And it 's {disfmarker} One session is only uh like seven {disfmarker}
+Professor B: So that should have ma many fewer {disfmarker} And it 's also not uh a bunch of interruptions with people and all that ,
+PhD D: Right . And some of it is read speech , so we could give them the {disfmarker} the thing that they 're reading
+Professor B: right ? So . Yeah .
+PhD D: and they just may {disfmarker}
+Grad A: Make sure it 's right .
+PhD C: Yep .
+PhD D: And so um , um , I guess since she 's {disfmarker} I was gonna ask her but since she 's not around I {disfmarker} maybe I 'll {disfmarker}
+Professor B: Yeah , well it certainly seems {disfmarker}
+PhD D: Uh if {disfmarker} if that 's OK with you to {disfmarker} to , you know , get that stuff uh {disfmarker} to ask her for that , then I 'll do that .
+Professor B: Yeah . Yeah , if we 're held up on this other stuff a little bit in order to encompass that , that 's OK because I I um , I mean I still have high hopes that the that the IBM pipeline 'll work out for us , so it 's {disfmarker}
+PhD D: Yeah . OK , yeah .
+Professor B: Yeah .
+PhD D: Alrighty .
+PhD F: Oh , yeah , and also related to the transcription stuff , so I 've been trying to keep a web page uh up to date f showing what the current status is of the trans of all the things we 've collected and what stage each meeting is in , in terms of whether it 's {disfmarker}
+Grad A: Can you mail that out to the list ?
+PhD F: Mm - hmm , yeah I will . I {disfmarker} That 's the thing that I sent out just to foo people saying can you update these pages
+Grad A: Oh , OK , OK .
+PhD F: and so that 's where I 'm putting it but I 'll {disfmarker} I 'll send it out to the list telling people to look at it .
+Grad A: Yeah , I haven't done that . So . I have lots of stuff to add that 's just in my own directory .
+PhD F: Yeah .
+Grad A: I 'll try to get to that . OK . So Jane also wanted to talk about participant approval , but I don't really think there 's much to talk about . I 'm just gonna do it . And uh , if anyone objects too much then they can do it instead .
+Professor B: You are going to {disfmarker}
+Grad A: I 'm gonna send out to the participants , uh , with links to web pages which contain the transcripts and allow them to {pause} suggest edits . And then bleep them out .
+Professor B: OK .
+Grad A: For the ones that we have . Um {disfmarker}
+PhD C: So but it 's just transcripts , not the {disfmarker} not the audio ?
+Grad A: Nope , they 'll have access to the audio also .
+PhD C: OK , yeah , yep . Ah .
+Grad A: I mean that 's my intention . Because the transcripts might not be right .
+PhD C: Yeah .
+PhD F: So {disfmarker}
+Grad A: So you want people to be able to listen to them .
+PhD C: Yeah .
+PhD F: So , um the audio that they 're gonna have access to , will that be the uncompressed version ? Or will you have scripts that like uncompress the various pieces and {disfmarker}
+Grad A: Oh , that 's a good point . That 's a good point . Yeah , it 's {disfmarker} it 's probably going to have to be the uncompressed versions because , uh , uh , it takes too long to do random access decompression .
+PhD F: Hmm . Yeah , I was just wondering because we 're uh running out of the un - backed - up disk space on
+Grad A: Well , that was the other point .
+PhD F: Oh , was that another one ?
+Grad A: Yep , that 's another agenda item .
+PhD F: OK . I 'll wait .
+Grad A: So , uh {disfmarker} But that is a good point so we 'll get to that , too . Um , DARPA demo status , not much to say . The back - end stuff is working out fine . It 's more or less ready to go . I 've added some stuff that uh indes indexes by the meeting type MR , EDU , et cetera and also by the user ID . So that the front - end can then do filtering based on that as well . Uh {disfmarker} The back - end is uh , going more slowly as I s I think I said before just cuz I 'm not much of a Tcl - TK programmer . And uh Dave Gelbart says he 's a little too busy . So I think Don and I are gonna work on that and {disfmarker} and you and I can just talk about it off - line more .
+Grad E: Right .
+Grad A: But uh {pause} the back - end was pretty smooth .
+Professor B: Oh
+Grad A: So I think , we 'll have something . It may not be as {disfmarker} As pretty as we might like , but we 'll have something .
+Professor B: I wondered whe when we would reach Dave 's saturation point . He 's sort of been {disfmarker} been volunteering for everything
+Grad A: Yeah .
+Professor B: and {pause} and uh {disfmarker}
+PhD D: Mm - hmm .
+Professor B: O K . Finally said he was too busy . I guess we reached it .
+Grad A: Yeah , he {disfmarker} he actually {disfmarker} he volunteered but then he s then he retracted it . So . Oh well . Um {disfmarker}
+Grad E: And , also um , I was just showing Andreas , I got um an X Waves kind of display , and I don't know how much more we can do with it {disfmarker} with like the prosodic stuff where we have like stylized pitches and signals and the transcripts on the bottom
+Grad A: Oh , cool .
+Grad E: so , right now it 's just an X Waves and then you have three windows but I don't know , it looked pretty nice and I 'm sure it {disfmarker} think it has potential for a little something ,
+Grad A: For a demo ?
+Grad E: yeah , for a demo .
+Grad A: Yeah , sounds good .
+Grad E: So {disfmarker}
+Professor B: OK , so again , the issue is {disfmarker} For July , the issue 's gonna be what can we fit into a Windows machine , uh , and so on , but {disfmarker}
+Grad E: Oh . OK .
+Grad A: So it might just be slides .
+Grad E: Yeah , OK .
+PhD C: Well {disfmarker} {pause} Yeah .
+Grad E: Well , we 'll see , um {disfmarker}
+PhD C: I 've been putting together uh Transcriber things for Windows so i And I installed it on Dave Gelbart 's PC and it worked just fine . So hopefully that will work .
+PhD D: Really ? So is that {disfmarker} Because there 's some people um {disfmarker} It would be cool if we could uh get that to work uh at {disfmarker} at SRI
+PhD C: Yeah . Yep .
+PhD D: because the um {disfmarker}
+Grad A: Well Transcriber is Tcl - TK , very generic with Snack ,
+PhD D: we have m m We have more Windows machines to run the {disfmarker}
+PhD C: Yeah .
+Grad A: so basically anything you can get Snack to run on , it will work .
+PhD D: Right .
+PhD C: Yeah . Yeah but {disfmarker} But the problem is the version Transcriber works with , the Snack version , is one point six whatever and that 's not anymore supported . It 's not on {disfmarker} on the web page anymore . But I just wrote an email to {disfmarker} to the author of {disfmarker} to the Snack author and he sent me to one point six whatever library
+Grad A: Well I thought it was packaged with Transcriber ?
+PhD C: and so it works . Yeah , but then you can't add our patches and then the {disfmarker} the new version is {disfmarker} is totally different
+Grad A: Oh .
+PhD C: a and in {disfmarker} yeah , in terms of {disfmarker} of the source code .
+Grad A: Ah .
+PhD C: You {disfmarker} you can't find the Tcl files anymore . It 's some whatever wrapped thing
+PhD D: Mmm .
+PhD C: and you can't {disfmarker} you can't access that so you have to install {disfmarker} First install Tcl then install Snack and then install the Transcriber thing and then do the patches .
+Grad A: Patch . Ugh !
+PhD D: I {disfmarker} I wonder if {disfmarker} if we should contribute our changes back to the authors so that they maintain those changes along {disfmarker}
+PhD C: Yeah . Yeah .
+Grad A: We have {disfmarker} Yeah b it 's just hasn't made it into the release yet .
+PhD D: We have ? Oh . Oh , OK .
+PhD F: So did you um put the uh {disfmarker} {vocalsound} the NT version out on the uh Meeting Recorder page ? Or {disfmarker}
+PhD C: No , I haven't done that yet . I 'm {disfmarker} oh Nope . But I definitely will do that .
+Professor B: So , can some of the stuff that Don 's talking about somehow fit into this Uh , mean you just have a set of numbers that are associated with the {disfmarker}
+Grad E: Yeah .
+PhD C: So {disfmarker}
+Grad E: Yeah , it 's basically ASCII files or binary files , whatever representation . Just three different {disfmarker} It 's a waveform and just a stylized pitch vector basically so it 's {disfmarker}
+PhD D: So {disfmarker} So {disfmarker} Well {disfmarker}
+Grad E: I mean we could do it in Matl - {comment} I mean you could do it in a number of different places I 'm sure .
+PhD D: But {disfmarker} But it would be cool if the Transcriber interface had like another window for the {disfmarker} you know , maybe above the waveform where it would show some arbitrary valued function that is {disfmarker} that is you know time synchron ti ti time synchronous with the wavform .
+PhD C: Yep .
+Grad E: Yeah .
+Professor B: Yes .
+Grad E: Yeah , that 'd be very cool .
+Grad A: It 'd be easy enough to add that . Again it 's {disfmarker} it 's {pause} It 's more Tcl - T
+Grad E: Yeah .
+Grad A: So someone who 's familiar with Tcl - TK has to do it ,
+PhD D: Right .
+Grad A: but uh , it wouldn't be hard to do .
+PhD D: Right . But it would almost be like having another waveform displayed .
+Grad A: Yep .
+PhD C: Yep .
+PhD D: S
+Grad E: Mm - hmm .
+PhD D: Right .
+PhD C: Yeah . Yeah , maybe we could l look into that .
+Grad E: Yeah .
+Grad A: But it {disfmarker} it seems to me that I c
+PhD C: And {disfmarker}
+Grad A: It doesn't seem like having that real time is that necessary . So yo It seems to me you could do images .
+Grad E: Um {pause} What do you mean by real time ? Do you mean like {disfmarker}
+PhD F: Like being able to scroll through it and stuff for the demo .
+Grad E: OK .
+Grad A: Yeah , jus Yeah .
+PhD F: Is that what you mean ?
+Grad A: It just seems to me jus
+Grad E: It would be cool to see it {disfmarker}
+PhD F: Yeah .
+Grad E: It would be cool like to see {disfmarker} to hear it and see it ,
+PhD C: And to hear it . Yeah . Yeah .
+Grad E: and see the pitch contours also .
+Grad A: Sure , but I don't think {disfmarker} I {disfmarker} You can do all that just statically in
+PhD C: Yeah .
+Grad E: I think it would lose {disfmarker} Yeah , I mean y
+Grad A: Just record the audio clip and show an image and I think that 's {disfmarker}
+Grad E: Right , right . I just thought if you meant slides I thought you meant like just {pause} like {pause} um view graphs or something .
+Professor B: You know , wh Yeah . So . Uh , no , we 're talking about on the computer and {disfmarker} and um , I think when we were talking about this before we had littl this little demo meeting ,
+Grad E: Right .
+Professor B: we sort of set up a range of different degrees of liveness that you could have and , {vocalsound} the more live , the better , but uh , given the crunch of time , we may have to retreat from it to some extent . So I think {disfmarker} {pause} For a lot of reasons , I think it would be very nice to have this Transcriber interface be able to show some other interesting signal along with it
+PhD D: Mm - hmm .
+Professor B: so it 'd be a good thing to get in there . But , um {disfmarker} Anyway , jus just looking for ways that we could actually show what you 're doing , uh , in {disfmarker} {pause} to people .
+Grad E: Mm - hmm .
+Professor B: Cuz a lot of this stuff , particularly for Communicator , uh certainly a significant chunk of the things that we waved our arms about th originally had t had to do with prosodics It 'd be nice to show that we can actually get them and see them .
+PhD D: Mmm .
+Grad E: Mm - hmm .
+Grad A: And the last i item on the agenda is disk issues yet again . So , we 're doing OK on backed up . We 're {disfmarker} We 're only about thirty percent on the second disk . So , uh , we have a little bit of time before that becomes critical , but we are like ninety five percent , ninety eight percent on the scratch disks for the expanded meetings .
+PhD C: Yeah .
+Grad A: And , my original intention was like we would just delete them as we needed more space , but unfortunately we 're in the position where we have to deal with all the meeting data {pause} all at once , in a lot of different ways .
+PhD C: Yeah .
+PhD F: Oh there 's a lot of transcribers , too .
+Grad A: Yeah , there 're a lot of transcribers ,
+PhD C: Yeah .
+Grad A: so all of those need to be expanded , and then people are doing chunking and I want to do uh , uh , uh , the permission forms ,
+PhD F: Mm - hmm .
+PhD C: An
+PhD F: Right .
+Grad A: so I want those to be live , so there 's a lot of data that has to be around . Um {disfmarker} And Jane was gonna talk to , uh , Dave Johnson about it . One of the things I was thinking is we {disfmarker} we just got these hundred {disfmarker} alright , excuse me {disfmarker} ten , uh SPARC - Blade SUN - Blades .
+Professor B: Did they come in ?
+PhD F: SUN - Blades .
+PhD D: Yeah .
+PhD F: Yeah . They came in the other day .
+Grad A: They came in but they 're not set up yet .
+Professor B: Oh .
+Grad A: And so it seems to me we could hang scratch disk on those {pause} because they 'll be in the machine room , they 'll be on the fast connection to the rest of the machines . And if we just need un - backed - up space , we could just hang disks off them .
+PhD F: Well , is there {disfmarker} Why not just hang them off of Abbott , is there a {disfmarker}
+Grad A: Because there 's no more room in the disk racks on Abbott .
+Professor B: Yeah .
+PhD F: Ah .
+Professor B: Weren't we gonna get {disfmarker}
+PhD F: Ah , I see .
+Professor B: Well , maybe it should get another rack .
+PhD D: But you still need to store the disks somehow .
+Grad A: Well , but the SUN - Blades have spare drive bays .
+PhD D: So {disfmarker}
+Grad A: Just put them in .
+PhD F: You can put two {disfmarker}
+PhD D: Oh you mean you put them inside the pizza boxes for the {disfmarker}
+Grad A: Sure .
+PhD C: Internal . Yeah .
+Grad A: Yeah . Cuz the SUN {disfmarker} uh , these SUN - Blades take commodity hard drives .
+PhD D: Oh .
+Grad A: So you can just go out and buy a PC hard drive and stick it in .
+PhD D: Mmm .
+Professor B: But if Abbott is going to be our disk server it {disfmarker} it {disfmarker} file server {comment} it seems like we would want to get it , uh , a second disk rack or something .
+PhD D: Plus we 're talking about buying a second dis uh , file server .
+Grad A: Well , I mean there are lots of long term solutions . What I 'm looking for is where do we s expand the next meeting ?
+PhD C: Yep .
+PhD D: I see {vocalsound} {pause} Oh , I see .
+Professor B: Well , for the next meeting you might be out of luck with those ten , mightn't you ? Uh , you know Dave Johnson is gone for , like , ten days ,
+Grad A: Oh , I didn't know he had left already .
+Professor B: Uh , well , tonight .
+Grad A: Oh , oh well .
+PhD D: You mean he won't set up the {disfmarker} mmm .
+Professor B: I don't know .
+Grad E: How much space do you need for these ?
+Professor B: I don't know what his schedule is .
+Grad A: You {disfmarker} we need about a gig per meeting .
+Professor B: I 'm just saying he 's gone .
+PhD C: Yep .
+PhD F: I {disfmarker} I thi
+Grad E: I have um {disfmarker} I have an eighteen gig drive hanging off of my computer .
+Grad A: Alright ! What 's your computer 's name ?
+Grad E: So {disfmarker} Uh , Samosa .
+Professor B: You had an eighteen gigabyte drive .
+Grad E: Yeah , I had . Well it 's about {disfmarker} I think there 's about twelve gig left .
+Grad A: So it {disfmarker} And you have an X drives installed ? OK .
+Grad E: Yeah . So , I didn't realize it was so critical .
+Grad A: And you 're o you 're offering ?
+Grad E: I mean I 'm not doing anything on it right now until I get new meetings to transcri or that are {disfmarker} new transcriptions coming in I really can't do anything .
+Grad A: OK .
+Grad E: Um not that I can't do anything , I jus
+PhD F: I {disfmarker} I jus I just gave Thilo some {disfmarker} about ten gigs , the last ten gigs of space that there was on {disfmarker} on uh Abbott . Uh {disfmarker} And uh {disfmarker} So but that {disfmarker} But {disfmarker}
+Grad A: Which one was that , X {pause} G ? X {pause} G ?
+PhD C: XG .
+PhD F: XG .
+Grad A: OK .
+PhD D: XG ?
+PhD F: Yeah .
+PhD D: That 's also where we store the {disfmarker} The uh Hub - five training set waveforms ,
+PhD C: Oops .
+Grad A: But that won't be getting any bigger ,
+PhD D: right ?
+PhD F: No .
+Grad A: will it ?
+PhD F: I don't think that 's on XG .
+PhD D: Right .
+PhD F: On XG is only Carmen and Du - and Stephane 's disk .
+PhD C: It 's {disfmarker} Yeah .
+PhD D: But I 've also been storing {disfmarker} I 've been storing the feature files there and I guess I can s start deleting some because we now know what the best features are
+Grad E: Well {disfmarker}
+PhD D: and we won't be using the old ones anymore .
+Grad E: I have a lot of space , though .
+PhD F: Yeah , I do I don't think it was on XG .
+PhD D: Uh {disfmarker} Oh thats XA {disfmarker} Oh that 's X {disfmarker}
+PhD C: Isn't that XH ?
+PhD F: I th
+Grad A: Not {disfmarker} not for long .
+Grad E: I have a lot of space and it 's not {disfmarker} it 's n There 's very little uh {disfmarker} Yeah not for long .
+PhD D: Maybe I 'm confu
+Grad E: But I mean it 's not going f
+PhD D: Oh no I 'm sorry .
+Grad E: It 's not being used often at all .
+PhD C: But I 'm using XH {disfmarker} H , too .
+Grad A: Yeah , it 's probably {disfmarker} Probably only about four gig is on X {disfmarker} on your X drive ,
+PhD C: So .
+PhD D: Oh OK .
+Grad A: but we 'll definitely take it up if you {disfmarker}
+Grad E: I th
+PhD D: I think you 're right . It 's XH and D {disfmarker}
+Grad E: I think it 's about four or five gig cuz I have four meetings on there ,
+PhD D: The b I 'm also using DG I got that confused .
+Grad E: three or four meetings .
+PhD D: OK .
+Grad A: Great .
+Grad E: So .
+Grad A: OK , so that will get us through the next couple days .
+Professor B: We need {disfmarker} We need another gigaquad .
+Grad A: Yep . At least .
+Professor B: There should {disfmarker} I d There should just be a b I should have a button .
+Grad A: The " more disk space " button ?
+Professor B: Just press {disfmarker} Press each meeting saying " we need more disk space " {vocalsound} " this week " .
+Grad A: Yep .
+Professor B: Skip the rest of the conversation .
+PhD F: Well we 've collected so far something like uh sixty - five meetings .
+Professor B: And {disfmarker} And how much does each meeting take ?
+PhD F: And it 's about a gig uncompressed .
+PhD C: It 's {disfmarker} It 's a little bit more as I usually don't {disfmarker} do not uncompress the {disfmarker} all of the PZM and the PDA things .
+PhD F: Is a little more ?
+PhD C: So .
+PhD F: Right , yeah so if you uncompressed everything it 's even more .
+PhD C: It 's {disfmarker} Yeah . One point five or something .
+PhD F: U Uh compressed how much are they ? Like {disfmarker}
+Grad A: Half a gig . For all of them .
+PhD F: About half ?
+PhD C: Yeah . Yeah . Yep .
+PhD F: So we 're definitely are storing you know , all of those . So there 's what thirty some gig of just meetings so far ?
+Professor B: So - so So maybe there 's a hundred {pause} gig or something . Or {disfmarker} I mean . Cuz we {disfmarker} we have the uncompressed around also .
+PhD F: Mm - hmm . Right .
+Professor B: So it 's like {disfmarker}
+PhD C: Yeah .
+PhD F: Right . Well we {disfmarker} We haven't uncompressed all the meetings , but {disfmarker}
+Grad A: I would like to .
+Professor B: Yeah . Well I mean it 's {disfmarker} the they really are cheap . I mean it 's just a question of figuring out where they should be and hanging them ,
+Grad A: Yep .
+PhD F: Right .
+Professor B: but But uh , we could {disfmarker} You know , if you want to get four disks , get four disks . I mean it 's {disfmarker} it 's small {disfmarker} I mean these things ar are just a few hundred dollars .
+PhD F: Yeah . Well I sent that message out to , I guess , you and Dave asking for {disfmarker} if we could get some disk .
+Professor B: Yeah .
+PhD F: I s I sent this out a {disfmarker} a day ago
+Grad A: And put it where ?
+Professor B: Right .
+PhD F: but {disfmarker} and Dave didn't respond so I don I don't know how the whole process works . I mean does he just go out and get them and {disfmarker} if it 's OK , and {disfmarker}
+Grad A: Yep .
+PhD F: So I was assuming he was gonna take over {pause} that . But he 's probably too busy given that he 's leaving .
+Professor B: Yeah , I think you need a direct conversation with him . And just {vocalsound} say an - e just ask him that , you know , wha what should you do . And in my answer back was " are you sure you just want one ? " So I mean I think {pause} that what you want to do is plan ahead a little bit and figure " well , here 's what we pi figure on doing for the next few months " .
+PhD F: Yeah .
+Grad A: Wa - a I know what they want . The sysadmins would prefer to have one external drive per machine . So they don't want to stack up external drives .
+Professor B: Yeah .
+Grad A: Um {disfmarker} {pause} And then they want everything else in the machine room .
+Professor B: Right .
+Grad A: So the question is where are you gonna hang them ?
+PhD F: Mm - hmm . I don't know what the space situation is in the machine room .
+Grad A: Right .
+PhD F: So .
+Professor B: Right . So this is a question that 's pretty hard to solve without talking to Dave ,
+PhD D: Th - The {disfmarker}
+PhD F: I think part of the reason why Dave can't get the {disfmarker} the new machines up is because he doesn't have room in the machine room right now .
+Professor B: cuz it {disfmarker}
+PhD D: One {disfmarker} Mmm .
+Grad A: Yep .
+PhD D: One {disfmarker} One On - One thing to in to um t to do when you need to conserve space is
+PhD F: So he has to re - arrange a bunch of stuff .
+PhD D: I bet there are still some old , uh , like , nine gig disks , uh , around and you can probably consolidate them onto larger disks and {disfmarker} and you know recover the space .
+Grad A: Yep .
+Professor B: Yeah . No . I think Dave {disfmarker} Dave knows all these things , of course . An - and so , he always has a a lot of plans of things that he 's gonna do to make things better in many ways an and runs out of time .
+PhD D: Right . Mm - hmm .
+Grad A: But I {disfmarker} I know that {pause} generally their first priority has been for backed up disk . And so I think what he 's been concentrating on is uh the back {disfmarker} the {pause} back up system , rather than on new disk .
+PhD D: Mmm . Mmm .
+Grad A: So . Which {disfmarker}
+Professor B: Well . So . But this {disfmarker} this is a very specific question for me . Basically , we can easily get {pause} one to four disks , I mean you just go out and get four and we 've got the money for it , it 's no big deal . Uh , but the question is where they go , and I don't think we can solve that here , you just have to ask him .
+PhD D: Maybe we can put some disks in the {disfmarker} in that back room there .
+Grad A: Yeah really .
+Professor B: Attach to {disfmarker}
+Grad A: Popcorn .
+Professor B: Yeah ?
+PhD D: To the machine that collects the data . So then you could , at least temporarily , store stuff there .
+Grad A: Yeah , it 's just {disfmarker} It 's not on the net , so it 's a little {pause} awkward
+PhD D: The only {disfmarker}
+PhD F: Hmm .
+PhD D: What do you mean it 's not on the net ?
+Grad A: It 's not {disfmarker}
+PhD C: It 's not bad .
+Grad A: It 's behind lots of fire walls that don't allow any services through except S S
+PhD D: Oh because it 's {disfmarker} because it 's an ACIRI machine ?
+Grad A: Yep .
+Professor B: Yeah .
+PhD D: Oh , oh oh .
+Grad A: And also on the list is to get it into the normal ICSI net , but Who knows when that will happen ?
+PhD D: But that can't be that hard .
+PhD F: That might be a good short term solution , though .
+PhD D: I mean {disfmarker}
+Grad A: No , the {disfmarker} the problem with that apparently is that they don't currently have a wire running to that back room {pause} that goes anywhere near one of the ICSI routers .
+PhD D: Oh ,
+Grad A: So , they actually have to run a wire somewhere .
+Professor B: Yeah . Yeah , e again , you know , any one of these things is certainly not a big deal . If there was a person dedicated to doing it they would happen pretty easily but it 's {disfmarker} it 's {disfmarker} jus every ever everybody {disfmarker} everybody has a {disfmarker} has {disfmarker}
+Grad A: But Dave has to do all of them .
+Professor B: Well all of us have long lists of different things we 're doing . But at any rate I think that there 's a {disfmarker} there 's a longer term thing and there 's immediate need and I think we need a {disfmarker} a conversation with {disfmarker} Uh , maybe {disfmarker} maybe after {disfmarker} after tea or something you and I can go down and {disfmarker} and talk to him about it Just say " wha you know , what should we do right now ? "
+PhD F: How long is David gonna be gone ?
+Professor B: Uh , eleven days or something ?
+Grad A: Oh my !
+Professor B: Yeah basically tomorrow and all of {pause} the week after .
+Grad A: And that 's all I have .
+Professor B: Um {disfmarker} Let 's see . The only oth thing {disfmarker} other thing I was gonna add was that um {disfmarker} uh , I talked briefly to Mari and uh we had {vocalsound} both been busy with other things so we haven't really connected that much since the {pause} last meeting we had here but we agreed that we would have a telephone meeting the Friday after next . And I {disfmarker} I {disfmarker} I wanted to make it , um after the next one of these meetings , so something that we wanna do next meeting is {disfmarker} is uh to put together um , a kind of reasonable list for ourselves of what is it , um , that we 've done . I mean just sort of bulletize I mean o e do do I can {disfmarker} I can dream up text but {pause} this is basically gonna lead to the annual report . So {pause} Um {disfmarker} If w
+PhD D: Mm - hmm .
+Grad A: This is the fifteenth ? So just a week from tomorrow ?
+Professor B: Um , that would
+Grad A: OK .
+Professor B: Yeah . Yeah . So , uh , we can {disfmarker} This {disfmarker} So that 's an {disfmarker}
+PhD D: Is this gotta be in the morning ?
+Professor B: Um {disfmarker}
+PhD D: Or {disfmarker} Because you know I {disfmarker} Fridays I have to leave uh like around uh two . So if it could be before that would be be
+Professor B: No , no but I {disfmarker} I {disfmarker} I don't need other folks for the meeting . I can do it . A A All I 'm saying is that on {disfmarker}
+PhD D: Oh , OK , alright . Oh I 'm sorry , I misunderstood .
+Professor B: Yeah so what I meant was on the me this meeting {pause} if I wa something I {disfmarker} I {disfmarker} I 'm making a major thing in the agenda is I wanna help in getting together a list of what it is that we 've done so I can tell her .
+PhD D: I thought you are {disfmarker} OK . Alright . Mm - hmm .
+Professor B: I think I have a pretty good idea
+PhD D: OK .
+Professor B: but {disfmarker} but um {disfmarker} Uh , and then the next day uh , late in the day I 'll be having that {disfmarker} that discussion with her .
+PhD D: Mmm .
+Professor B: Um . So .
+PhD D: Um {disfmarker} Uh {disfmarker} One thing {disfmarker} I mean {disfmarker} we {disfmarker} {vocalsound} {vocalsound} in past meetings we had um also a you know various {disfmarker} variously talked about the um work that w uh was happening sort of on the {disfmarker} on the recognition side
+Professor B: Mm - hmm .
+PhD D: um but isn't necessarily related to meetings uh specifically . So . Um . And I wondered whether we should maybe have um a separate meeting and between you know , whoever 's interested in that because I feel that uh there 's plenty of stuff to talk about but it would be sort of um maybe the wrong place to do it in this meeting if uh {disfmarker}
+Professor B: Think so ?
+PhD D: Well , it 's that {disfmarker} It 's just gonna be ver very boring for people who are not you know , sort of really interested in the details of the recognition system .
+Grad A: I 'm interested .
+Professor B: Well , OK , so how many {disfmarker} how many people here would not be interested in uh {disfmarker} in a meeting about recognition ?
+PhD C: Me too .
+PhD F: Jane may not be .
+Grad A: Jane , I think .
+PhD C: Yep .
+PhD D: Well I know {disfmarker} Well , Jane an Well you mean in a separate meeting or ha ha talking about it in this {disfmarker}
+Grad A: No . If we talked about it in this meeting .
+PhD F: He 's wondering how much overlap there will be .
+Professor B: Yeah , so you 're su
+PhD D: OK .
+Professor B: So .
+PhD D: So , uh , uh , Liz and Jane probably .
+Professor B: OK , so we 're gonna have a guy 's meeting .
+PhD D: Uh . {vocalsound} Uh , if you wanna put it that way .
+PhD F: Good thing Liz isn't here .
+Professor B: Real {disfmarker}
+Grad E: Watch a ball game ?
+Professor B: Yeah , real {disfmarker} real {disfmarker} real men {vocalsound} " Real men do decoding " or something like that .
+PhD F: Don't listen to this , Liz .
+PhD D: Right .
+Professor B: Uh .
+PhD D: I mean it it 's sort of {disfmarker} I mean when {disfmarker} when the talk is about data collection stuff , sometimes I 've {disfmarker} you know , I {disfmarker} I 'm bored .
+Professor B: Yeah .
+Grad A: The {disfmarker} Nod off ?
+PhD D: So it 's I c I can sympathize with them not wanting to {disfmarker} i to {disfmarker} to be uh {disfmarker} you know {disfmarker} If {disfmarker} I cou you know {disfmarker} this could {disfmarker}
+Professor B: It 's cuz {pause} y you have a {disfmarker} So you need a better developed feminine side .
+PhD D: I 'm
+Professor B: There 's probably gonna be a lot of " bleeps " in this meeting .
+PhD D: not sure I wanna {disfmarker}
+Grad A: Yeah , I would as {comment} I would guess .
+Professor B: Uh . Um .
+PhD D: Yeah and {disfmarker}
+Professor B: I think it must be {pause} uh nearing the end of the week . Um . {vocalsound} Yeah . I {disfmarker} You know , I {disfmarker} I 've heard some comments about like this . That m could be .
+PhD D: Mm - hmm .
+Professor B: I mean the {disfmarker} Um . {vocalsound} U
+PhD D: And we don't have to do it every week .
+PhD F: Could we {disfmarker}
+PhD D: We could do it every other week or so . You know , whatev or whenever we feel like we {disfmarker}
+PhD F: Right , I was {disfmarker} Why don't we alternate this meeting every other week ?
+Grad A: Or just alternate the focus .
+PhD F: Tha - That 's what I mean .
+Grad A: Yeah , so on even weeks have {pause} basic {pause} on data .
+Professor B: Yeah .
+PhD D: We could do that , yeah .
+PhD F: Yeah .
+PhD D: I {disfmarker} I {disfmarker} Personally I 'd {disfmarker} I 'm not in favor of more meetings . Um . {vocalsound} Because , uh .
+Professor B: Right .
+Grad A: I am .
+PhD D: You know .
+Grad A: Oh sor
+PhD F: But I do I don't {disfmarker} I mean a lot of times lately it seems like we don't really have enough for a full meeting on Meeting Recorder .
+PhD D: Right .
+Grad A: Well , except that we keep going for our full time .
+PhD F: So if we did that {disfmarker}
+PhD C: Yep .
+PhD F: Well , cuz we get into these other topics .
+Grad A: Yeah .
+PhD D: We feel {disfmarker} We feel obligated to collect more data .
+Grad E: Yeah .
+Grad A: Ugh .
+PhD F: Yeah .
+Grad A: I don't .
+PhD F: So if we could alternate the focus of the meeting {disfmarker}
+Grad A: Let 's read digits and go .
+Professor B: Why don't we just start with that .
+PhD D: ummh . {comment} ummh . {comment} OK .
+Professor B: And then if we find , you know we 're just not getting enough done , there 's all these topics not coming up , then we can expand into another meeting .
+PhD D: Mm - hmm .
+Professor B: But I {disfmarker} I think that 's a great idea . Uh . So uh . Um . Let 's chat about it with Liz and Jane {pause} when we get a chance , see what they think and {disfmarker}
+PhD D: Mm - hmm .
+PhD F: Yeah that would be good . I mean Andreas and I have various talks in the halls
+PhD D: Mm - hmm .
+PhD F: and there 's lots of things , you know , details and stuff that would I think people 'd be interested in and I 'd {disfmarker} you know , where do we go from here kind of things and {disfmarker} So , it would be good .
+Professor B: Yeah , and you 're {disfmarker} you 're attending {pause} the uh {disfmarker} the front - end meeting as well as the others so you have {disfmarker} you have probably one of the best {disfmarker} you and I , I guess are the main ones who sort of see the bridge between the two .
+Grad A: Bridge .
+PhD D: Mm - hmm .
+Professor B: We are doing recognition in both of them . So .
+PhD F: Mm - hmm .
+PhD D: Right .
+Professor B: Uh .
+Grad A: OK ?
+PhD D: So um . So {disfmarker} so we could talk a little bit about that now if {disfmarker} if there 's some time .
+Grad A: No , no that would be for next week .
+PhD D: Um I jus So the latest result was that um um yot I tested the uh {disfmarker} the sort of final version of the PLP configuration um on development test data for {disfmarker} for this year 's Hub - five test set .
+Professor B: Mm - hmm .
+PhD D: And the recognition performance was exactly , and I mean exactly up to the {disfmarker} you know , the first decimal , same as with the uh Mel Cepstra front - end .
+Grad A: Mmm .
+PhD F: For both females and males ?
+PhD D: Yes . Uh , well i there was a little bit of a {disfmarker}
+PhD F: Oh !
+PhD D: i overall . They {disfmarker} They were {disfmarker} The males I think were slightly better and the females were slightly worse but nothing really .
+PhD F: Mm - hmm .
+Professor B: Mm - hmm .
+PhD D: I mean definitely not significant .
+PhD F: Mm - hmm .
+PhD D: And then the really nice thing was that if {disfmarker} if we combine the two systems we get a one and a half percent improvement .
+Grad A: Wow . Just with ROVER ?
+PhD D: So . t With N - best ROVER , which is like our {vocalsound} new and improved version of ROVER .
+Grad A: Mm - hmm .
+PhD D: Which u actually uses the whole N - best list from both systems {pause} to {pause} mmm , uh {pause} c combine that .
+Professor B: So except {disfmarker} I mean the only key difference between the two really is the kind of smoothing at the end which is the auto - regressive versus the cepstral truncation .
+PhD D: Yeah .
+Professor B: OK .
+PhD D: And , the {disfmarker}
+PhD F: But a percent and a half ?
+Grad A: Yeah , it 's pretty {pause} impressive .
+PhD F: That 's {disfmarker}
+PhD D: And {disfmarker} And so uh after I told the {disfmarker} my uh colleagues at SRI about that , you know , now they definitely want to , you know , uh , have a {disfmarker} Next time we have an evaluation they want to do uh , you know , basically a at least the system combination . Um , and , you know , why not ?
+Professor B: Sure , why not ?
+PhD D: Uh . {vocalsound} So .
+Grad A: We clearly gotta add a few more features , though .
+PhD D: Uh w what do you mean ? More features in the sense of front - end features or in the sense of just bells and whistles ?
+Grad A: No , uh front - end features . You know we did PLP and Mel Cepstra . Let 's , you know , try RASTA and MSG , and {disfmarker}
+PhD D: Oh I mean {disfmarker} Yeah . Well Right . So , we cou Yeah . That 's {disfmarker} the {disfmarker} the the {disfmarker} There 's one thing uh {disfmarker} I mean you don't want to overdo it because y every front - end {disfmarker} You know , if you {disfmarker} you know you basically multiply your effort by N , where N is a number of different systems
+PhD F: Oh .
+Professor B: Mm - hmm .
+PhD D: and {disfmarker} Um . So . So one {disfmarker} one compromise would be to {disfmarker} only to have the {disfmarker} everything up to the point where you generate lattices be basically one system and then after that you rescore your lattices with the multiple systems and combine the results and that 's a fairly painless um thing .
+Professor B: Mmm . An
+PhD D: So .
+PhD F: Do you think we 'd still get the one and a half uh {disfmarker}
+PhD D: I {disfmarker} I think so . Yeah . Maybe a little less because at that point the error rates are lower and so if {disfmarker} You know , maybe it 's only one percent or something but that would still be worthwhile doing .
+PhD F: Mm - hmm .
+PhD D: So . Um {pause} Jus - You know , just wanted to let you know that that 's working out very nicely .
+Grad A: Cool .
+PhD D: And then we had some results on {pause} digits , uh , with um {disfmarker} We {disfmarker} We {disfmarker} So this was uh really {comment} {disfmarker} really sort of just to get Dave going with his um experiments .
+Professor B: Mm - hmm .
+PhD D: And so , uh . But as a result , um , you know , we were sort of wondering why is the Hub - five system doing so well on the digits .
+Professor B: Right .
+PhD D: And the reason is basically there 's a whole bunch of read speech data in the Hub - five training set .
+Grad A: Right .
+Professor B: Including digits I gather , yeah .
+PhD D: And you c And {disfmarker} Not all of {disfmarker} No it 's actually , digits is only a maybe a fifth of it .
+Professor B: A fifth of it is how much ?
+PhD D: The rest is {disfmarker} is read {disfmarker} is read TIMIT data and uh ATIS data and Wall Street Journal and stuff like that .
+Professor B: Right . But a fi a fifth is how much ?
+PhD D: A fifth would be maybe uh two hours something .
+Professor B: Yeah , so I mean that 's actually not that different from the {pause} amount of training that there was .
+PhD D: Right .
+Professor B: So .
+PhD D: But it definitely helps to have the other read data in there
+Professor B: Oh yeah
+PhD D: because we 're doing {disfmarker}
+Professor B: w
+PhD D: You know the error rate is half of what you do if you train only on ti uh TIMIT {disfmarker} {comment} uh not TIMIT uh TI - digits ,
+Professor B: Mm - hmm .
+PhD D: which is only what two hours something ?
+Professor B: Right .
+Grad A: I don't know .
+PhD D: So . Uh , more read speech data definitely helps . And you can leave out all the conversational data with no performance penalty .
+Professor B: Yeah that was the interesting thing .
+PhD D: That 's e
+Professor B: Because {disfmarker} because uh , it was apparent if you put in a bunch more data it would be better ,
+PhD D: That was e Right , right .
+Professor B: but {disfmarker} but uh .
+PhD D: Right .
+PhD F: Well is there even more read speech data around ?
+PhD D: Oh , yeah . So we only {disfmarker} for the Hub - five training , we 're only using uh a fairly small subset of the Macrophone {pause} database .
+PhD F: Mm - hmm .
+PhD D: Um , so , you could beef that up and probably do even better .
+Grad A: I could also put in {pause} uh focus condition zero from Hub - four from Broadcast News , which is mostly prepared speech .
+PhD F: Mm - hmm .
+Grad A: It 's not exactly read speech but it 's pretty darn close .
+PhD D: Yeah . Yeah . Right . Well , I mean that 's plenty of read speech data . I mean , Wall Street Journal , {pause} uh , take one example .
+Grad A: Yeah . That 's right .
+PhD D: But um . So , you know that might be useful for the people who train the {disfmarker} the digit recognizers to {disfmarker} to use uh something other than TI - digits .
+Grad A: Yeah .
+Professor B: Well they been using TIMIT .
+PhD D: OK .
+Professor B: That {disfmarker} Uh . {pause} They {disfmarker} they uh {disfmarker} they experimented for a while with a bunch of different databases with French and Spanish and so forth cuz they 're multilingual tests
+PhD D: Mm - hmm .
+Professor B: and {disfmarker} and uh , um , {disfmarker} and actually the best results they got wa were uh using TIMIT .
+Grad A: Hmm .
+Professor B: Uh {disfmarker} But uh {disfmarker} which {disfmarker} So that 's what they 're {disfmarker} they 're using now .
+PhD D: Mmm .
+Professor B: But {disfmarker} but yeah certainly if we , um {disfmarker} If we knew what the structure of what we 're doing there was . I mean there 's still a bunch of messing around with different kinds of uh noise robustness algorithms .
+PhD D: Mm - hmm .
+Professor B: So we don't know exactly which combination we 're gonna be going with .
+PhD D: Mm - hmm .
+Professor B: Once we know , then {disfmarker} the trainable parts of it {disfmarker} it 'd be great to run lots of {disfmarker} lots of stuff through .
+PhD D: Mm - hmm . Right . Well , that was that . And then I th guess Chuck and I had some discussions about how to proceed with the tandem uh system and {disfmarker} You wanna {disfmarker} {vocalsound} You wanna see where that stands ?
+PhD F: Well , I 'm {disfmarker}
+PhD D: 
+PhD F: Yeah , so Andreas uh brought over the uh alignments that the SRI system uses . And so I 'm in the process of um converting those alignments into uh label files that we can use to train uh a new net with . And uh so then I 'll train the net . And .
+PhD D: An - And one side effect of that would be that it 's {disfmarker} um that the phone set would change . So the MLP would be trained on I think only forty - six or forty - eight {disfmarker}
+PhD F: Right . Eight .
+PhD D: forty - eight phones ?
+PhD F: Mm - hmm .
+PhD D: Uh which is smaller than the um than the phone set that {disfmarker} that we 've been using so far .
+Professor B: Yeah .
+PhD D: And that {disfmarker} that {disfmarker} that will probably help , actually ,
+PhD F: So it 's a little different ?
+PhD D: because um the fewer dimensions uh e the less trouble probably with the {disfmarker} as far as just the um , um {disfmarker} Just {disfmarker} You know we want to try things like deltas on the tandem features . And so you h have to multiply everything by two or three . And so , you know , fewer dimensions in the {pause} phone set would be actually helpful just from a logistics point of view .
+Professor B: Sure . Although we {disfmarker} I mean , it 's not that many fewer and {disfmarker} and {disfmarker} and we take a KLT anyway so we could {disfmarker}
+PhD D: Right . Exactly .
+Professor B: Yeah .
+PhD D: So {disfmarker} so that was the other thing . And then we wanted to s just limit it to maybe uh something on the same order of dimensions as we use in a standard um front - end . So that would mean just doing the top I don't know ten or twelve or something of the KLT dimensions .
+Professor B: Yeah , and I think {disfmarker} and we sh again check {disfmarker} we should check with Stephane . My impression was that when we did that before that had very little {disfmarker} uh he didn't lose very much .
+PhD D: Right .
+PhD F: By just taking the top whatever ?
+Grad A: Yep .
+Professor B: Yeah yeah .
+PhD D: But then {disfmarker} And then something {disfmarker} Once we have the new M L P trained up , uh one thing I wanted to try just for the fun of it was to actually run uh like a standard hybrid system that is based on you know , those features uh and uh retrain MLP and also the you know , the dictionary that we use for the Hub - five system .
+Professor B: And the b And the base u starting off with the base of the alignments that you got from i from a pretty decent system .
+PhD D: Exactly .
+PhD F: Right .
+PhD D: Yeah . So that would basically give us a , um , more {disfmarker} hopefully a {disfmarker} a better system
+Professor B: Yeah .
+PhD D: um because {disfmarker} you know , compared to what Eric did a while ago , where he trained up , I think , a system based on Broadcast News and then uh tra retraining it on Switchboard or s uh and {disfmarker}
+Professor B: Yeah .
+PhD D: But he {disfmarker} I think he d he didn't {disfmarker} he probably didn't use all the training data that was available . And his dictionary probably wasn't as tuned to um conversational speech as {disfmarker} as the {disfmarker} as ours is .
+Professor B: That 's {disfmarker} That 's certainly one thing , yeah .
+PhD D: So .
+Professor B: Uh . Yeah .
+PhD D: And the dictionary made a huge difference . Uh . We {disfmarker} we made some improvements to the dictionary 's uh {disfmarker} to the dictionary about two years ago which resulted in a {disfmarker} uh something like a four percent absolute error rate reduction on Switchboard , which {disfmarker}
+Professor B: Well the other thing is , dipping {pause} deep into history and into uh our resource management days , when we were collaborating with SRI before ,
+PhD D: Mm - hmm . Mmm .
+Professor B: uh it was {disfmarker} I think , it is was a really key uh starting point for us that we actually got our alignment .
+PhD D: Mm - hmm .
+Professor B: When we were working together we got our initial alignments from Decipher , uh {pause} at the time .
+PhD D: Mm - hmm . Yeah .
+Professor B: Uh . {pause} And . Later we got away from it because {disfmarker} because once we had decent systems going then it was {disfmarker} it was typically better to use our own systems
+PhD F: Yeah .
+PhD D: Mm - hmm .
+Professor B: cuz they were self consistent but {disfmarker} but certainly to start off when we were trying to recover from our initial hundred and forty percent error uh rate . Uh . {vocalsound} But that was a {disfmarker} that was a good {disfmarker} good {disfmarker} good way to start .
+PhD D: Yeah .
+Professor B: And we 're not quite that bad with our {disfmarker} our Switchboard systems but it was {disfmarker} they certainly aren't as good as SRI 's ,
+PhD D: OK . Yeah .
+Professor B: so {disfmarker}
+PhD D: Right .
+PhD F: W What is the performance on s the best Switchboard system that we 've done ? Roughly ?
+Professor B: Well , the hybrid system we never got better than about fifty percent {pause} error . And uh it was {disfmarker} I think there 's just a whole lot of things that uh no one ever had time for . We never did really fix up the dictionary . Uh we always had a list of a half dozen things that we were gonna do and {disfmarker} and a lot of them were pretty simple and we never did .
+PhD D: Yeah . Mmm .
+Professor B: Uh , we never did an never did any adaptation
+PhD D: But that w Even that {disfmarker} that number {disfmarker}
+Professor B: uh , we never did any {disfmarker}
+PhD D: Right . And {disfmarker} And that number I think was on Switchboard - one data , right ? Where the error rate now is in the twenties .
+Professor B: Yeah . Yeah .
+PhD D: So , um .
+Professor B: So we were {disfmarker} Yeah . We were probably at least a factor or two off .
+PhD D: That 's yet s Right .
+Professor B: Yeah .
+PhD D: So it would be {disfmarker} So it would be good t to sort of r re uh {disfmarker}
+Professor B: Yeah .
+PhD D: just at least to give us an idea of how well the hybrid system would do .
+Professor B: Yeah . But I think {disfmarker} again it 's {disfmarker} Yeah . It 's the conver it 's the s conversational speech bit . Because our {disfmarker} our Broadcast News system is actually pretty good .
+PhD D: Mm - hmm .
+Professor B: He knows .
+PhD D: Right . And the other thing that that would help us to evaluate is to see how well the M L P is trained up . Right ? Because it 's a pretty good um indicator of that .
+Professor B: Mm - hmm .
+PhD D: So it 's sort of a sanity check of the M L P outputs {pause} before we go ahead and train up the {disfmarker} uh you know , use them as a basis for the tandem system .
+PhD F: Mm - hmm .
+Professor B: Yeah . It 'll still probably be worse . I mean , it 's {disfmarker} it 'd be context independent and so on .
+PhD D: No . Sure . Not {disfmarker}
+PhD F: Should we {disfmarker} Should we bother with um using the net before doing uh embedded training ?
+Professor B: But .
+PhD D: But {disfmarker}
+PhD F: I mean should {disfmarker} should we even use that ?
+PhD D: Oh {pause} oh that 's a good question .
+PhD F: Or should I just go straight to {disfmarker}
+PhD D: Yeah , we {disfmarker} we weren't sure whether it 's worth to just use the alignments um from the S R I recognizer or whether to actually go through one or more iterations of embedded training where you realign .
+Grad A: Try it . You run it ? Keep {disfmarker} keep both versions ? See which one 's better ?
+Professor B: Uh , yeah . I mean . I think I agree with Ad I mean basically you would then {disfmarker} You proceed with the embedded training .
+PhD D: Mm - hmm .
+Professor B: It 's gonna take you a while to train at this net anyway .
+PhD D: Mm - hmm . Right .
+Professor B: And while it 's training you may as well test the one you have and see how it did .
+PhD D: OK . Alright .
+PhD F: Mmm .
+Grad A: I could make arguments either way . You know , it 's {disfmarker}
+PhD D: But {disfmarker} But so I {disfmarker}
+Grad A: Sort of given up guessing .
+PhD D: Well but i But in your experience I mean uh have you seen big improvements in s on some tasks with embedded training ? Or was it sort of small - ish uh improvements that you got
+Professor B: Uh well . It depended on the task . I mean I think in this one I would sort of expect it to be important
+PhD D: Right .
+Professor B: because we 're coming from uh , alignments that were achieved with an extremely different system .
+PhD D: That are from another {disfmarker} Right .
+Grad A: Although , I mean we 've done it with {disfmarker} When we were combining with the Cambridge recurrent neural net , embedded training made it worse .
+PhD D: Right .
+Professor B: Uh .
+Grad A: Which I 've never figured out .
+Professor B: Right . But I mean i
+Grad A: I think it 's a bug .
+PhD D: So you {disfmarker} you started training with outputs from a {disfmarker} with alignments that were generated by the Cambridge uh system ?
+Grad A: Yep .
+PhD D: And then {disfmarker} Uh .
+Grad A: Yeah .
+Professor B: Yeah .
+PhD D: Hmm . Well , that might probably just {disfmarker} Hmm . That was probably because your initial system {disfmarker} I mean your system was ba worse than Cambridge 's . And you {disfmarker} Um .
+Professor B: Was it ? I don't think it was .
+Grad A: No they were {disfmarker} they were comparable .
+PhD D: It wasn't ?
+Professor B: No .
+Grad A: They were very close .
+PhD D: Really ?
+Professor B: Yeah .
+PhD D: That 's weird .
+Professor B: Excuse me ?
+PhD D: That 's {disfmarker} That 's weird .
+Grad A: That 's what I said .
+Professor B: Oh !
+PhD D: No I mean it 's weird that it did {disfmarker} I 'm sorry . It 's w It 's weird that it got worse .
+PhD F: That 's ambiguous .
+Professor B: Um . No . Uh . Tha - u we we 've see I mean {disfmarker} and wi with the numbers {disfmarker} OGI numbers task we 've seen a number of times people doing embedded trainings and things not getting better .
+PhD D: Oh actually it 's not that weird because we have seen {disfmarker} We have seen cases where acoustic {disfmarker} retraining the acoustic models after some other change made matters worse rather than better .
+Professor B: Yeah . It just {disfmarker}
+PhD D: Yeah .
+Professor B: But I But I would {disfmarker} I would suspect that something that {disfmarker} that had um a very different Um feature set , for instance {disfmarker} I mean they were using pretty diff similar feature sets to us .
+Grad A: Yep .
+Professor B: I {disfmarker} I would expect that something that had a different feature set would {disfmarker} would uh benefit from {disfmarker}
+PhD D: Mm - hmm .
+PhD F: What about uh hidden unit size {pause} on this .
+Professor B: Oh , wait a minute , and the other thing uh ,
+PhD F: Oh .
+Professor B: sorry , it was {disfmarker} the other thing is that what was in common {comment} to the Cambridge system and our system is they both were training posteriors .
+Grad A: Right . Ah yeah .
+Professor B: So I mean , uh , that 's another pretty big difference
+Grad A: That 's another big difference .
+Professor B: and uh , one bac at least {disfmarker} Back at {disfmarker}
+PhD D: You mean with soft targets ? Or {disfmarker} ? Sorry , I 'm sor I missed {disfmarker} What {disfmarker} What 's the key issue here ?
+Professor B: Oh , that uh both the Cambridge system and our system were {disfmarker} were training {pause} posteriors . And if we 're {disfmarker} we 're coming from alignments coming from the SRI system , it 's a likelihood - based system . So {disfmarker} so that 's another difference .
+PhD D: Yeah .
+Professor B: I mean . You know , there 's diffe different front - end different {disfmarker} different uh , um , training criterion {disfmarker} Uh , I would think that in a that an embedded {pause} uh {pause} embedded uh training would have at least a good shot of improving it some more .
+PhD D: Mm - hmm .
+Professor B: But we don't know .
+PhD D: OK .
+Professor B: You gonna say something ?
+PhD F: Yeah . I was wondering uh you know what size net I should {disfmarker} Anybody have any intuitions or suggestions ?
+Professor B: Uh , how much training data ?
+PhD F: Well , I was gonna start off with the small train set .
+Professor B: And how {disfmarker} How many hours is that ?
+PhD F: That 's why I was {disfmarker} I {disfmarker} I 'm not sure how much that is .
+PhD D: Uh , I think that has about {disfmarker} Well i you 'd {disfmarker} would be gender - dependent training , right ? So {disfmarker} So I think it 's {disfmarker} uh that 's about mmm , something like thirty hours .
+PhD F: Gender - dependent , yeah .
+PhD D: Thirty hours per gender .
+PhD F: Thirty hours .
+Grad A: I 'm not sure what this 'll mean .
+PhD F: In the small training set ?
+Grad A: Hello ?
+PhD D: I {disfmarker} I think so . I 'll {disfmarker}
+Grad A: Excuse me ?
+PhD D: It 's definitely less than a hundred {disfmarker}
+Grad A: Alright .
+PhD D: You know , it 's more like {disfmarker} like thirty forty hours something like that .
+Grad A: Wrong number .
+PhD F: They called to tell us that ?
+Professor B: Yeah .
+PhD D: Yeah .
+Professor B: Um . So . Uh . after run
+PhD F: I mean , I didn't want to do too big ,
+Professor B: Right . So
+PhD F: just {disfmarker}
+Professor B: At least a couple thousand hidden units . I mean . It 's {disfmarker} it 's th the thing I 'll {disfmarker} I 'll think about it a little more
+PhD D: Mm - hmm .
+Professor B: but it {disfmarker} it 'd be toss up between two thousand and four thousand .
+PhD F: Mmm .
+Professor B: You definitely wouldn't want the eight thousand . It 's m It 's more than {disfmarker}
+PhD F: And a thousand is too small ?
+Professor B: Oh let me think about it , but I think that {disfmarker} that uh th at some point there 's diminishing returns . I mean it doesn't actually get worse , typically ,
+PhD F: Mm - hmm .
+Grad A: Mm - hmm .
+Professor B: but it {disfmarker} but {disfmarker} but there is diminishing returns and you 're doubling {pause} the amount of time .
+PhD D: Remember you 'll have a smaller output layer so there 's gonna be fewer parameters there .
+Grad A: But not by a lot .
+Professor B: Not by much .
+PhD D: And then {disfmarker}
+Professor B: Fifty s Fifty four to forty eight ?
+Grad A: Vast majority is from the input unit .
+Professor B: Yeah .
+PhD D: OK . Yeah .
+Professor B: Yeah . It 'll have a very tiny effect .
+Grad A: Right , because you used the context windows and so the input to hidden is much , much larger .
+Professor B: Yeah .
+PhD D: Oh I see , I see , yeah , of course .
+Professor B: Yeah .
+PhD D: Yeah . It 's negligible , OK .
+Professor B: Yeah , so it 's {disfmarker} it 'd be way , way less than ten percent of the difference .
+PhD D: Uh - huh .
+Professor B: Uh . There 's uh {disfmarker} How bi how big Let 's see . What am I trying to think of ?
+PhD F: The {disfmarker} The net that {disfmarker} that we did use already {pause} uh was eight thousand hidden units and that 's the one that Eric trained up .
+Professor B: Right . And that was trained up on uh like a hundred and forty hours of {disfmarker} of speech .
+PhD D: Was that gender - dependent or independent ?
+PhD F: Gender - dependent .
+Professor B: Oh . So that would be like trained on s sixty or seventy hours .
+PhD D: Mm - hmm .
+Professor B: So , uh , yeah definitely not the one thousand uh {disfmarker} two thousand fr I mean the four thousand will be better and the two thousand will be almost {disfmarker} will be faster and almost as good .
+Grad A: It 'll be faster .
+Professor B: So .
+PhD F: Yeah .
+PhD D: Mm - hmm .
+PhD F: Maybe I 'll start off with two thousand just to see .
+Professor B: Yeah .
+PhD D: OK .
+PhD F: OK .
+Professor B: Yeah , thirty hours is like a hundred and ten thousand uh seconds . Uh , so that 's like eleven {disfmarker} eleven million frames . And a two thousand hidden unit net is uh I guess about seven , eight hundred thousand parameters . So that 's probably {disfmarker} That 's probably fine . I mean a four thousand is well within the range that you could benefit from but the two thousand 'd be faster so {disfmarker}
+PhD D: Right . I actually have to go .
+Professor B: Alright .
+PhD D: So .
+Professor B: Uncle Bernie 's rule is ten to one . Bernie Woodrow 's Rule of {disfmarker} yeah {disfmarker} Uncle Bernie {disfmarker} yeah .
+Grad A: We 're just waiting for you to leave .
+Professor B: Yes sir .
+Grad A: Anything else ?
+Professor B: Nah .
+Grad A: OK .
+Professor B: Since we have nothing to talk about we only talked for an hour .
+Grad A: If {disfmarker}
+Professor B: So .
+Grad A: yeah that 's right .
+PhD C: Yeah .
+Grad A: Uh , well , we started late .
+PhD F: Transcript
+Professor B: de - ba - de . de - ba - de That 's all folks !
+
+Now, answer the query based on the above meeting transcript in one or more sentences.
+
+Query: What did Grad E contribute to the discussion on storage disks?
+Answer:

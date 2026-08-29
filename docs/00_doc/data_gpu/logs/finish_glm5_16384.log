@@ -1,0 +1,40 @@
+=== 07:38:41 hotset for rung 16384
+=== 07:51:45 sharding
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ruler_niah_single_2_16384_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ruler_niah_single_2_16384_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ruler_niah_single_2_16384_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ruler_niah_single_2_16384_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ruler_qa_1_16384_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ruler_qa_1_16384_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ruler_qa_1_16384_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ruler_qa_1_16384_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_gov_report_16384_s00: 21 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_gov_report_16384_s01: 21 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_gov_report_16384_s02: 21 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_qmsum_16384_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_gov_report_16384_ld00: 26 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_qmsum_16384_ld01: 26 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_gov_report_16384_ld02: 26 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_gov_report_16384_ld03: 26 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_gov_report_16384_ld04: 26 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb1_qmsum_16384_ld05: 27 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb2_single-document_16384_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb2_long-dialogue_16384_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb2_multi-document_16384_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_lb2_code_16384_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ib_passkey_16384_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ib_number_string_16384_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ib_longbook_choice_eng_16384_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ib_longbook_qa_eng_16384_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ib_longbook_qa_eng_16384_ld00: 27 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm5_ib_longbook_qa_eng_16384_ld01: 27 entries
+=== 08:03:08 aggregate
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/R1_kv_locality.csv: 127 runs + 14 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/R2_moe_locality.csv: 125 runs + 14 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/R3_hotset_coverage.csv: 84 runs + 9 aggregates
+rung   8192: n=n=28 adj_overlap=0.849 lift=2.56 recency=0.467
+rung  16384: n=n=28 adj_overlap=0.791 lift=5.26 recency=0.365
+rung  32768: n=n=28 adj_overlap=0.753 lift=10.17 recency=0.312
+rung  65536: n=n=27 adj_overlap=0.730 lift=21.55 recency=0.292
+rung 131072: n=n=16 adj_overlap=0.691 lift=40.94 recency=0.206
+FINISH_RUNG_DONE

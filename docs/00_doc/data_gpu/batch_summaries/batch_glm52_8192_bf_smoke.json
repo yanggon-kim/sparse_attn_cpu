@@ -1,0 +1,86 @@
+{
+ "model": "GLM-5.2",
+ "model_tag": "glm52",
+ "rung": 8192,
+ "kinds": [
+  "bf"
+ ],
+ "n": 5,
+ "reindex": null,
+ "reindex_env": {},
+ "load_seconds": 751.3,
+ "gen_seconds": 111.9,
+ "wall_seconds": 863.1,
+ "gpu_hours": 1.918,
+ "max_model_len": 10496,
+ "max_num_seqs": 4,
+ "thinking": "chat",
+ "trace_dir": "<WORKDIR>/runs/trace_glm52_8192_bf_smoke",
+ "runs": [
+  {
+   "run_id": "glm52_ruler_niah_single_2_8192_s00_smoke",
+   "sample_id": "ruler_niah_single_2_8192_s00",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 8027,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "0"
+  },
+  {
+   "run_id": "glm52_ruler_niah_single_2_8192_s01_smoke",
+   "sample_id": "ruler_niah_single_2_8192_s01",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 7438,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "1"
+  },
+  {
+   "run_id": "glm52_ruler_niah_single_2_8192_s02_smoke",
+   "sample_id": "ruler_niah_single_2_8192_s02",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 8027,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "2"
+  },
+  {
+   "run_id": "glm52_ruler_niah_single_2_8192_s03_smoke",
+   "sample_id": "ruler_niah_single_2_8192_s03",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 8025,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "3"
+  },
+  {
+   "run_id": "glm52_ruler_niah_single_2_8192_s00_solo_smoke",
+   "sample_id": "ruler_niah_single_2_8192_s00_solo",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 8027,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "4"
+  }
+ ]
+}

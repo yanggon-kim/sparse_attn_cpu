@@ -1,0 +1,36 @@
+=== 06:45:36 hotset for rung 131072
+=== 06:48:59 sharding
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_niah_single_2_131072_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_niah_single_2_131072_s01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_niah_single_2_131072_s02_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_niah_single_2_131072_s03_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_qa_1_131072_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_qa_1_131072_s01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_qa_1_131072_s02_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_qa_1_131072_s03_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb2_single-document_131072_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb2_code_131072_s01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb2_long_131072_s02_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb2_long_131072_s03_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_passkey_131072_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_number_string_131072_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_choice_eng_131072_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_qa_eng_131072_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_qa_eng_131072_ld00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_qa_eng_131072_ld01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_sum_eng_131072_ld00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_sum_eng_131072_ld01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_sum_eng_131072_ld02_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_sum_eng_131072_ld03_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_sum_eng_131072_ld04_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_sum_eng_131072_ld05_b: 14 entries
+=== 06:49:00 aggregate
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/R1_kv_locality.csv: 129 runs + 15 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/R2_moe_locality.csv: 129 runs + 15 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/R3_hotset_coverage.csv: 111 runs + 12 aggregates
+rung   8192: n=n=28 adj_overlap=0.846 lift=2.55 recency=0.491
+rung  16384: n=n=28 adj_overlap=0.789 lift=5.25 recency=0.387
+rung  32768: n=n=28 adj_overlap=0.750 lift=10.13 recency=0.324
+rung  65536: n=n=27 adj_overlap=0.722 lift=21.32 recency=0.3
+rung 131072: n=n=18 adj_overlap=0.685 lift=40.88 recency=0.236
+FINISH_RUNG_DONE

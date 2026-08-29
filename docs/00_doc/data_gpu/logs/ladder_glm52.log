@@ -1,0 +1,21 @@
+=== 03:53:56 rung 8192 generate
+[selhook] {'n_written': 2788119, 'n_steps': 2058, 'is_rank0': True, 'errors': [], 'trace_dir': '<WORKDIR>/runs/trace_glm52_8192_bf_ld'}
+[batch] wrote <WORKDIR>/runs/batch_glm52_8192_bf_ld.json; gen 540s wall 654s = 1.454 GPU-h
+[done] adapter finished; run analyze_runs.sh for the chain
+=== 04:17:11 rung 16384 generate
+[selhook] {'n_written': 2791179, 'n_steps': 2070, 'is_rank0': True, 'errors': [], 'trace_dir': '<WORKDIR>/runs/trace_glm52_16384_bf_ld'}
+[batch] wrote <WORKDIR>/runs/batch_glm52_16384_bf_ld.json; gen 586s wall 703s = 1.562 GPU-h
+[done] adapter finished; run analyze_runs.sh for the chain
+=== 04:42:30 rung 32768 generate
+[selhook] {'n_written': 2780163, 'n_steps': 2094, 'is_rank0': True, 'errors': [], 'trace_dir': '<WORKDIR>/runs/trace_glm52_32768_bf_ld'}
+[batch] wrote <WORKDIR>/runs/batch_glm52_32768_bf_ld.json; gen 624s wall 790s = 1.756 GPU-h
+[done] adapter finished; run analyze_runs.sh for the chain
+=== 04:57:41 rung 65536 generate
+[selhook] {'n_written': 2771748, 'n_steps': 2147, 'is_rank0': True, 'errors': [], 'trace_dir': '<WORKDIR>/runs/trace_glm52_65536_bf_ld'}
+[batch] wrote <WORKDIR>/runs/batch_glm52_65536_bf_ld.json; gen 642s wall 878s = 1.951 GPU-h
+[done] adapter finished; run analyze_runs.sh for the chain
+=== 05:14:24 rung 131072 generate
+[selhook] {'n_written': 2541789, 'n_steps': 4234, 'is_rank0': True, 'errors': [], 'trace_dir': '<WORKDIR>/runs/trace_glm52_131072_bf_ld'}
+[batch] wrote <WORKDIR>/runs/batch_glm52_131072_bf_ld.json; gen 1090s wall 1302s = 2.893 GPU-h
+[done] adapter finished; run analyze_runs.sh for the chain
+LADDER_DONE

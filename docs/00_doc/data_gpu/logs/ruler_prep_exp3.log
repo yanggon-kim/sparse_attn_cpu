@@ -1,0 +1,118 @@
+== niah_single_1 32768 22:53:30
+Prepare niah_single_1 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/niah_single_1/validation.jsonl
+Used time: 0.3 minutes
+== niah_single_2 32768 22:53:52
+Prepare niah_single_2 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/niah_single_2/validation.jsonl
+Used time: 0.6 minutes
+== niah_single_3 32768 22:54:33
+Prepare niah_single_3 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/niah_single_3/validation.jsonl
+Used time: 0.8 minutes
+== niah_multikey_1 32768 22:55:21
+Prepare niah_multikey_1 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/niah_multikey_1/validation.jsonl
+Used time: 0.7 minutes
+== niah_multikey_2 32768 22:56:09
+Prepare niah_multikey_2 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/niah_multikey_2/validation.jsonl
+Used time: 0.4 minutes
+== niah_multikey_3 32768 22:56:34
+Prepare niah_multikey_3 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/niah_multikey_3/validation.jsonl
+Used time: 0.4 minutes
+== niah_multivalue 32768 22:56:57
+Prepare niah_multivalue with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/niah_multivalue/validation.jsonl
+Used time: 0.5 minutes
+== niah_multiquery 32768 22:57:28
+Prepare niah_multiquery with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/niah_multiquery/validation.jsonl
+Used time: 0.4 minutes
+== vt 32768 22:57:54
+Prepare vt with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/vt/validation.jsonl
+Used time: 0.2 minutes
+== cwe 32768 22:58:07
+Prepare cwe with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/cwe/validation.jsonl
+Used time: 0.2 minutes
+== fwe 32768 22:58:23
+Prepare fwe with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/fwe/validation.jsonl
+Used time: 0.3 minutes
+== qa_1 32768 22:58:44
+Prepare qa_1 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/qa_1/validation.jsonl
+Used time: 0.3 minutes
+== qa_2 32768 22:59:05
+Prepare qa_2 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/32768/qa_2/validation.jsonl
+Used time: 0.4 minutes
+== niah_single_1 65536 22:59:30
+Prepare niah_single_1 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/niah_single_1/validation.jsonl
+Used time: 0.5 minutes
+== niah_single_2 65536 23:00:01
+Prepare niah_single_2 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/niah_single_2/validation.jsonl
+Used time: 0.7 minutes
+== niah_single_3 65536 23:00:43
+Prepare niah_single_3 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/niah_single_3/validation.jsonl
+Used time: 0.7 minutes
+== niah_multikey_1 65536 23:01:26
+Prepare niah_multikey_1 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/niah_multikey_1/validation.jsonl
+Used time: 0.8 minutes
+== niah_multikey_2 65536 23:02:15
+Prepare niah_multikey_2 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/niah_multikey_2/validation.jsonl
+Used time: 0.6 minutes
+== niah_multikey_3 65536 23:02:53
+Prepare niah_multikey_3 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/niah_multikey_3/validation.jsonl
+Used time: 0.6 minutes
+== niah_multivalue 65536 23:03:31
+Prepare niah_multivalue with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/niah_multivalue/validation.jsonl
+Used time: 0.8 minutes
+== niah_multiquery 65536 23:04:19
+Prepare niah_multiquery with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/niah_multiquery/validation.jsonl
+Used time: 0.8 minutes
+== vt 65536 23:05:10
+Prepare vt with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/vt/validation.jsonl
+Used time: 0.3 minutes
+== cwe 65536 23:05:28
+Prepare cwe with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/cwe/validation.jsonl
+Used time: 0.4 minutes
+== fwe 65536 23:05:56
+Prepare fwe with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/fwe/validation.jsonl
+Used time: 0.5 minutes
+== qa_1 65536 23:06:27
+Prepare qa_1 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/qa_1/validation.jsonl
+Used time: 0.5 minutes
+== qa_2 65536 23:06:55
+Prepare qa_2 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/65536/qa_2/validation.jsonl
+Used time: 0.4 minutes
+== niah_single_1 131072 23:07:23
+Prepare niah_single_1 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/niah_single_1/validation.jsonl
+Used time: 0.9 minutes
+== niah_single_2 131072 23:08:17
+Prepare niah_single_2 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/niah_single_2/validation.jsonl
+Used time: 1.3 minutes
+== niah_single_3 131072 23:09:38
+Prepare niah_single_3 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/niah_single_3/validation.jsonl
+Used time: 1.2 minutes
+== niah_multikey_1 131072 23:10:51
+Prepare niah_multikey_1 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/niah_multikey_1/validation.jsonl
+Used time: 1.3 minutes
+== niah_multikey_2 131072 23:12:11
+Prepare niah_multikey_2 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/niah_multikey_2/validation.jsonl
+Used time: 1.1 minutes
+== niah_multikey_3 131072 23:13:20
+Prepare niah_multikey_3 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/niah_multikey_3/validation.jsonl
+Used time: 1.5 minutes
+== niah_multivalue 131072 23:14:50
+Prepare niah_multivalue with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/niah_multivalue/validation.jsonl
+Used time: 1.8 minutes
+== niah_multiquery 131072 23:16:42
+Prepare niah_multiquery with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/niah_multiquery/validation.jsonl
+Used time: 1.3 minutes
+== vt 131072 23:18:03
+Prepare vt with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/vt/validation.jsonl
+Used time: 0.6 minutes
+== cwe 131072 23:18:39
+Prepare cwe with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/cwe/validation.jsonl
+Used time: 0.7 minutes
+== fwe 131072 23:19:24
+Prepare fwe with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/fwe/validation.jsonl
+Used time: 0.8 minutes
+== qa_1 131072 23:20:11
+Prepare qa_1 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/qa_1/validation.jsonl
+Used time: 0.9 minutes
+== qa_2 131072 23:21:08
+Prepare qa_2 with lines: 100 to <WORKDIR>/prompts/ruler_exp3/131072/qa_2/validation.jsonl
+Used time: 1.1 minutes
+RULER_EXP3_PREP_DONE

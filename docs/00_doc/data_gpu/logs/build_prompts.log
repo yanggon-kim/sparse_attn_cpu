@@ -1,0 +1,35 @@
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (702225 > 131072). Running this sequence through the model will result in indexing errors
+[lb1] rung 8192: pool 58 -> bf 4 ld 6
+[lb1] rung 16384: pool 154 -> bf 4 ld 6
+[lb1] rung 32768: pool 70 -> bf 4 ld 6
+[lb1] rung 65536: pool 3 -> bf 3 ld 0
+[lb1] rung 131072: pool 0 -> bf 0 ld 0
+[lb2] rung 8192: 4 chosen (tried 4)
+[lb2] rung 16384: 4 chosen (tried 4)
+[lb2] rung 32768: 4 chosen (tried 4)
+[lb2] rung 65536: 4 chosen (tried 4)
+[lb2] rung 131072: 4 chosen (tried 8)
+[ib] rung 8192 passkey: 1
+[ib] rung 8192 number_string: 1
+[ib] rung 8192 longbook_choice_eng: 1
+[ib] rung 8192 longbook_qa_eng: 1
+[ib] rung 16384 passkey: 1
+[ib] rung 16384 number_string: 1
+[ib] rung 16384 longbook_choice_eng: 1
+[ib] rung 16384 longbook_qa_eng: 1
+[ib] rung 32768 passkey: 1
+[ib] rung 32768 number_string: 1
+[ib] rung 32768 longbook_choice_eng: 1
+[ib] rung 32768 longbook_qa_eng: 1
+[ib] rung 65536 passkey: 1
+[ib] rung 65536 number_string: 1
+[ib] rung 65536 longbook_choice_eng: 1
+[ib] rung 65536 longbook_qa_eng: 1
+[ib] rung 131072 passkey: 1
+[ib] rung 131072 number_string: 1
+[ib] rung 131072 longbook_choice_eng: 1
+[ib] rung 131072 longbook_qa_eng: 1
+total 135 Counter({(8192, 'bf'): 20, (16384, 'bf'): 20, (32768, 'bf'): 20, (65536, 'bf'): 19, (131072, 'bf'): 16, (8192, 'ld'): 8, (16384, 'ld'): 8, (32768, 'ld'): 8, (65536, 'ld'): 8, (131072, 'ld'): 8})
+Counter({(8192, 'ruler'): 8, (16384, 'ruler'): 8, (32768, 'ruler'): 8, (65536, 'ruler'): 8, (131072, 'ruler'): 8, (8192, 'longbench_v1'): 4, (16384, 'longbench_v1'): 4, (32768, 'longbench_v1'): 4, (8192, 'longbench_v2'): 4, (16384, 'longbench_v2'): 4, (32768, 'longbench_v2'): 4, (65536, 'longbench_v2'): 4, (131072, 'longbench_v2'): 4, (8192, 'infinitebench'): 4, (16384, 'infinitebench'): 4, (32768, 'infinitebench'): 4, (65536, 'infinitebench'): 4, (131072, 'infinitebench'): 4, (65536, 'longbench_v1'): 3})

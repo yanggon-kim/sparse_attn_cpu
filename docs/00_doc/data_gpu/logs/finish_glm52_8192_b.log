@@ -1,0 +1,40 @@
+=== 05:38:44 hotset for rung 8192
+=== 05:43:32 sharding
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_niah_single_2_8192_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_niah_single_2_8192_s01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_niah_single_2_8192_s02_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_niah_single_2_8192_s03_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_qa_1_8192_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_qa_1_8192_s01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_qa_1_8192_s02_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ruler_qa_1_8192_s03_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_gov_report_8192_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_gov_report_8192_s01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_qmsum_8192_s02_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_multi_news_8192_s03_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_multi_news_8192_ld00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_multi_news_8192_ld01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_qmsum_8192_ld02_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_qmsum_8192_ld03_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_gov_report_8192_ld04_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb1_multi_news_8192_ld05_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb2_single-document_8192_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb2_long-dialogue_8192_s01_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb2_multi-document_8192_s02_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_lb2_code_8192_s03_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_passkey_8192_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_number_string_8192_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_choice_eng_8192_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_qa_eng_8192_s00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_qa_eng_8192_ld00_b: 14 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/runs/glm52_ib_longbook_qa_eng_8192_ld01_b: 14 entries
+=== 05:43:34 aggregate
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/R1_kv_locality.csv: 102 runs + 13 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/R2_moe_locality.csv: 102 runs + 13 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/glm_sweep/R3_hotset_coverage.csv: 44 runs + 6 aggregates
+rung   8192: n=n=28 adj_overlap=0.846 lift=2.55 recency=0.491
+rung  16384: n=n=28 adj_overlap=0.789 lift=5.25 recency=0.387
+rung  32768: n=n=21 adj_overlap=0.746 lift=10.26 recency=0.268
+rung  65536: n=n=19 adj_overlap=0.709 lift=20.36 recency=0.233
+rung 131072: n=n=6 adj_overlap=0.717 lift=41.74 recency=0.234
+FINISH_RUNG_DONE

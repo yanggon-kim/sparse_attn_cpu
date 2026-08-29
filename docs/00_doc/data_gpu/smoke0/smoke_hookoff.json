@@ -1,0 +1,39 @@
+{
+  "model": "<WORKDIR>/models/DeepSeek-V3.2",
+  "load_seconds": 478.6,
+  "gpu_mem_used_mib": [
+    171024,
+    171024,
+    171024,
+    171024,
+    171024,
+    171024,
+    171024,
+    171024
+  ],
+  "max_model_len": 16384,
+  "n": 3,
+  "prompt": "The capital of France is",
+  "gens": [
+    {
+      "text": " Paris. The",
+      "token_ids": [
+        11111,
+        16,
+        455
+      ],
+      "request_id": "0"
+    },
+    {
+      "text": " Paris. The",
+      "token_ids": [
+        11111,
+        16,
+        455
+      ],
+      "request_id": "1"
+    }
+  ],
+  "identical": true,
+  "hook_trace": null
+}

@@ -1,0 +1,725 @@
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+INFO 08-29 00:11:39 [api_utils.py:272] non-default args: {'trust_remote_code': True, 'seed': 42, 'max_model_len': 8819, 'tensor_parallel_size': 8, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.9, 'max_num_seqs': 8, 'disable_log_stats': True, 'enforce_eager': True, 'model': '<WORKDIR>/models/DeepSeek-V3.2'}
+INFO 08-29 00:11:39 [config.py:779] Detected quantization_config.scale_fmt=ue8m0; enabling UE8M0 for DeepGEMM.
+INFO 08-29 00:11:39 [model.py:672] Resolved architecture: DeepseekV32ForCausalLM
+INFO 08-29 00:11:39 [model.py:690] Defaulting to tokenizer_mode='deepseek_v32' for DeepseekV32ForCausalLM
+INFO 08-29 00:11:39 [model.py:1965] Using max model len 8819
+INFO 08-29 00:11:39 [scheduler.py:242] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 08-29 00:11:39 [vllm.py:1285] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 08-29 00:11:39 [vllm.py:1354] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 08-29 00:11:39 [kernel.py:308] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 08-29 00:11:39 [vllm.py:1533] Cudagraph is disabled under eager mode
+INFO 08-29 00:11:44 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant, allreduce_rms
+WARNING 08-29 00:11:44 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+(EngineCore pid=193072) INFO 08-29 00:11:51 [core.py:122] Initializing a V1 LLM engine (v0.28.0) with config: model='<WORKDIR>/models/DeepSeek-V3.2', speculative_config=None, tokenizer='<WORKDIR>/models/DeepSeek-V3.2', skip_tokenizer_init=False, tokenizer_mode=deepseek_v32, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8819, download_dir=None, load_format=auto, tensor_parallel_size=8, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=fp8, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=<WORKDIR>/models/DeepSeek-V3.2, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['+quant_fp8', 'all', '+quant_fp8'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [73, 16384], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': True, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=193072) INFO 08-29 00:11:51 [multiproc_executor.py:150] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=127.0.0.1, mq_connect_ip=172.31.28.63 (local), world_size=8, local_world_size=8
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+[W829 00:12:02.108673293 Context.cpp:597] Warning: torch.backends.cuda.preferred_blas_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+(Worker pid=193437) INFO 08-29 00:12:02 [parallel_state.py:1638] world_size=8 rank=7 local_rank=7 distributed_init_method=file:///tmp/vllm_dist_752a0018d7514418bd49027561940b74 backend=nccl
+[W829 00:12:03.042014019 Context.cpp:597] Warning: torch.backends.cuda.preferred_blas_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+(Worker pid=193430) INFO 08-29 00:12:03 [parallel_state.py:1638] world_size=8 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_752a0018d7514418bd49027561940b74 backend=nccl
+[W829 00:12:04.644159262 Context.cpp:597] Warning: torch.backends.cuda.preferred_blas_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+(Worker pid=193431) INFO 08-29 00:12:04 [parallel_state.py:1638] world_size=8 rank=1 local_rank=1 distributed_init_method=file:///tmp/vllm_dist_752a0018d7514418bd49027561940b74 backend=nccl
+[W829 00:12:04.644866120 Context.cpp:597] Warning: torch.backends.cuda.preferred_blas_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+(Worker pid=193436) INFO 08-29 00:12:04 [parallel_state.py:1638] world_size=8 rank=6 local_rank=6 distributed_init_method=file:///tmp/vllm_dist_752a0018d7514418bd49027561940b74 backend=nccl
+[W829 00:12:04.645211048 Context.cpp:597] Warning: torch.backends.cuda.preferred_blas_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+(Worker pid=193432) INFO 08-29 00:12:04 [parallel_state.py:1638] world_size=8 rank=2 local_rank=2 distributed_init_method=file:///tmp/vllm_dist_752a0018d7514418bd49027561940b74 backend=nccl
+[W829 00:12:04.647687834 Context.cpp:597] Warning: torch.backends.cuda.preferred_blas_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+(Worker pid=193435) INFO 08-29 00:12:04 [parallel_state.py:1638] world_size=8 rank=5 local_rank=5 distributed_init_method=file:///tmp/vllm_dist_752a0018d7514418bd49027561940b74 backend=nccl
+[W829 00:12:04.650126297 Context.cpp:597] Warning: torch.backends.cuda.preferred_blas_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+(Worker pid=193433) INFO 08-29 00:12:04 [parallel_state.py:1638] world_size=8 rank=3 local_rank=3 distributed_init_method=file:///tmp/vllm_dist_752a0018d7514418bd49027561940b74 backend=nccl
+[W829 00:12:04.669605598 Context.cpp:597] Warning: torch.backends.cuda.preferred_blas_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+(Worker pid=193434) INFO 08-29 00:12:04 [parallel_state.py:1638] world_size=8 rank=4 local_rank=4 distributed_init_method=file:///tmp/vllm_dist_752a0018d7514418bd49027561940b74 backend=nccl
+(Worker pid=193430) INFO 08-29 00:12:05 [pynccl.py:113] vLLM is using nccl==2.29.7
+(Worker pid=193430) INFO 08-29 00:12:08 [cuda_communicator.py:266] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'tp:0' out of potential backends: ['NCCL_SYMM_MEM', 'QUICK_REDUCE', 'FLASHINFER', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=193430) INFO 08-29 00:12:09 [cuda_communicator.py:266] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'ep:0' out of potential backends: ['NCCL_SYMM_MEM', 'QUICK_REDUCE', 'FLASHINFER', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=193430) INFO 08-29 00:12:09 [parallel_state.py:1982] rank 0 in world size 8 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+(Worker pid=193430) INFO 08-29 00:12:10 [topk_topp_sampler.py:62] Using FlashInfer for top-p & top-k sampling.
+(Worker_TP0 pid=193430) INFO 08-29 00:12:10 [gpu_model_runner.py:5419] Starting to load model <WORKDIR>/models/DeepSeek-V3.2...
+(Worker_TP0 pid=193430) INFO 08-29 00:12:10 [__init__.py:689] Selected DeepGemmFp8BlockScaledMMKernel for Fp8LinearMethod
+(Worker_TP0 pid=193430) INFO 08-29 00:12:10 [deep_gemm.py:186] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+(Worker_TP0 pid=193430) INFO 08-29 00:12:10 [deep_gemm.py:213] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+(Worker_TP0 pid=193430) INFO 08-29 00:12:10 [deep_gemm.py:131] DeepGEMM E8M0 enabled on current platform.
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941] WorkerProc failed to start.
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 908, in worker_main
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     worker = WorkerProc(*args, **kwargs)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 677, in __init__
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.worker.load_model()
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 457, in load_model
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 5435, in load_model
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = model_loader.load_model(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 55, in load_model
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = initialize_model(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/utils.py", line 58, in initialize_model
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = model_class(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1836, in __init__
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = self.model_cls(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     old_init(self, *args, **kwargs)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1394, in __init__
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.start_layer, self.end_layer, self.layers = make_layers(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                                                     ^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 812, in make_layers
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     + get_offloader().wrap_modules(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/offloader/base.py", line 104, in wrap_modules
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return list(modules_generator)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 813, in <genexpr>
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     layer_fn(prefix=f"{prefix}.{idx}") for idx in range(start_layer, end_layer)
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1396, in <lambda>
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     lambda prefix: DeepseekV2DecoderLayer(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                    ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1245, in __init__
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.self_attn = attn_cls(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                      ^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1156, in __init__
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MultiHeadLatentAttentionWrapper(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/mla.py", line 110, in __init__
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MLAAttention(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/attention/mla_attention.py", line 461, in __init__
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.attn_backend = get_attn_backend(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                         ^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 185, in get_attn_backend
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return _cached_get_attn_backend(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 200, in _cached_get_attn_backend
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     attention_cls = current_platform.get_attn_backend_cls(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 450, in get_attn_backend_cls
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941] ValueError: No valid attention backend found for cuda with AttentionSelectorConfig(head_size=576, dtype=torch.bfloat16, kv_cache_dtype=auto, block_size=None, use_mla=True, has_sink=False, use_sparse=True, use_mm_prefix=False, use_per_head_quant_scales=False, attn_type=AttentionType.DECODER, has_sliding_window=False, use_non_causal=False, use_batch_invariant=True, use_kv_connector=False, use_adaptive_verification=False, use_pcp=False). Reasons: {FLASHINFER_MLA: [sparse not supported, batch invariance not supported], TOKENSPEED_MLA: [kv_cache_dtype not supported, sparse not supported, batch invariance not supported], CUTLASS_MLA: [sparse not supported, batch invariance not supported], FLASH_ATTN_MLA: [sparse not supported, compute capability not supported, FlashAttention MLA not supported on this device], FLASHMLA: [sparse not supported, batch invariance not supported], TRITON_MLA: [sparse not supported], FLASHINFER_MLA_SPARSE: [batch invariance not supported], FLASHMLA_SPARSE: [batch invariance not supported]}.
+(EngineCore pid=193072) INFO 08-29 00:12:11 [multiproc_executor.py:469] [shutdown] Executor: waiting for worker exit count=8
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941] WorkerProc failed to start.
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 908, in worker_main
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     worker = WorkerProc(*args, **kwargs)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 677, in __init__
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.worker.load_model()
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 457, in load_model
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 5435, in load_model
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = model_loader.load_model(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 55, in load_model
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = initialize_model(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/utils.py", line 58, in initialize_model
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = model_class(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1836, in __init__
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = self.model_cls(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     old_init(self, *args, **kwargs)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1394, in __init__
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.start_layer, self.end_layer, self.layers = make_layers(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                                                     ^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 812, in make_layers
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     + get_offloader().wrap_modules(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/offloader/base.py", line 104, in wrap_modules
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return list(modules_generator)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 813, in <genexpr>
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     layer_fn(prefix=f"{prefix}.{idx}") for idx in range(start_layer, end_layer)
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1396, in <lambda>
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     lambda prefix: DeepseekV2DecoderLayer(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                    ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1245, in __init__
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.self_attn = attn_cls(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                      ^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1156, in __init__
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MultiHeadLatentAttentionWrapper(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/mla.py", line 110, in __init__
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MLAAttention(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/attention/mla_attention.py", line 461, in __init__
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.attn_backend = get_attn_backend(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                         ^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 185, in get_attn_backend
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return _cached_get_attn_backend(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 200, in _cached_get_attn_backend
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     attention_cls = current_platform.get_attn_backend_cls(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 450, in get_attn_backend_cls
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941] ValueError: No valid attention backend found for cuda with AttentionSelectorConfig(head_size=576, dtype=torch.bfloat16, kv_cache_dtype=auto, block_size=None, use_mla=True, has_sink=False, use_sparse=True, use_mm_prefix=False, use_per_head_quant_scales=False, attn_type=AttentionType.DECODER, has_sliding_window=False, use_non_causal=False, use_batch_invariant=True, use_kv_connector=False, use_adaptive_verification=False, use_pcp=False). Reasons: {FLASHINFER_MLA: [sparse not supported, batch invariance not supported], TOKENSPEED_MLA: [kv_cache_dtype not supported, sparse not supported, batch invariance not supported], CUTLASS_MLA: [sparse not supported, batch invariance not supported], FLASH_ATTN_MLA: [sparse not supported, compute capability not supported, FlashAttention MLA not supported on this device], FLASHMLA: [sparse not supported, batch invariance not supported], TRITON_MLA: [sparse not supported], FLASHINFER_MLA_SPARSE: [batch invariance not supported], FLASHMLA_SPARSE: [batch invariance not supported]}.
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941] WorkerProc failed to start.
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 908, in worker_main
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     worker = WorkerProc(*args, **kwargs)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 677, in __init__
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.worker.load_model()
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 457, in load_model
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 5435, in load_model
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = model_loader.load_model(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 55, in load_model
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = initialize_model(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/utils.py", line 58, in initialize_model
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = model_class(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1836, in __init__
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = self.model_cls(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     old_init(self, *args, **kwargs)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1394, in __init__
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.start_layer, self.end_layer, self.layers = make_layers(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                                                     ^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 812, in make_layers
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     + get_offloader().wrap_modules(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/offloader/base.py", line 104, in wrap_modules
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return list(modules_generator)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 813, in <genexpr>
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     layer_fn(prefix=f"{prefix}.{idx}") for idx in range(start_layer, end_layer)
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1396, in <lambda>
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     lambda prefix: DeepseekV2DecoderLayer(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                    ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1245, in __init__
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.self_attn = attn_cls(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                      ^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1156, in __init__
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MultiHeadLatentAttentionWrapper(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/mla.py", line 110, in __init__
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MLAAttention(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/attention/mla_attention.py", line 461, in __init__
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.attn_backend = get_attn_backend(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                         ^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 185, in get_attn_backend
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return _cached_get_attn_backend(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 200, in _cached_get_attn_backend
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     attention_cls = current_platform.get_attn_backend_cls(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 450, in get_attn_backend_cls
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+(Worker_TP5 pid=193435) ERROR 08-29 00:12:11 [multiproc_executor.py:941] ValueError: No valid attention backend found for cuda with AttentionSelectorConfig(head_size=576, dtype=torch.bfloat16, kv_cache_dtype=auto, block_size=None, use_mla=True, has_sink=False, use_sparse=True, use_mm_prefix=False, use_per_head_quant_scales=False, attn_type=AttentionType.DECODER, has_sliding_window=False, use_non_causal=False, use_batch_invariant=True, use_kv_connector=False, use_adaptive_verification=False, use_pcp=False). Reasons: {FLASHINFER_MLA: [sparse not supported, batch invariance not supported], TOKENSPEED_MLA: [kv_cache_dtype not supported, sparse not supported, batch invariance not supported], CUTLASS_MLA: [sparse not supported, batch invariance not supported], FLASH_ATTN_MLA: [sparse not supported, compute capability not supported, FlashAttention MLA not supported on this device], FLASHMLA: [sparse not supported, batch invariance not supported], TRITON_MLA: [sparse not supported], FLASHINFER_MLA_SPARSE: [batch invariance not supported], FLASHMLA_SPARSE: [batch invariance not supported]}.
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941] WorkerProc failed to start.
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 908, in worker_main
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     worker = WorkerProc(*args, **kwargs)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 677, in __init__
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.worker.load_model()
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 457, in load_model
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 5435, in load_model
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = model_loader.load_model(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 55, in load_model
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = initialize_model(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/utils.py", line 58, in initialize_model
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = model_class(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1836, in __init__
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = self.model_cls(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     old_init(self, *args, **kwargs)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1394, in __init__
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.start_layer, self.end_layer, self.layers = make_layers(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                                                     ^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 812, in make_layers
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     + get_offloader().wrap_modules(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/offloader/base.py", line 104, in wrap_modules
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return list(modules_generator)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 813, in <genexpr>
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     layer_fn(prefix=f"{prefix}.{idx}") for idx in range(start_layer, end_layer)
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1396, in <lambda>
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     lambda prefix: DeepseekV2DecoderLayer(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                    ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1245, in __init__
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.self_attn = attn_cls(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                      ^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1156, in __init__
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MultiHeadLatentAttentionWrapper(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/mla.py", line 110, in __init__
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MLAAttention(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/attention/mla_attention.py", line 461, in __init__
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.attn_backend = get_attn_backend(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                         ^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 185, in get_attn_backend
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return _cached_get_attn_backend(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 200, in _cached_get_attn_backend
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     attention_cls = current_platform.get_attn_backend_cls(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 450, in get_attn_backend_cls
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+(Worker_TP4 pid=193434) ERROR 08-29 00:12:11 [multiproc_executor.py:941] ValueError: No valid attention backend found for cuda with AttentionSelectorConfig(head_size=576, dtype=torch.bfloat16, kv_cache_dtype=auto, block_size=None, use_mla=True, has_sink=False, use_sparse=True, use_mm_prefix=False, use_per_head_quant_scales=False, attn_type=AttentionType.DECODER, has_sliding_window=False, use_non_causal=False, use_batch_invariant=True, use_kv_connector=False, use_adaptive_verification=False, use_pcp=False). Reasons: {FLASHINFER_MLA: [sparse not supported, batch invariance not supported], TOKENSPEED_MLA: [kv_cache_dtype not supported, sparse not supported, batch invariance not supported], CUTLASS_MLA: [sparse not supported, batch invariance not supported], FLASH_ATTN_MLA: [sparse not supported, compute capability not supported, FlashAttention MLA not supported on this device], FLASHMLA: [sparse not supported, batch invariance not supported], TRITON_MLA: [sparse not supported], FLASHINFER_MLA_SPARSE: [batch invariance not supported], FLASHMLA_SPARSE: [batch invariance not supported]}.
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941] WorkerProc failed to start.
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 908, in worker_main
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     worker = WorkerProc(*args, **kwargs)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 677, in __init__
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.worker.load_model()
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 457, in load_model
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 5435, in load_model
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = model_loader.load_model(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 55, in load_model
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = initialize_model(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/utils.py", line 58, in initialize_model
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = model_class(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1836, in __init__
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = self.model_cls(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     old_init(self, *args, **kwargs)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1394, in __init__
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.start_layer, self.end_layer, self.layers = make_layers(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                                                     ^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 812, in make_layers
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     + get_offloader().wrap_modules(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/offloader/base.py", line 104, in wrap_modules
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return list(modules_generator)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 813, in <genexpr>
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     layer_fn(prefix=f"{prefix}.{idx}") for idx in range(start_layer, end_layer)
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1396, in <lambda>
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     lambda prefix: DeepseekV2DecoderLayer(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                    ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1245, in __init__
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.self_attn = attn_cls(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                      ^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1156, in __init__
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MultiHeadLatentAttentionWrapper(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/mla.py", line 110, in __init__
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MLAAttention(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/attention/mla_attention.py", line 461, in __init__
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.attn_backend = get_attn_backend(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                         ^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 185, in get_attn_backend
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return _cached_get_attn_backend(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 200, in _cached_get_attn_backend
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     attention_cls = current_platform.get_attn_backend_cls(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 450, in get_attn_backend_cls
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+(Worker_TP2 pid=193432) ERROR 08-29 00:12:11 [multiproc_executor.py:941] ValueError: No valid attention backend found for cuda with AttentionSelectorConfig(head_size=576, dtype=torch.bfloat16, kv_cache_dtype=auto, block_size=None, use_mla=True, has_sink=False, use_sparse=True, use_mm_prefix=False, use_per_head_quant_scales=False, attn_type=AttentionType.DECODER, has_sliding_window=False, use_non_causal=False, use_batch_invariant=True, use_kv_connector=False, use_adaptive_verification=False, use_pcp=False). Reasons: {FLASHINFER_MLA: [sparse not supported, batch invariance not supported], TOKENSPEED_MLA: [kv_cache_dtype not supported, sparse not supported, batch invariance not supported], CUTLASS_MLA: [sparse not supported, batch invariance not supported], FLASH_ATTN_MLA: [sparse not supported, compute capability not supported, FlashAttention MLA not supported on this device], FLASHMLA: [sparse not supported, batch invariance not supported], TRITON_MLA: [sparse not supported], FLASHINFER_MLA_SPARSE: [batch invariance not supported], FLASHMLA_SPARSE: [batch invariance not supported]}.
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941] WorkerProc failed to start.
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 908, in worker_main
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     worker = WorkerProc(*args, **kwargs)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 677, in __init__
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.worker.load_model()
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 457, in load_model
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 5435, in load_model
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = model_loader.load_model(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 55, in load_model
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = initialize_model(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/utils.py", line 58, in initialize_model
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = model_class(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1836, in __init__
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = self.model_cls(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     old_init(self, *args, **kwargs)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1394, in __init__
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.start_layer, self.end_layer, self.layers = make_layers(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                                                     ^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 812, in make_layers
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     + get_offloader().wrap_modules(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/offloader/base.py", line 104, in wrap_modules
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return list(modules_generator)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 813, in <genexpr>
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     layer_fn(prefix=f"{prefix}.{idx}") for idx in range(start_layer, end_layer)
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1396, in <lambda>
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     lambda prefix: DeepseekV2DecoderLayer(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                    ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1245, in __init__
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.self_attn = attn_cls(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                      ^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1156, in __init__
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MultiHeadLatentAttentionWrapper(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/mla.py", line 110, in __init__
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MLAAttention(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/attention/mla_attention.py", line 461, in __init__
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.attn_backend = get_attn_backend(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                         ^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 185, in get_attn_backend
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return _cached_get_attn_backend(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 200, in _cached_get_attn_backend
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     attention_cls = current_platform.get_attn_backend_cls(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 450, in get_attn_backend_cls
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+(Worker_TP0 pid=193430) ERROR 08-29 00:12:11 [multiproc_executor.py:941] ValueError: No valid attention backend found for cuda with AttentionSelectorConfig(head_size=576, dtype=torch.bfloat16, kv_cache_dtype=auto, block_size=None, use_mla=True, has_sink=False, use_sparse=True, use_mm_prefix=False, use_per_head_quant_scales=False, attn_type=AttentionType.DECODER, has_sliding_window=False, use_non_causal=False, use_batch_invariant=True, use_kv_connector=False, use_adaptive_verification=False, use_pcp=False). Reasons: {FLASHINFER_MLA: [sparse not supported, batch invariance not supported], TOKENSPEED_MLA: [kv_cache_dtype not supported, sparse not supported, batch invariance not supported], CUTLASS_MLA: [sparse not supported, batch invariance not supported], FLASH_ATTN_MLA: [sparse not supported, compute capability not supported, FlashAttention MLA not supported on this device], FLASHMLA: [sparse not supported, batch invariance not supported], TRITON_MLA: [sparse not supported], FLASHINFER_MLA_SPARSE: [batch invariance not supported], FLASHMLA_SPARSE: [batch invariance not supported]}.
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941] WorkerProc failed to start.
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 908, in worker_main
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     worker = WorkerProc(*args, **kwargs)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 677, in __init__
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.worker.load_model()
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 457, in load_model
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 5435, in load_model
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = model_loader.load_model(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 55, in load_model
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = initialize_model(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/utils.py", line 58, in initialize_model
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = model_class(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1836, in __init__
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = self.model_cls(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     old_init(self, *args, **kwargs)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1394, in __init__
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.start_layer, self.end_layer, self.layers = make_layers(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                                                     ^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 812, in make_layers
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     + get_offloader().wrap_modules(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/offloader/base.py", line 104, in wrap_modules
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return list(modules_generator)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 813, in <genexpr>
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     layer_fn(prefix=f"{prefix}.{idx}") for idx in range(start_layer, end_layer)
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1396, in <lambda>
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     lambda prefix: DeepseekV2DecoderLayer(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                    ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1245, in __init__
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.self_attn = attn_cls(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                      ^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1156, in __init__
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MultiHeadLatentAttentionWrapper(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/mla.py", line 110, in __init__
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MLAAttention(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/attention/mla_attention.py", line 461, in __init__
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.attn_backend = get_attn_backend(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                         ^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 185, in get_attn_backend
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return _cached_get_attn_backend(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 200, in _cached_get_attn_backend
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     attention_cls = current_platform.get_attn_backend_cls(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 450, in get_attn_backend_cls
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+(Worker_TP3 pid=193433) ERROR 08-29 00:12:11 [multiproc_executor.py:941] ValueError: No valid attention backend found for cuda with AttentionSelectorConfig(head_size=576, dtype=torch.bfloat16, kv_cache_dtype=auto, block_size=None, use_mla=True, has_sink=False, use_sparse=True, use_mm_prefix=False, use_per_head_quant_scales=False, attn_type=AttentionType.DECODER, has_sliding_window=False, use_non_causal=False, use_batch_invariant=True, use_kv_connector=False, use_adaptive_verification=False, use_pcp=False). Reasons: {FLASHINFER_MLA: [sparse not supported, batch invariance not supported], TOKENSPEED_MLA: [kv_cache_dtype not supported, sparse not supported, batch invariance not supported], CUTLASS_MLA: [sparse not supported, batch invariance not supported], FLASH_ATTN_MLA: [sparse not supported, compute capability not supported, FlashAttention MLA not supported on this device], FLASHMLA: [sparse not supported, batch invariance not supported], TRITON_MLA: [sparse not supported], FLASHINFER_MLA_SPARSE: [batch invariance not supported], FLASHMLA_SPARSE: [batch invariance not supported]}.
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941] WorkerProc failed to start.
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 908, in worker_main
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     worker = WorkerProc(*args, **kwargs)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 677, in __init__
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.worker.load_model()
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 457, in load_model
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 5435, in load_model
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = model_loader.load_model(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 55, in load_model
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = initialize_model(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return func(*args, **kwargs)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/model_loader/utils.py", line 58, in initialize_model
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     model = model_class(vllm_config=vllm_config, prefix=prefix)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1836, in __init__
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.model = self.model_cls(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                  ^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 383, in __init__
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     old_init(self, *args, **kwargs)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1394, in __init__
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.start_layer, self.end_layer, self.layers = make_layers(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                                                     ^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 812, in make_layers
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     + get_offloader().wrap_modules(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/offloader/base.py", line 104, in wrap_modules
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return list(modules_generator)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 813, in <genexpr>
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     layer_fn(prefix=f"{prefix}.{idx}") for idx in range(start_layer, end_layer)
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1396, in <lambda>
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     lambda prefix: DeepseekV2DecoderLayer(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                    ^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1245, in __init__
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.self_attn = attn_cls(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                      ^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/models/deepseek_v2.py", line 1156, in __init__
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MultiHeadLatentAttentionWrapper(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/mla.py", line 110, in __init__
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.mla_attn = MLAAttention(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/model_executor/layers/attention/mla_attention.py", line 461, in __init__
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     self.attn_backend = get_attn_backend(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                         ^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 185, in get_attn_backend
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     return _cached_get_attn_backend(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/attention/selector.py", line 200, in _cached_get_attn_backend
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     attention_cls = current_platform.get_attn_backend_cls(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 450, in get_attn_backend_cls
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+(Worker_TP1 pid=193431) ERROR 08-29 00:12:11 [multiproc_executor.py:941] ValueError: No valid attention backend found for cuda with AttentionSelectorConfig(head_size=576, dtype=torch.bfloat16, kv_cache_dtype=auto, block_size=None, use_mla=True, has_sink=False, use_sparse=True, use_mm_prefix=False, use_per_head_quant_scales=False, attn_type=AttentionType.DECODER, has_sliding_window=False, use_non_causal=False, use_batch_invariant=True, use_kv_connector=False, use_adaptive_verification=False, use_pcp=False). Reasons: {FLASHINFER_MLA: [sparse not supported, batch invariance not supported], TOKENSPEED_MLA: [kv_cache_dtype not supported, sparse not supported, batch invariance not supported], CUTLASS_MLA: [sparse not supported, batch invariance not supported], FLASH_ATTN_MLA: [sparse not supported, compute capability not supported, FlashAttention MLA not supported on this device], FLASHMLA: [sparse not supported, batch invariance not supported], TRITON_MLA: [sparse not supported], FLASHINFER_MLA_SPARSE: [batch invariance not supported], FLASHMLA_SPARSE: [batch invariance not supported]}.
+[rank0]:[W829 00:12:12.034652600 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+(EngineCore pid=193072) INFO 08-29 00:12:14 [multiproc_executor.py:476] [shutdown] Executor: all workers exited gracefully
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346] EngineCore failed to start.
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346] Traceback (most recent call last):
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1315, in run_engine_core
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]     return func(*args, **kwargs)
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1073, in __init__
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]     super().__init__(
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 133, in __init__
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 116, in __init__
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]     super().__init__(vllm_config)
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]     return func(*args, **kwargs)
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 110, in __init__
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]     self._init_executor()
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 211, in _init_executor
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]     self.workers = WorkerProc.wait_for_ready(unready_workers)
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 805, in wait_for_ready
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346]     raise e from None
+(EngineCore pid=193072) ERROR 08-29 00:12:14 [core.py:1346] Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+(EngineCore pid=193072) Process EngineCore:
+(EngineCore pid=193072) Traceback (most recent call last):
+(EngineCore pid=193072)   File "<HOME>/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+(EngineCore pid=193072)     self.run()
+(EngineCore pid=193072)   File "<HOME>/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+(EngineCore pid=193072)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1350, in run_engine_core
+(EngineCore pid=193072)     raise e
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1315, in run_engine_core
+(EngineCore pid=193072)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=193072)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=193072)     return func(*args, **kwargs)
+(EngineCore pid=193072)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1073, in __init__
+(EngineCore pid=193072)     super().__init__(
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 133, in __init__
+(EngineCore pid=193072)     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=193072)                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 116, in __init__
+(EngineCore pid=193072)     super().__init__(vllm_config)
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=193072)     return func(*args, **kwargs)
+(EngineCore pid=193072)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 110, in __init__
+(EngineCore pid=193072)     self._init_executor()
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 211, in _init_executor
+(EngineCore pid=193072)     self.workers = WorkerProc.wait_for_ready(unready_workers)
+(EngineCore pid=193072)                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=193072)   File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 805, in wait_for_ready
+(EngineCore pid=193072)     raise e from None
+(EngineCore pid=193072) Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+INFO 08-29 00:12:15 [utils.py:615] [shutdown] Process manager: send sigterm to process EngineCore
+Traceback (most recent call last):
+  File "<HOME>/00_sparse_attn/01_github/sparse_attn_cpu/scripts/gpu/determinism_probe.py", line 79, in <module>
+    main()
+  File "<HOME>/00_sparse_attn/01_github/sparse_attn_cpu/scripts/gpu/determinism_probe.py", line 39, in main
+    llm = LLM(model=a.model, tensor_parallel_size=8, enforce_eager=bool(a.enforce_eager), trust_remote_code=True,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 343, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 179, in from_engine_args
+    return cls(
+           ^^^^
+  File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 105, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 110, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 812, in __init__
+    super().__init__(
+  File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 609, in __init__
+    with launch_core_engines(
+         ^^^^^^^^^^^^^^^^^^^^
+  File "<HOME>/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 1206, in launch_core_engines
+    wait_for_engine_startup(
+  File "<WORKDIR>/env/vllm/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 1286, in wait_for_engine_startup
+    raise RuntimeError(
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+<HOME>/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

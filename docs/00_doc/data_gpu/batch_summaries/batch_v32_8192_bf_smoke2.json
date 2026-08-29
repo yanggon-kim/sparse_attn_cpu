@@ -1,0 +1,84 @@
+{
+ "model": "DeepSeek-V3.2",
+ "model_tag": "v32",
+ "rung": 8192,
+ "kinds": [
+  "bf"
+ ],
+ "n": 5,
+ "load_seconds": 93.5,
+ "gen_seconds": 106.9,
+ "wall_seconds": 200.3,
+ "gpu_hours": 0.445,
+ "max_model_len": 10496,
+ "max_num_seqs": 4,
+ "thinking": "chat",
+ "trace_dir": "<WORKDIR>/runs/trace_v32_8192_bf_smoke2",
+ "runs": [
+  {
+   "run_id": "v32_ruler_niah_single_2_8192_s00_smoke2",
+   "sample_id": "ruler_niah_single_2_8192_s00",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 8047,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "0"
+  },
+  {
+   "run_id": "v32_ruler_niah_single_2_8192_s01_smoke2",
+   "sample_id": "ruler_niah_single_2_8192_s01",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 7459,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "1"
+  },
+  {
+   "run_id": "v32_ruler_niah_single_2_8192_s02_smoke2",
+   "sample_id": "ruler_niah_single_2_8192_s02",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 8051,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "2"
+  },
+  {
+   "run_id": "v32_ruler_niah_single_2_8192_s03_smoke2",
+   "sample_id": "ruler_niah_single_2_8192_s03",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 8049,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "3"
+  },
+  {
+   "run_id": "v32_ruler_niah_single_2_8192_s00_solo_smoke2",
+   "sample_id": "ruler_niah_single_2_8192_s00_solo",
+   "source": "ruler",
+   "task": "niah_single_2",
+   "kind": "bf",
+   "prompt_tokens": 8047,
+   "gen_tokens": 256,
+   "finish": "length",
+   "is_correct": true,
+   "score": 1.0,
+   "request_id": "4"
+  }
+ ]
+}

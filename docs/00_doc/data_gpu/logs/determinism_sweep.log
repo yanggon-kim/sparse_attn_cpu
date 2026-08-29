@@ -1,0 +1,25 @@
+=== moe_deepgemm 00:01:41
+ "solo_first_divergence": [
+ "solo_identical": false,
+ "batch_vs_solo_first_divergence": 10,
+=== moe_flashinfer_cutlass 00:10:40
+(Worker_TP4 pid=189960) ERROR 08-29 00:11:24 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP4 pid=189960) ERROR 08-29 00:11:24 [multiproc_executor.py:941]     raise ValueError(_make_log_unsupported(backend, reason))
+(Worker_TP4 pid=189960) ERROR 08-29 00:11:24 [multiproc_executor.py:941] ValueError: FP8 MoE backend FLASHINFER_CUTLASS does not support the deployment configuration since kernel does not support quantization scheme QuantKey(f8e4m3fn,scale(f32,static,GroupShape(row=128, col=128)),symmetric)xQuantKey(f8e4m3fn,scale(f32,dynamic,GroupShape(row=1, col=128)),symmetric).
+(Worker_TP6 pid=189962) ERROR 08-29 00:11:24 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP6 pid=189962) ERROR 08-29 00:11:24 [multiproc_executor.py:941]     raise ValueError(_make_log_unsupported(backend, reason))
+=== batch_invariant 00:11:31
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+(Worker_TP6 pid=193436) ERROR 08-29 00:12:11 [multiproc_executor.py:941] ValueError: No valid attention backend found for cuda with AttentionSelectorConfig(head_size=576, dtype=torch.bfloat16, kv_cache_dtype=auto, block_size=None, use_mla=True, has_sink=False, use_sparse=True, use_mm_prefix=False, use_per_head_quant_scales=False, attn_type=AttentionType.DECODER, has_sliding_window=False, use_non_causal=False, use_batch_invariant=True, use_kv_connector=False, use_adaptive_verification=False, use_pcp=False). Reasons: {FLASHINFER_MLA: [sparse not supported, batch invariance not supported], TOKENSPEED_MLA: [kv_cache_dtype not supported, sparse not supported, batch invariance not supported], CUTLASS_MLA: [sparse not supported, batch invariance not supported], FLASH_ATTN_MLA: [sparse not supported, compute capability not supported, FlashAttention MLA not supported on this device], FLASHMLA: [sparse not supported, batch invariance not supported], TRITON_MLA: [sparse not supported], FLASHINFER_MLA_SPARSE: [batch invariance not supported], FLASHMLA_SPARSE: [batch invariance not supported]}.
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941] Traceback (most recent call last):
+(Worker_TP7 pid=193437) ERROR 08-29 00:12:11 [multiproc_executor.py:941]     raise ValueError(
+=== moe_triton 00:12:18
+ "solo_first_divergence": [
+ "solo_identical": false,
+ "batch_vs_solo_first_divergence": 39,
+=== attn_flashmla_sparse 00:20:52
+ "solo_first_divergence": [
+ "solo_identical": false,
+ "batch_vs_solo_first_divergence": 19,
+SWEEP_DONE

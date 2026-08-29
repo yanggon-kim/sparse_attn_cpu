@@ -1,0 +1,672 @@
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+INFO 08-29 07:38:51 [api_utils.py:272] non-default args: {'trust_remote_code': True, 'seed': 42, 'max_model_len': 10496, 'tensor_parallel_size': 8, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.9, 'max_num_seqs': 4, 'disable_log_stats': True, 'enforce_eager': True, 'worker_extension_cls': 'selhook.reindex_ext.ReindexExt', 'model': '<WORKDIR>/models/DeepSeek-V3.2'}
+INFO 08-29 07:38:51 [config.py:779] Detected quantization_config.scale_fmt=ue8m0; enabling UE8M0 for DeepGEMM.
+INFO 08-29 07:38:51 [model.py:672] Resolved architecture: DeepseekV32ForCausalLM
+INFO 08-29 07:38:51 [model.py:690] Defaulting to tokenizer_mode='deepseek_v32' for DeepseekV32ForCausalLM
+INFO 08-29 07:38:51 [model.py:1965] Using max model len 10496
+INFO 08-29 07:38:52 [scheduler.py:242] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 08-29 07:38:52 [vllm.py:1285] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 08-29 07:38:52 [vllm.py:1354] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 08-29 07:38:52 [kernel.py:308] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 08-29 07:38:52 [vllm.py:1533] Cudagraph is disabled under eager mode
+INFO 08-29 07:38:56 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant, allreduce_rms
+WARNING 08-29 07:38:57 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+(EngineCore pid=733153) INFO 08-29 07:39:05 [core.py:122] Initializing a V1 LLM engine (v0.28.0) with config: model='<WORKDIR>/models/DeepSeek-V3.2', speculative_config=None, tokenizer='<WORKDIR>/models/DeepSeek-V3.2', skip_tokenizer_init=False, tokenizer_mode=deepseek_v32, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=10496, download_dir=None, load_format=auto, tensor_parallel_size=8, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=fp8, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=<WORKDIR>/models/DeepSeek-V3.2, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['+quant_fp8', 'all', '+quant_fp8'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [73, 16384], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': True, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=733153) INFO 08-29 07:39:05 [multiproc_executor.py:150] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=127.0.0.1, mq_connect_ip=172.31.28.63 (local), world_size=8, local_world_size=8
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+INFO 08-29 07:39:14 [worker_base.py:286] Injected <class 'selhook.reindex_ext.ReindexExt'> into <class 'vllm.v1.worker.gpu_worker.Worker'> for extended collective_rpc calls ['reindex_groups_info', 'reindex_info', 'reindex_readback_test', 'reindex_set', 'selhook_flush', 'selhook_info']
+INFO 08-29 07:39:14 [worker_base.py:286] Injected <class 'selhook.reindex_ext.ReindexExt'> into <class 'vllm.v1.worker.gpu_worker.Worker'> for extended collective_rpc calls ['reindex_groups_info', 'reindex_info', 'reindex_readback_test', 'reindex_set', 'selhook_flush', 'selhook_info']
+INFO 08-29 07:39:14 [worker_base.py:286] Injected <class 'selhook.reindex_ext.ReindexExt'> into <class 'vllm.v1.worker.gpu_worker.Worker'> for extended collective_rpc calls ['reindex_groups_info', 'reindex_info', 'reindex_readback_test', 'reindex_set', 'selhook_flush', 'selhook_info']
+INFO 08-29 07:39:14 [worker_base.py:286] Injected <class 'selhook.reindex_ext.ReindexExt'> into <class 'vllm.v1.worker.gpu_worker.Worker'> for extended collective_rpc calls ['reindex_groups_info', 'reindex_info', 'reindex_readback_test', 'reindex_set', 'selhook_flush', 'selhook_info']
+INFO 08-29 07:39:14 [worker_base.py:286] Injected <class 'selhook.reindex_ext.ReindexExt'> into <class 'vllm.v1.worker.gpu_worker.Worker'> for extended collective_rpc calls ['reindex_groups_info', 'reindex_info', 'reindex_readback_test', 'reindex_set', 'selhook_flush', 'selhook_info']
+INFO 08-29 07:39:14 [worker_base.py:286] Injected <class 'selhook.reindex_ext.ReindexExt'> into <class 'vllm.v1.worker.gpu_worker.Worker'> for extended collective_rpc calls ['reindex_groups_info', 'reindex_info', 'reindex_readback_test', 'reindex_set', 'selhook_flush', 'selhook_info']
+INFO 08-29 07:39:14 [worker_base.py:286] Injected <class 'selhook.reindex_ext.ReindexExt'> into <class 'vllm.v1.worker.gpu_worker.Worker'> for extended collective_rpc calls ['reindex_groups_info', 'reindex_info', 'reindex_readback_test', 'reindex_set', 'selhook_flush', 'selhook_info']
+INFO 08-29 07:39:14 [worker_base.py:286] Injected <class 'selhook.reindex_ext.ReindexExt'> into <class 'vllm.v1.worker.gpu_worker.Worker'> for extended collective_rpc calls ['reindex_groups_info', 'reindex_info', 'reindex_readback_test', 'reindex_set', 'selhook_flush', 'selhook_info']
+(Worker pid=733668) INFO 08-29 07:39:17 [parallel_state.py:1638] world_size=8 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_1cf5351b91c14ed5a1ab8ce91d81ae4c backend=nccl
+(Worker pid=733675) INFO 08-29 07:39:18 [parallel_state.py:1638] world_size=8 rank=7 local_rank=7 distributed_init_method=file:///tmp/vllm_dist_1cf5351b91c14ed5a1ab8ce91d81ae4c backend=nccl
+(Worker pid=733670) INFO 08-29 07:39:18 [parallel_state.py:1638] world_size=8 rank=2 local_rank=2 distributed_init_method=file:///tmp/vllm_dist_1cf5351b91c14ed5a1ab8ce91d81ae4c backend=nccl
+(Worker pid=733671) INFO 08-29 07:39:18 [parallel_state.py:1638] world_size=8 rank=3 local_rank=3 distributed_init_method=file:///tmp/vllm_dist_1cf5351b91c14ed5a1ab8ce91d81ae4c backend=nccl
+(Worker pid=733673) INFO 08-29 07:39:18 [parallel_state.py:1638] world_size=8 rank=5 local_rank=5 distributed_init_method=file:///tmp/vllm_dist_1cf5351b91c14ed5a1ab8ce91d81ae4c backend=nccl
+(Worker pid=733672) INFO 08-29 07:39:18 [parallel_state.py:1638] world_size=8 rank=4 local_rank=4 distributed_init_method=file:///tmp/vllm_dist_1cf5351b91c14ed5a1ab8ce91d81ae4c backend=nccl
+(Worker pid=733674) INFO 08-29 07:39:18 [parallel_state.py:1638] world_size=8 rank=6 local_rank=6 distributed_init_method=file:///tmp/vllm_dist_1cf5351b91c14ed5a1ab8ce91d81ae4c backend=nccl
+(Worker pid=733669) INFO 08-29 07:39:18 [parallel_state.py:1638] world_size=8 rank=1 local_rank=1 distributed_init_method=file:///tmp/vllm_dist_1cf5351b91c14ed5a1ab8ce91d81ae4c backend=nccl
+(Worker pid=733668) INFO 08-29 07:39:19 [pynccl.py:113] vLLM is using nccl==2.29.7
+(Worker pid=733668) INFO 08-29 07:39:23 [cuda_communicator.py:266] Using ['CUSTOM', 'SYMM_MEM', 'PYNCCL'] all-reduce backends (in dispatch order) for group 'tp:0' out of potential backends: ['NCCL_SYMM_MEM', 'QUICK_REDUCE', 'FLASHINFER', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=733668) INFO 08-29 07:39:26 [cuda_communicator.py:266] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'ep:0' out of potential backends: ['NCCL_SYMM_MEM', 'QUICK_REDUCE', 'FLASHINFER', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=733668) INFO 08-29 07:39:26 [parallel_state.py:1982] rank 0 in world size 8 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+(Worker pid=733668) INFO 08-29 07:39:26 [topk_topp_sampler.py:62] Using FlashInfer for top-p & top-k sampling.
+(Worker_TP0 pid=733668) INFO 08-29 07:39:26 [gpu_model_runner.py:5419] Starting to load model <WORKDIR>/models/DeepSeek-V3.2...
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [__init__.py:689] Selected DeepGemmFp8BlockScaledMMKernel for Fp8LinearMethod
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [deep_gemm.py:186] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [deep_gemm.py:213] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [deep_gemm.py:131] DeepGEMM E8M0 enabled on current platform.
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [cuda.py:486] Using FLASHINFER_MLA_SPARSE attention backend out of potential backends: ['FLASHINFER_MLA_SPARSE', 'FLASHMLA_SPARSE'].
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [selector.py:217] Using HND KV cache layout for FLASHINFER_MLA_SPARSE backend.
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [selector.py:190] Using FLASH_ATTN MLA prefill backend.
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [fp8.py:411] Using FLASHINFER_TRTLLM Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [weight_utils.py:858] Filesystem type for checkpoints: EXT4. Checkpoint size: 642.13 GiB. Available RAM: 1281.00 GiB.
+(Worker_TP0 pid=733668) INFO 08-29 07:39:27 [weight_utils.py:881] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   0% Completed | 0/163 [00:00<?, ?it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   1% Completed | 1/163 [00:00<01:05,  2.48it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   1% Completed | 2/163 [00:00<01:07,  2.39it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   2% Completed | 3/163 [00:01<01:12,  2.21it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   2% Completed | 4/163 [00:01<01:11,  2.22it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   3% Completed | 5/163 [00:02<01:06,  2.38it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   4% Completed | 6/163 [00:02<01:08,  2.31it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   4% Completed | 7/163 [00:03<01:14,  2.11it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   5% Completed | 8/163 [00:03<01:19,  1.96it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   6% Completed | 9/163 [00:04<01:19,  1.93it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   6% Completed | 10/163 [00:04<01:21,  1.87it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   7% Completed | 11/163 [00:05<01:29,  1.70it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   7% Completed | 12/163 [00:05<01:11,  2.11it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   8% Completed | 13/163 [00:06<01:15,  1.99it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   9% Completed | 14/163 [00:06<01:21,  1.83it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:   9% Completed | 15/163 [00:07<01:27,  1.69it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  10% Completed | 16/163 [00:08<01:26,  1.71it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  10% Completed | 17/163 [00:08<01:27,  1.67it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  11% Completed | 18/163 [00:09<01:25,  1.71it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  12% Completed | 19/163 [00:10<01:24,  1.70it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  12% Completed | 20/163 [00:10<01:27,  1.64it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  13% Completed | 21/163 [00:11<01:29,  1.58it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  13% Completed | 22/163 [00:12<01:33,  1.50it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  14% Completed | 23/163 [00:12<01:35,  1.46it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  15% Completed | 24/163 [00:13<01:37,  1.42it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  15% Completed | 25/163 [00:14<01:38,  1.40it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  16% Completed | 26/163 [00:15<01:37,  1.41it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  17% Completed | 27/163 [00:15<01:37,  1.40it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  17% Completed | 28/163 [00:16<01:36,  1.40it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  18% Completed | 29/163 [00:17<01:36,  1.39it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  18% Completed | 30/163 [00:17<01:35,  1.39it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  19% Completed | 31/163 [00:18<01:36,  1.36it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  20% Completed | 32/163 [00:19<01:36,  1.36it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  20% Completed | 33/163 [00:20<01:37,  1.33it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  21% Completed | 34/163 [00:20<01:21,  1.59it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  21% Completed | 35/163 [00:21<01:24,  1.52it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  22% Completed | 36/163 [00:22<01:27,  1.45it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  23% Completed | 37/163 [00:22<01:28,  1.42it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  23% Completed | 38/163 [00:23<01:28,  1.41it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  24% Completed | 39/163 [00:24<01:28,  1.40it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  25% Completed | 40/163 [00:24<01:28,  1.39it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  25% Completed | 41/163 [00:25<01:27,  1.40it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  26% Completed | 42/163 [00:26<01:27,  1.38it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  26% Completed | 43/163 [00:27<01:27,  1.38it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  27% Completed | 44/163 [00:27<01:27,  1.36it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  28% Completed | 45/163 [00:28<01:26,  1.36it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  28% Completed | 46/163 [00:29<01:26,  1.36it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  29% Completed | 47/163 [00:30<01:26,  1.34it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  29% Completed | 48/163 [00:30<01:26,  1.33it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  30% Completed | 49/163 [00:31<01:25,  1.33it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  31% Completed | 50/163 [00:32<01:23,  1.35it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  31% Completed | 51/163 [00:33<01:23,  1.34it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  32% Completed | 52/163 [00:33<01:21,  1.36it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  33% Completed | 53/163 [00:34<01:20,  1.37it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  33% Completed | 54/163 [00:35<01:18,  1.38it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  34% Completed | 55/163 [00:35<01:14,  1.44it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  34% Completed | 56/163 [00:36<01:00,  1.77it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  35% Completed | 57/163 [00:36<01:00,  1.74it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  36% Completed | 58/163 [00:37<01:02,  1.67it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  36% Completed | 59/163 [00:38<01:01,  1.69it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  37% Completed | 60/163 [00:38<00:58,  1.75it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  37% Completed | 61/163 [00:39<00:57,  1.77it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  38% Completed | 62/163 [00:39<00:54,  1.84it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  39% Completed | 63/163 [00:39<00:50,  2.00it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  39% Completed | 64/163 [00:40<00:50,  1.97it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  40% Completed | 65/163 [00:41<00:55,  1.77it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  40% Completed | 66/163 [00:41<00:58,  1.65it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  41% Completed | 67/163 [00:42<01:00,  1.58it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  42% Completed | 68/163 [00:43<01:01,  1.53it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  42% Completed | 69/163 [00:43<01:02,  1.50it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  43% Completed | 70/163 [00:44<01:03,  1.47it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  44% Completed | 71/163 [00:45<01:01,  1.50it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  44% Completed | 72/163 [00:45<00:58,  1.55it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  45% Completed | 73/163 [00:46<00:54,  1.64it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  45% Completed | 74/163 [00:46<00:52,  1.71it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  46% Completed | 75/163 [00:47<00:51,  1.71it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  47% Completed | 76/163 [00:48<00:51,  1.67it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  47% Completed | 77/163 [00:48<00:51,  1.67it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  48% Completed | 78/163 [00:49<00:42,  2.01it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  48% Completed | 79/163 [00:49<00:42,  1.97it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  49% Completed | 80/163 [00:50<00:42,  1.96it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  50% Completed | 81/163 [00:50<00:42,  1.94it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  50% Completed | 82/163 [00:51<00:44,  1.82it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  51% Completed | 83/163 [00:51<00:44,  1.80it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  52% Completed | 84/163 [00:52<00:43,  1.80it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  52% Completed | 85/163 [00:52<00:42,  1.82it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  53% Completed | 86/163 [00:53<00:39,  1.94it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  53% Completed | 87/163 [00:53<00:38,  1.99it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  54% Completed | 88/163 [00:54<00:37,  1.98it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  55% Completed | 89/163 [00:54<00:37,  1.98it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  55% Completed | 90/163 [00:55<00:36,  2.00it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  56% Completed | 91/163 [00:55<00:35,  2.01it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  56% Completed | 92/163 [00:56<00:35,  2.01it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  57% Completed | 93/163 [00:56<00:34,  2.05it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  58% Completed | 94/163 [00:57<00:33,  2.08it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  58% Completed | 95/163 [00:57<00:30,  2.23it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  59% Completed | 96/163 [00:58<00:29,  2.24it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  60% Completed | 97/163 [00:58<00:30,  2.20it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  60% Completed | 98/163 [00:59<00:29,  2.19it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  61% Completed | 99/163 [00:59<00:29,  2.17it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  61% Completed | 100/163 [00:59<00:25,  2.51it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  62% Completed | 101/163 [01:00<00:26,  2.34it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  63% Completed | 102/163 [01:00<00:26,  2.28it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  63% Completed | 103/163 [01:01<00:27,  2.19it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  64% Completed | 104/163 [01:01<00:27,  2.13it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  64% Completed | 105/163 [01:02<00:27,  2.09it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  65% Completed | 106/163 [01:02<00:26,  2.13it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  66% Completed | 107/163 [01:03<00:27,  2.02it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  66% Completed | 108/163 [01:03<00:27,  2.02it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  67% Completed | 109/163 [01:04<00:25,  2.08it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  67% Completed | 110/163 [01:04<00:24,  2.12it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  68% Completed | 111/163 [01:05<00:25,  2.06it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  69% Completed | 112/163 [01:05<00:25,  2.03it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  69% Completed | 113/163 [01:06<00:24,  2.02it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  70% Completed | 114/163 [01:06<00:23,  2.05it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  71% Completed | 115/163 [01:07<00:24,  1.97it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  71% Completed | 116/163 [01:07<00:23,  1.99it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  72% Completed | 117/163 [01:08<00:22,  2.04it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  72% Completed | 118/163 [01:08<00:21,  2.09it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  73% Completed | 119/163 [01:09<00:22,  1.96it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  74% Completed | 120/163 [01:09<00:23,  1.85it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  74% Completed | 121/163 [01:10<00:22,  1.87it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  75% Completed | 122/163 [01:10<00:18,  2.25it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  75% Completed | 123/163 [01:10<00:17,  2.24it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  76% Completed | 124/163 [01:11<00:17,  2.20it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  77% Completed | 125/163 [01:11<00:17,  2.15it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  77% Completed | 126/163 [01:12<00:17,  2.08it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  78% Completed | 127/163 [01:13<00:19,  1.89it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  79% Completed | 128/163 [01:13<00:18,  1.85it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  79% Completed | 129/163 [01:14<00:17,  1.91it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  80% Completed | 130/163 [01:14<00:17,  1.85it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  80% Completed | 131/163 [01:15<00:17,  1.88it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  81% Completed | 132/163 [01:15<00:16,  1.85it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  82% Completed | 133/163 [01:16<00:15,  1.88it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  82% Completed | 134/163 [01:16<00:15,  1.91it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  83% Completed | 135/163 [01:17<00:14,  1.93it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  83% Completed | 136/163 [01:17<00:14,  1.91it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  84% Completed | 137/163 [01:18<00:13,  1.92it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  85% Completed | 138/163 [01:18<00:12,  1.96it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  85% Completed | 139/163 [01:19<00:12,  2.00it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  86% Completed | 140/163 [01:19<00:11,  2.01it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  87% Completed | 141/163 [01:20<00:09,  2.23it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  87% Completed | 142/163 [01:20<00:09,  2.27it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  88% Completed | 143/163 [01:20<00:08,  2.36it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  88% Completed | 144/163 [01:21<00:07,  2.55it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  89% Completed | 145/163 [01:21<00:07,  2.57it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  90% Completed | 146/163 [01:22<00:06,  2.46it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  90% Completed | 147/163 [01:22<00:06,  2.33it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  91% Completed | 148/163 [01:22<00:06,  2.38it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  91% Completed | 149/163 [01:23<00:05,  2.37it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  92% Completed | 150/163 [01:23<00:05,  2.37it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  93% Completed | 151/163 [01:24<00:05,  2.40it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  93% Completed | 152/163 [01:24<00:04,  2.43it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  94% Completed | 153/163 [01:25<00:04,  2.42it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  94% Completed | 154/163 [01:25<00:03,  2.56it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  95% Completed | 155/163 [01:25<00:03,  2.61it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  96% Completed | 156/163 [01:26<00:02,  2.57it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  96% Completed | 157/163 [01:26<00:02,  2.59it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  97% Completed | 158/163 [01:26<00:02,  2.45it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  98% Completed | 159/163 [01:27<00:01,  2.57it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards:  98% Completed | 160/163 [01:27<00:01,  2.84it/s]
+(Worker_TP0 pid=733668) 
+Loading safetensors checkpoint shards: 100% Completed | 163/163 [01:27<00:00,  1.86it/s]
+(Worker_TP0 pid=733668) 
+(Worker_TP0 pid=733668) INFO 08-29 07:40:55 [default_loader.py:430] Loading weights took 87.67 seconds
+(Worker_TP0 pid=733668) INFO 08-29 07:40:57 [fp8.py:713] Using MoEPrepareAndFinalizeNoDPEPMonolithic
+(Worker_TP6 pid=733674) INFO 08-29 07:41:19 [interface.py:635] Setting kv cache block size to 64 for DEEPSEEK_V32_INDEXER backend.
+(Worker_TP5 pid=733673) INFO 08-29 07:41:19 [interface.py:635] Setting kv cache block size to 64 for DEEPSEEK_V32_INDEXER backend.
+(Worker_TP3 pid=733671) INFO 08-29 07:41:19 [interface.py:635] Setting kv cache block size to 64 for DEEPSEEK_V32_INDEXER backend.
+(Worker_TP7 pid=733675) INFO 08-29 07:41:19 [interface.py:635] Setting kv cache block size to 64 for DEEPSEEK_V32_INDEXER backend.
+(Worker_TP4 pid=733672) INFO 08-29 07:41:19 [interface.py:635] Setting kv cache block size to 64 for DEEPSEEK_V32_INDEXER backend.
+(Worker_TP2 pid=733670) INFO 08-29 07:41:19 [interface.py:635] Setting kv cache block size to 64 for DEEPSEEK_V32_INDEXER backend.
+(Worker_TP1 pid=733669) INFO 08-29 07:41:19 [interface.py:635] Setting kv cache block size to 64 for DEEPSEEK_V32_INDEXER backend.
+(Worker_TP0 pid=733668) INFO 08-29 07:41:19 [gpu_model_runner.py:5515] Model loading took 80.81 GiB memory and 111.982982 seconds
+(Worker_TP0 pid=733668) INFO 08-29 07:41:19 [interface.py:635] Setting kv cache block size to 64 for DEEPSEEK_V32_INDEXER backend.
+(EngineCore pid=733153) INFO 08-29 07:41:19 [torch_utils.py:262] Reducing Torch threads from 24 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+[2026-08-29 07:41:21.052] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+[2026-08-29 07:41:21.101] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+[2026-08-29 07:41:21.151] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+(Worker_TP1 pid=733669) 2026-08-29 07:41:21,174 - WARNING - core.py:3813 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+[2026-08-29 07:41:21.202] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+(Worker_TP2 pid=733670) 2026-08-29 07:41:21,224 - WARNING - core.py:3813 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+[2026-08-29 07:41:21.256] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+(Worker_TP0 pid=733668) 2026-08-29 07:41:21,273 - WARNING - core.py:3813 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+[2026-08-29 07:41:21.303] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+(Worker_TP3 pid=733671) 2026-08-29 07:41:21,324 - WARNING - core.py:3813 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+[2026-08-29 07:41:21.353] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+(Worker_TP6 pid=733674) 2026-08-29 07:41:21,374 - WARNING - core.py:3813 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+[2026-08-29 07:41:21.405] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+(Worker_TP5 pid=733673) 2026-08-29 07:41:21,421 - WARNING - core.py:3813 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+(Worker_TP4 pid=733672) 2026-08-29 07:41:21,470 - WARNING - core.py:3813 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+(Worker_TP7 pid=733675) 2026-08-29 07:41:21,523 - WARNING - core.py:3813 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+(Worker_TP0 pid=733668) INFO 08-29 07:41:22 [gpu_worker.py:578] Available KV cache memory: 75.47 GiB
+(EngineCore pid=733153) INFO 08-29 07:41:23 [kv_cache_utils.py:1869] GPU KV cache size: 1,034,560 tokens, Maximum concurrency for 10,496 tokens per request: 98.57x
+(Worker_TP0 pid=733668) INFO 08-29 07:41:23 [indexer.py:558] DSA indexer decode path: use_flattening=False supports_varlen=True (next_n=1, use_fp4_cache=False)
+(Worker_TP0 pid=733668) WARNING 08-29 07:41:23 [fa_utils.py:192] FA4 on Blackwell does not support head_size=192 due to TMEM capacity limits, defaulting to FA version 2.
+(Worker_TP0 pid=733668) INFO 08-29 07:41:23 [kernel_warmup.py:93] Warming up ll_bf16 router GEMM kernels for shapes: ((7168, 256),).
+(Worker_TP0 pid=733668) 
+DeepGEMM warmup:   0%|          | 0/3326 [00:00<?, ?it/s]
+DeepGEMM warmup:  53%|█████▎    | 1779/3326 [00:00<00:00, 17740.74it/s]
+DeepGEMM warmup: 100%|██████████| 3326/3326 [00:00<00:00, 14022.85it/s]
+(Worker_TP0 pid=733668) INFO 08-29 07:41:25 [kernel_warmup.py:260] Using FlashInfer autotune cache file: <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json
+(Worker_TP0 pid=733668) 2026-08-29 07:41:25,395 - INFO - autotuner.py:2397 - flashinfer.jit: [Autotuner]: Loaded 22 configs from <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json
+(Worker_TP2 pid=733670) 2026-08-29 07:41:25,395 - INFO - autotuner.py:2397 - flashinfer.jit: [Autotuner]: Loaded 22 configs from <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json
+(Worker_TP5 pid=733673) 2026-08-29 07:41:25,395 - INFO - autotuner.py:2397 - flashinfer.jit: [Autotuner]: Loaded 22 configs from <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json
+(Worker_TP7 pid=733675) 2026-08-29 07:41:25,395 - INFO - autotuner.py:2397 - flashinfer.jit: [Autotuner]: Loaded 22 configs from <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json
+(Worker_TP3 pid=733671) 2026-08-29 07:41:25,395 - INFO - autotuner.py:2397 - flashinfer.jit: [Autotuner]: Loaded 22 configs from <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json
+(Worker_TP1 pid=733669) 2026-08-29 07:41:25,395 - INFO - autotuner.py:2397 - flashinfer.jit: [Autotuner]: Loaded 22 configs from <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json
+(Worker_TP4 pid=733672) 2026-08-29 07:41:25,395 - INFO - autotuner.py:2397 - flashinfer.jit: [Autotuner]: Loaded 22 configs from <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json
+(Worker_TP6 pid=733674) 2026-08-29 07:41:25,395 - INFO - autotuner.py:2397 - flashinfer.jit: [Autotuner]: Loaded 22 configs from <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json
+(Worker_TP0 pid=733668) 2026-08-29 07:41:25,395 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP2 pid=733670) 2026-08-29 07:41:25,395 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP5 pid=733673) 2026-08-29 07:41:25,395 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP7 pid=733675) 2026-08-29 07:41:25,395 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP1 pid=733669) 2026-08-29 07:41:25,395 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP6 pid=733674) 2026-08-29 07:41:25,395 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP4 pid=733672) 2026-08-29 07:41:25,395 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP3 pid=733671) 2026-08-29 07:41:25,395 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(Worker_TP0 pid=733668) 2026-08-29 07:41:25,420 - INFO - autotuner.py:1334 - flashinfer.jit: [Autotuner]: Config cache hit for flashinfer::trtllm_fp8_block_scale_moe (runner=MoERunner, source=config file)
+(Worker_TP2 pid=733670) 2026-08-29 07:41:25,420 - INFO - autotuner.py:1334 - flashinfer.jit: [Autotuner]: Config cache hit for flashinfer::trtllm_fp8_block_scale_moe (runner=MoERunner, source=config file)
+(Worker_TP1 pid=733669) 2026-08-29 07:41:25,420 - INFO - autotuner.py:1334 - flashinfer.jit: [Autotuner]: Config cache hit for flashinfer::trtllm_fp8_block_scale_moe (runner=MoERunner, source=config file)
+(Worker_TP5 pid=733673) 2026-08-29 07:41:25,422 - INFO - autotuner.py:1334 - flashinfer.jit: [Autotuner]: Config cache hit for flashinfer::trtllm_fp8_block_scale_moe (runner=MoERunner, source=config file)
+(Worker_TP6 pid=733674) 2026-08-29 07:41:25,422 - INFO - autotuner.py:1334 - flashinfer.jit: [Autotuner]: Config cache hit for flashinfer::trtllm_fp8_block_scale_moe (runner=MoERunner, source=config file)
+(Worker_TP7 pid=733675) 2026-08-29 07:41:25,422 - INFO - autotuner.py:1334 - flashinfer.jit: [Autotuner]: Config cache hit for flashinfer::trtllm_fp8_block_scale_moe (runner=MoERunner, source=config file)
+(Worker_TP4 pid=733672) 2026-08-29 07:41:25,422 - INFO - autotuner.py:1334 - flashinfer.jit: [Autotuner]: Config cache hit for flashinfer::trtllm_fp8_block_scale_moe (runner=MoERunner, source=config file)
+(Worker_TP3 pid=733671) 2026-08-29 07:41:25,422 - INFO - autotuner.py:1334 - flashinfer.jit: [Autotuner]: Config cache hit for flashinfer::trtllm_fp8_block_scale_moe (runner=MoERunner, source=config file)
+(Worker_TP1 pid=733669) 2026-08-29 07:41:25,684 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP2 pid=733670) 2026-08-29 07:41:25,686 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP6 pid=733674) 2026-08-29 07:41:25,687 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP5 pid=733673) 2026-08-29 07:41:25,687 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP3 pid=733671) 2026-08-29 07:41:25,688 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP0 pid=733668) 2026-08-29 07:41:25,689 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP4 pid=733672) 2026-08-29 07:41:25,690 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP7 pid=733675) 2026-08-29 07:41:25,691 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(Worker_TP2 pid=733670) INFO 08-29 07:41:25 [gpu_worker.py:804] Free memory on device (175.81/178.34 GiB) on startup. Desired GPU memory utilization is (0.9, 160.51 GiB). Actual usage is 81.75 GiB for consumed memory (weights + non-torch), 3.29 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=80874296218` (75.32 GiB) to fit into requested memory, or `--kv-cache-memory=97304033792` (90.62 GiB) to fully utilize gpu memory. Current kv cache memory in use is 75.47 GiB.
+(Worker_TP7 pid=733675) INFO 08-29 07:41:25 [gpu_worker.py:804] Free memory on device (175.81/178.34 GiB) on startup. Desired GPU memory utilization is (0.9, 160.51 GiB). Actual usage is 81.75 GiB for consumed memory (weights + non-torch), 3.29 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=80874296218` (75.32 GiB) to fit into requested memory, or `--kv-cache-memory=97304033792` (90.62 GiB) to fully utilize gpu memory. Current kv cache memory in use is 75.47 GiB.
+(Worker_TP5 pid=733673) INFO 08-29 07:41:25 [gpu_worker.py:804] Free memory on device (175.81/178.34 GiB) on startup. Desired GPU memory utilization is (0.9, 160.51 GiB). Actual usage is 81.75 GiB for consumed memory (weights + non-torch), 3.29 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=80874296218` (75.32 GiB) to fit into requested memory, or `--kv-cache-memory=97304033792` (90.62 GiB) to fully utilize gpu memory. Current kv cache memory in use is 75.47 GiB.
+(Worker_TP1 pid=733669) INFO 08-29 07:41:25 [gpu_worker.py:804] Free memory on device (175.81/178.34 GiB) on startup. Desired GPU memory utilization is (0.9, 160.51 GiB). Actual usage is 81.75 GiB for consumed memory (weights + non-torch), 3.29 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=80874296218` (75.32 GiB) to fit into requested memory, or `--kv-cache-memory=97304033792` (90.62 GiB) to fully utilize gpu memory. Current kv cache memory in use is 75.47 GiB.
+(Worker_TP4 pid=733672) INFO 08-29 07:41:25 [gpu_worker.py:804] Free memory on device (175.81/178.34 GiB) on startup. Desired GPU memory utilization is (0.9, 160.51 GiB). Actual usage is 81.75 GiB for consumed memory (weights + non-torch), 3.29 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=80874296218` (75.32 GiB) to fit into requested memory, or `--kv-cache-memory=97304033792` (90.62 GiB) to fully utilize gpu memory. Current kv cache memory in use is 75.47 GiB.
+(Worker_TP6 pid=733674) INFO 08-29 07:41:25 [gpu_worker.py:804] Free memory on device (175.81/178.34 GiB) on startup. Desired GPU memory utilization is (0.9, 160.51 GiB). Actual usage is 81.75 GiB for consumed memory (weights + non-torch), 3.29 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=80874296218` (75.32 GiB) to fit into requested memory, or `--kv-cache-memory=97304033792` (90.62 GiB) to fully utilize gpu memory. Current kv cache memory in use is 75.47 GiB.
+(Worker_TP3 pid=733671) INFO 08-29 07:41:25 [gpu_worker.py:804] Free memory on device (175.81/178.34 GiB) on startup. Desired GPU memory utilization is (0.9, 160.51 GiB). Actual usage is 81.75 GiB for consumed memory (weights + non-torch), 3.29 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=80874296218` (75.32 GiB) to fit into requested memory, or `--kv-cache-memory=97304033792` (90.62 GiB) to fully utilize gpu memory. Current kv cache memory in use is 75.47 GiB.
+(Worker_TP0 pid=733668) 2026-08-29 07:41:25,696 - INFO - autotuner.py:2269 - flashinfer.jit: [Autotuner]: Saved 22 configs to <HOME>/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/100a/a63c17261afedaa00245c9d8dbf4474f607c18a63a409785b240f8e5961dad2a/autotune_configs.json (0 new, 22 from previous config)
+(Worker_TP0 pid=733668) INFO 08-29 07:41:25 [gpu_worker.py:804] Free memory on device (175.81/178.34 GiB) on startup. Desired GPU memory utilization is (0.9, 160.51 GiB). Actual usage is 81.75 GiB for consumed memory (weights + non-torch), 3.29 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=80874296218` (75.32 GiB) to fit into requested memory, or `--kv-cache-memory=97304033792` (90.62 GiB) to fully utilize gpu memory. Current kv cache memory in use is 75.47 GiB.
+(Worker_TP0 pid=733668) INFO 08-29 07:41:26 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP2 pid=733670) INFO 08-29 07:41:26 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP5 pid=733673) INFO 08-29 07:41:26 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP3 pid=733671) INFO 08-29 07:41:26 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP4 pid=733672) INFO 08-29 07:41:26 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP6 pid=733674) INFO 08-29 07:41:26 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP7 pid=733675) INFO 08-29 07:41:26 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP1 pid=733669) INFO 08-29 07:41:26 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP0 pid=733668) INFO 08-29 07:41:26 [torch_utils.py:262] Reducing Torch threads from 24 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=733153) INFO 08-29 07:41:26 [core.py:354] init engine (profile, create kv cache, warmup model) took 6.90 s
+(EngineCore pid=733153) WARNING 08-29 07:41:28 [vllm.py:1285] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=733153) WARNING 08-29 07:41:28 [vllm.py:1354] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=733153) INFO 08-29 07:41:28 [kernel.py:308] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(EngineCore pid=733153) INFO 08-29 07:41:28 [vllm.py:1533] Cudagraph is disabled under eager mode
+(EngineCore pid=733153) INFO 08-29 07:41:29 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant, allreduce_rms
+[readback] {'0': {'shape': [16165, 64, 132], 'dtype': 'torch.uint8', 'row_bytes': 132, 'swap_readback_ok': True}}
+(Worker_TP0 pid=733668) WARNING 08-29 07:41:29 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _scatter_topk_single_req_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0 pid=733668) WARNING 08-29 07:41:29 [jit_monitor.py:141] CuTeDSL JIT compilation during inference: FlashAttentionForwardSm100. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0 pid=733668) WARNING 08-29 07:41:34 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _convert_req_index_to_global_index_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0 pid=733668) WARNING 08-29 07:41:34 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _scatter_topk_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+[clean] correct=[True, True, True, True] events=0 swaps=0 errors=[]
+[clean2] correct=[True, True, True, True] events=0 swaps=0 errors=[]
+[ctrl_identity] correct=[True, True, True, True] events=504 swaps=0 errors=[]
+[perm_once_A] correct=[True, True, True, True] events=508 swaps=479 errors=[]
+[perm_periodic_A] correct=[True, True, True, True] events=636 swaps=1676 errors=[]
+[perm_once_B] correct=[True, True, True, True] events=640 swaps=25847 errors=[]
+[perm_periodic_B] correct=[True, True, True, True] events=768 swaps=98936 errors=[]
+{
+ "clean": {
+  "correct": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "div_vs_clean": [
+   null,
+   null,
+   null,
+   null
+  ],
+  "events": 0,
+  "permlog": {
+   "files": 0,
+   "events": 0,
+   "moved_units": 0,
+   "max_touched_slot": -1,
+   "min_margin_to_seq_len_minus_64": null
+  },
+  "errors": []
+ },
+ "clean2": {
+  "correct": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "div_vs_clean": [
+   24,
+   24,
+   20,
+   24
+  ],
+  "events": 0,
+  "permlog": {
+   "files": 0,
+   "events": 0,
+   "moved_units": 0,
+   "max_touched_slot": -1,
+   "min_margin_to_seq_len_minus_64": null
+  },
+  "errors": []
+ },
+ "ctrl_identity": {
+  "correct": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "div_vs_clean": [
+   10,
+   24,
+   40,
+   38
+  ],
+  "events": 504,
+  "permlog": {
+   "files": 4,
+   "events": 504,
+   "moved_units": 0,
+   "max_touched_slot": 8063,
+   "min_margin_to_seq_len_minus_64": 1
+  },
+  "errors": []
+ },
+ "perm_once_A": {
+  "correct": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "div_vs_clean": [
+   24,
+   24,
+   60,
+   38
+  ],
+  "events": 508,
+  "permlog": {
+   "files": 4,
+   "events": 4,
+   "moved_units": 479,
+   "max_touched_slot": 7935,
+   "min_margin_to_seq_len_minus_64": 36
+  },
+  "errors": []
+ },
+ "perm_periodic_A": {
+  "correct": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "div_vs_clean": [
+   22,
+   24,
+   60,
+   24
+  ],
+  "events": 636,
+  "permlog": {
+   "files": 4,
+   "events": 128,
+   "moved_units": 1910,
+   "max_touched_slot": 8063,
+   "min_margin_to_seq_len_minus_64": 2
+  },
+  "errors": []
+ },
+ "perm_once_B": {
+  "correct": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "div_vs_clean": [
+   72,
+   24,
+   43,
+   4
+  ],
+  "events": 640,
+  "permlog": {
+   "files": 4,
+   "events": 4,
+   "moved_units": 24171,
+   "max_touched_slot": 7986,
+   "min_margin_to_seq_len_minus_64": 1
+  },
+  "errors": []
+ },
+ "perm_periodic_B": {
+  "correct": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "div_vs_clean": [
+   10,
+   24,
+   60,
+   4
+  ],
+  "events": 768,
+  "permlog": {
+   "files": 4,
+   "events": 128,
+   "moved_units": 122007,
+   "max_touched_slot": 8108,
+   "min_margin_to_seq_len_minus_64": 1
+  },
+  "errors": []
+ }
+}
+INFO 08-29 07:44:10 [utils.py:615] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=733153) INFO 08-29 07:44:10 [core.py:1329] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=733153) INFO 08-29 07:44:10 [core.py:1465] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=733153) INFO 08-29 07:44:10 [core.py:1496] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=733153) INFO 08-29 07:44:10 [core.py:1342] [shutdown] EngineCore: exiting busy loop
+(Worker_TP0 pid=733668) INFO 08-29 07:44:10 [multiproc_executor.py:833] Parent process exited, terminating worker queues
+(EngineCore pid=733153) INFO 08-29 07:44:10 [multiproc_executor.py:469] [shutdown] Executor: waiting for worker exit count=8
+WARNING 08-29 07:44:15 [utils.py:635] [shutdown] Process manager: force killing remaining processes count=1
+WARNING 08-29 07:44:15 [utils.py:640] [shutdown] Process manager: force killing remaining process EngineCore pid 733153
+(EngineCore pid=733153) WARNING 08-29 07:44:15 [multiproc_executor.py:481] [shutdown] Executor: workers still running after grace period; sending SIGTERM count=2
+<HOME>/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

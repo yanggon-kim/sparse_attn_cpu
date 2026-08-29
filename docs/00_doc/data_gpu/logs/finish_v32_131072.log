@@ -1,0 +1,36 @@
+=== 01:36:53 hotset for rung 131072
+=== 01:46:03 sharding
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_niah_single_2_131072_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_niah_single_2_131072_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_niah_single_2_131072_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_niah_single_2_131072_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_qa_1_131072_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_qa_1_131072_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_qa_1_131072_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ruler_qa_1_131072_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb2_single-document_131072_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb2_code_131072_s01: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb2_long_131072_s02: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_lb2_long_131072_s03: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_passkey_131072_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_number_string_131072_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_choice_eng_131072_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_qa_eng_131072_s00: 20 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_qa_eng_131072_ld00: 27 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_qa_eng_131072_ld01: 28 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_sum_eng_131072_ld00: 27 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_sum_eng_131072_ld01: 27 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_sum_eng_131072_ld02: 27 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_sum_eng_131072_ld03: 27 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_sum_eng_131072_ld04: 27 entries
+[shard] <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/runs/v32_ib_longbook_sum_eng_131072_ld05: 27 entries
+=== 01:57:28 aggregate
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/R1_kv_locality.csv: 135 runs + 15 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/R2_moe_locality.csv: 135 runs + 15 aggregates
+wrote <HOME>/00_sparse_attn/01_github/sparse_attn_cpu/docs/gpu_sweep/R3_hotset_coverage.csv: 56 runs + 8 aggregates
+rung   8192: n=n=28 adj_overlap=0.843 lift=2.56 recency=0.491
+rung  16384: n=n=28 adj_overlap=0.790 lift=5.27 recency=0.385
+rung  32768: n=n=28 adj_overlap=0.751 lift=10.19 recency=0.32
+rung  65536: n=n=27 adj_overlap=0.741 lift=21.87 recency=0.302
+rung 131072: n=n=24 adj_overlap=0.723 lift=41.49 recency=0.307
+FINISH_RUNG_DONE

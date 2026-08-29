@@ -1,0 +1,41 @@
+== niah_single_2 8192 21:54:50
+
+Prepare niah_single_2 with lines: 8 to <WORKDIR>/prompts/ruler/8192/niah_single_2/validation.jsonl
+Used time: 0.2 minutes
+== qa_1 8192 21:55:03
+
+Prepare qa_1 with lines: 8 to <WORKDIR>/prompts/ruler/8192/qa_1/validation.jsonl
+Used time: 0.1 minutes
+== niah_single_2 16384 21:55:09
+
+Prepare niah_single_2 with lines: 8 to <WORKDIR>/prompts/ruler/16384/niah_single_2/validation.jsonl
+Used time: 0.2 minutes
+== qa_1 16384 21:55:22
+
+Prepare qa_1 with lines: 8 to <WORKDIR>/prompts/ruler/16384/qa_1/validation.jsonl
+Used time: 0.1 minutes
+== niah_single_2 32768 21:55:29
+
+Prepare niah_single_2 with lines: 8 to <WORKDIR>/prompts/ruler/32768/niah_single_2/validation.jsonl
+Used time: 0.2 minutes
+== qa_1 32768 21:55:43
+
+Prepare qa_1 with lines: 8 to <WORKDIR>/prompts/ruler/32768/qa_1/validation.jsonl
+Used time: 0.1 minutes
+== niah_single_2 65536 21:55:51
+
+Prepare niah_single_2 with lines: 8 to <WORKDIR>/prompts/ruler/65536/niah_single_2/validation.jsonl
+Used time: 0.2 minutes
+== qa_1 65536 21:56:07
+
+Prepare qa_1 with lines: 8 to <WORKDIR>/prompts/ruler/65536/qa_1/validation.jsonl
+Used time: 0.1 minutes
+== niah_single_2 131072 21:56:16
+
+Prepare niah_single_2 with lines: 8 to <WORKDIR>/prompts/ruler/131072/niah_single_2/validation.jsonl
+Used time: 0.3 minutes
+== qa_1 131072 21:56:37
+
+Prepare qa_1 with lines: 8 to <WORKDIR>/prompts/ruler/131072/qa_1/validation.jsonl
+Used time: 0.2 minutes
+RULER_PREP_DONE

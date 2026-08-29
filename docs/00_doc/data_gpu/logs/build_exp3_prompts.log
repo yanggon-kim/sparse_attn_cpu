@@ -1,0 +1,14 @@
+<WORKDIR>/env/vllm/lib/python3.12/site-packages/huggingface_hub/constants.py:299: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (272429 > 131072). Running this sequence through the model will result in indexing errors
+[ruler] 32768: 1300 items
+[ruler] 65536: 1300 items
+[ruler] 131072: 1300 items
+[lb2] 503 items, 192 truncated to 128K
+[ib] passkey: 100
+[ib] number_string: 100
+[ib] longbook_choice_eng: 229
+[ib] longbook_qa_eng: 100
+[mmlu_pro] 1000 items over 14 categories
+[gpqa] dataset not present (gated) -> skipped
+total 5932 Counter({('ruler', 32768): 1300, ('ruler', 65536): 1300, ('ruler', 131072): 1300, ('mmlu_pro', 32768): 1000, ('infinitebench', 131072): 529, ('longbench_v2', 131072): 318, ('longbench_v2', 32768): 112, ('longbench_v2', 65536): 73})
