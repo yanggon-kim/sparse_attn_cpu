@@ -1,0 +1,1 @@
+{"run_id": "v32_ib_passkey_16384_s00", "sample_id": "ib_passkey_16384_s00", "prompt_token_count": 13807, "generated_token_count": 6, "generated_token_ids": [671, 2281, 3077, 344, 2619, 31381], "generated_text": "The pass key is **083", "finish_reason": "length", "benchmark_prediction": "083", "reference_answer": ["08390"], "is_correct": false, "score": 0.0, "request_id": "22"}
