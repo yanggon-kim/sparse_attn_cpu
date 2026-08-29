@@ -1,0 +1,33 @@
+{
+  "schema_version": "1",
+  "trace_schema_version": 2,
+  "run_id": "glm5_ib_passkey_65536_s00",
+  "backend": "cuda",
+  "model_name": "GLM-5",
+  "model_path": "<WORKDIR>/models/GLM-5-FP8",
+  "quantization": "fp8 (native)",
+  "benchmark_name": "infinitebench",
+  "task_subset": "passkey",
+  "context_length_target": 65536,
+  "context_length_actual_tokens": 62963,
+  "max_new_tokens": 6,
+  "decode_parameters": {
+    "temperature": 0,
+    "greedy": true,
+    "seed": 42,
+    "batch_size": 27
+  },
+  "vllm_commit": "2cf0a6915ce544dc493a0990f2ea38d81601128a (v0.28.0 tag; contains docs pin 5559679)",
+  "gpu": "8xNVIDIA B200",
+  "kind": "bf",
+  "timing": {
+    "wall_clock_seconds": 900.6,
+    "gpu_hours": 0.0741
+  },
+  "is_correct": true,
+  "sample_id": "ib_passkey_65536_s00",
+  "request_id": "15",
+  "decode_steps_traced": 5,
+  "moe_records": 375,
+  "variant": "all_layers"
+}
