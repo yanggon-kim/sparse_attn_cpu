@@ -1,0 +1,33 @@
+{
+  "schema_version": "1",
+  "trace_schema_version": 2,
+  "run_id": "glm52_lb2_single-document_131072_s00",
+  "backend": "cuda",
+  "model_name": "GLM-5.2",
+  "model_path": "<WORKDIR>/models/GLM-5.2-FP8",
+  "quantization": "fp8 (native)",
+  "benchmark_name": "longbench_v2",
+  "task_subset": "Single-Document QA",
+  "context_length_target": 131072,
+  "context_length_actual_tokens": 75249,
+  "max_new_tokens": 128,
+  "decode_parameters": {
+    "temperature": 0,
+    "greedy": true,
+    "seed": 42,
+    "batch_size": 24
+  },
+  "vllm_commit": "2cf0a6915ce544dc493a0990f2ea38d81601128a (v0.28.0 tag; contains docs pin 5559679)",
+  "gpu": "8xNVIDIA B200",
+  "kind": "bf",
+  "timing": {
+    "wall_clock_seconds": 1301.8,
+    "gpu_hours": 0.1205
+  },
+  "is_correct": true,
+  "sample_id": "lb2_single-document_131072_s00",
+  "request_id": "8",
+  "decode_steps_traced": 9,
+  "moe_records": 675,
+  "variant": "computing_only"
+}

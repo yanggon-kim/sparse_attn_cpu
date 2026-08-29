@@ -1,0 +1,1 @@
+{"run_id": "glm52_ruler_qa_1_8192_s03", "sample_id": "ruler_qa_1_8192_s03", "prompt_token_count": 6631, "generated_token_count": 3, "generated_token_ids": [49, 27866, 154827], "generated_text": "Rollo", "finish_reason": "stop", "benchmark_prediction": "Rollo", "reference_answer": ["Rollo", "Rollo", "Rollo", "Rollo"], "is_correct": true, "score": 1.0, "request_id": "7"}

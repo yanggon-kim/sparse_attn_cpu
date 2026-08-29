@@ -1,0 +1,21 @@
+{
+ "run_id": "glm52_lb1_multi_news_8192_s03_b",
+ "max_part_mb": 45,
+ "files": {
+  "run_manifest.json": "cb6602bf232c16e3cd33a41b0fbb4f6da8434e9eb5262a5a7c20c4eeb545a528",
+  "model_config.json": "830432a1ef12e5f7757918f915467be2d59c219306c1ad05e746b714e785e709",
+  "outputs/generations.jsonl": "b2570f89e47b975240bb609c6dc94ced44ba0f070e0c6494ab13df78ac6940ed",
+  "analysis/cross_layer_jaccard.parquet": "4d200b6fb79d04f1b940e9073a03c611c633a748fcf2814be086b5fdd9036472",
+  "analysis/extended_retention.json": "6ad7f7bcddd5657d405663b57eaeca4156254044ef2cd3a7a3cf6e9e3db69ec4",
+  "analysis/extended_retention.log": "4998512139969771eaa19e42602cd8825c1bed422b9b4fc05b389cc87d1a40c0",
+  "analysis/hotset_coverage.json": "ed000481c3a7066d447d9d18b70b75457a07f1bccb4d0e5aecc8e01c14a39468",
+  "analysis/metrics_run_summary.json": "d7a10fb0e0520f2a3da2f2102c53fd4be2ae11c7ed2187320fab88aa13b35f63",
+  "analysis/metrics_sample_layer.parquet": "12f54a9eebf4203c2f3f18c1513208889ed3c4db4ac2de1355a62cb33b8b1b9e",
+  "analysis/metrics_token_layer.parquet": "c373cf92d18082a63acd06173582891046acc28cdc224b62d7563b0514104066",
+  "analysis/moe_cross_layer_jaccard.parquet": "f0f30bd91aaf472322a86d5798c0a8e0ffdbb55c61d99bc3ebaa0ab99fd3776b",
+  "analysis/moe_metrics_run_summary.json": "ca32beb4e36828618bd0577f024c7bf061bc215c294c107d960d551f1e4c45ac",
+  "analysis/moe_metrics_sample_layer.parquet": "7d9ad56a734d8c00083b9bcc0aee69eeb2c1484af533e05ff5ef9895e0dcef0d",
+  "analysis/validate.log": "430778a6fd60b592865cbb180efb4783fc9ffe6815e09cf0875e1ece86ec000d"
+ },
+ "reassemble": "cat traces/<name>.jsonl.gz.part* | gunzip > traces/<name>.jsonl; then scripts/gpu/ingest_trace_fast.py <run_dir>"
+}
