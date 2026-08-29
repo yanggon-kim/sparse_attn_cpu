@@ -1,0 +1,89 @@
+{
+  "run_id": "glm52_lb1_gov_report_16384_s00_b",
+  "context_length": 16384,
+  "is_correct": null,
+  "top_k": 2048,
+  "n_csa_layers": 21,
+  "n_decode_steps": 512,
+  "overall_adjacent_overlap_mean": 0.7918186886269919,
+  "overall_adjacent_jaccard_mean": 0.6699834774655944,
+  "overall_churn_mean": 0.20818131137300813,
+  "overall_weighted_overlap_mean": 0.7869584053545632,
+  "overall_locality_lift_mean": 4.5194836444461925,
+  "overall_recency_overlap_mean": 0.3533487774076916,
+  "overall_retention": {
+    "lag_1": 0.7918186886269919,
+    "lag_2": 0.7534419496965453,
+    "lag_4": 0.7151809423480268,
+    "lag_8": 0.6758942780671295,
+    "lag_16": 0.6357385310159851,
+    "lag_32": 0.6094790988498263,
+    "lag_64": 0.5613099701550542
+  },
+  "overall_working_set_ratio": {
+    "w1": 1.0,
+    "w2": 0.6038873536246163,
+    "w4": 0.3646185738699777,
+    "w8": 0.22068172409420922,
+    "w16": 0.13363782848630631,
+    "w32": 0.08013125118755159,
+    "w64": 0.04701976123310271
+  },
+  "mean_n_candidates": 11689.5,
+  "layer_groups": {
+    "shallow": {
+      "layers": [
+        0,
+        1,
+        2,
+        6,
+        10,
+        14,
+        18
+      ],
+      "adjacent_overlap_mean": 0.8597192676299973,
+      "retention_lag_8_mean": 0.7968947914452239,
+      "working_set_ratio_w64_mean": 0.03476992462362562,
+      "locality_lift_mean": 4.907534862917696,
+      "recency_overlap_mean": 0.47172764369419645
+    },
+    "middle": {
+      "layers": [
+        22,
+        26,
+        30,
+        34,
+        38,
+        42,
+        46
+      ],
+      "adjacent_overlap_mean": 0.730156970750629,
+      "retention_lag_8_mean": 0.5942559966695011,
+      "working_set_ratio_w64_mean": 0.056403317621776035,
+      "locality_lift_mean": 4.167536176980659,
+      "recency_overlap_mean": 0.31534930637904574
+    },
+    "deep": {
+      "layers": [
+        50,
+        54,
+        58,
+        62,
+        66,
+        70,
+        74
+      ],
+      "adjacent_overlap_mean": 0.7855798275003494,
+      "retention_lag_8_mean": 0.6365320460866639,
+      "working_set_ratio_w64_mean": 0.04988604145390647,
+      "locality_lift_mean": 4.483379893440223,
+      "recency_overlap_mean": 0.2729693821498326
+    }
+  },
+  "caveats": [
+    "vLLM FP8 GPU runtime (native weights)",
+    "logical KV reuse (not physical cache)",
+    "per-request attributed batched decode",
+    "analysis by analyze_locality_fast.py (vectorized twin)"
+  ]
+}

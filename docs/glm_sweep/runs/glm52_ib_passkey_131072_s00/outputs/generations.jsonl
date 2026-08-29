@@ -1,0 +1,1 @@
+{"run_id": "glm52_ib_passkey_131072_s00", "sample_id": "ib_passkey_131072_s00", "prompt_token_count": 125346, "generated_token_count": 4, "generated_token_ids": [18, 100933, 99146, 154827], "generated_text": "34821", "finish_reason": "stop", "benchmark_prediction": "34821", "reference_answer": ["34821"], "is_correct": true, "score": 1.0, "request_id": "12"}

@@ -1,0 +1,21 @@
+{
+ "run_id": "glm52_lb1_gov_report_16384_s00_b",
+ "max_part_mb": 45,
+ "files": {
+  "run_manifest.json": "19f607835cfd1c184e22e204caa457acd8e02cb1e279208dd58eea2b09b0a4c0",
+  "model_config.json": "830432a1ef12e5f7757918f915467be2d59c219306c1ad05e746b714e785e709",
+  "outputs/generations.jsonl": "10c4061964d82fafd3f7f17990dfc620f7020672facb0b5451e8f2a4d29df291",
+  "analysis/cross_layer_jaccard.parquet": "62f335f9b4e42189baa547aaa048c747300cc8bddbddd91de602390c4e2ca324",
+  "analysis/extended_retention.json": "55b1f9a57f3ec236ea74e5115995ae351a4ee245e7de31b5ec9357d0151d2bfd",
+  "analysis/extended_retention.log": "7a1fc68791a0c0a11ecf9340744df8db5ab152cd46e41cfbc06c32b1cd4bb4fc",
+  "analysis/hotset_coverage.json": "d7b81a90a5f07bdab07955c103125992d3450d6f2b3a6ff814b69292f2dabf61",
+  "analysis/metrics_run_summary.json": "0fcd512b8cf4fd176d12906105f4d2c93642e5c73bb6af30c04ceb337d60fa6c",
+  "analysis/metrics_sample_layer.parquet": "b28952fff946a751e6be39791c38cd5c2e2b92d4317e6867892fe71c630425a1",
+  "analysis/metrics_token_layer.parquet": "d314b009e5bfb95db77d2805a47fe5e6f99541871d061624be4f299cf4e46a34",
+  "analysis/moe_cross_layer_jaccard.parquet": "4ae91a4e0b4c605d28497dbf3ce730e131377e1da64bc711962d55328d8c42cf",
+  "analysis/moe_metrics_run_summary.json": "6bd9df3978dea54c49f81e38c11a6918eb4385965a041ad9630e397a7768a77d",
+  "analysis/moe_metrics_sample_layer.parquet": "af95129c372ff30a2b136a5f3bd957d53a6d7808911a0b92e603c11f1b48a103",
+  "analysis/validate.log": "ee8a8d698c47593718b79aaadb1ea891210b63b3861611635df8ef3017f293a7"
+ },
+ "reassemble": "cat traces/<name>.jsonl.gz.part* | gunzip > traces/<name>.jsonl; then scripts/gpu/ingest_trace_fast.py <run_dir>"
+}

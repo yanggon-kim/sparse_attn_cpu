@@ -1,0 +1,33 @@
+{
+  "schema_version": "1",
+  "trace_schema_version": 2,
+  "run_id": "glm52_lb1_multi_news_8192_ld00",
+  "backend": "cuda",
+  "model_name": "GLM-5.2",
+  "model_path": "<WORKDIR>/models/GLM-5.2-FP8",
+  "quantization": "fp8 (native)",
+  "benchmark_name": "longbench_v1",
+  "task_subset": "multi_news",
+  "context_length_target": 8192,
+  "context_length_actual_tokens": 4491,
+  "max_new_tokens": 2048,
+  "decode_parameters": {
+    "temperature": 0,
+    "greedy": true,
+    "seed": 42,
+    "batch_size": 28
+  },
+  "vllm_commit": "2cf0a6915ce544dc493a0990f2ea38d81601128a (v0.28.0 tag; contains docs pin 5559679)",
+  "gpu": "8xNVIDIA B200",
+  "kind": "ld",
+  "timing": {
+    "wall_clock_seconds": 654.3,
+    "gpu_hours": 0.0519
+  },
+  "is_correct": null,
+  "sample_id": "lb1_multi_news_8192_ld00",
+  "request_id": "12",
+  "decode_steps_traced": 2048,
+  "moe_records": 153600,
+  "variant": "computing_only"
+}

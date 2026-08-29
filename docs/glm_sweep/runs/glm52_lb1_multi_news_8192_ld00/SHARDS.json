@@ -1,0 +1,38 @@
+{
+ "run_id": "glm52_lb1_multi_news_8192_ld00",
+ "max_part_mb": 45,
+ "files": {
+  "req.json": "b013cd060466b0513a03b93a15f9e979e218b9ce66973a74743f47340726d3ad",
+  "meta.json": "56b72c7ced6aed8d95439d1e6a6c36704afa61eef68311257926762aa79c2cbc",
+  "run_manifest.json": "68aa91d4638812c3372693d4685e20a5680e846de0128b99c333d2693f38be8e",
+  "model_config.json": "e87d71b89e95272677dce80867402ac1743857c85485aab97ba81cf12a35fed0",
+  "outputs/generations.jsonl": "6e4ffe20833b51dcea76632979f01c65666424026998543f76d2d1236e3b2449",
+  "analysis/cross_layer_jaccard.parquet": "126573d8e09602fd3832b182c1756847820bc2306397216e16590b846c9b76d1",
+  "analysis/extended_retention.json": "f39e621bd9a775bba0a344b3810e4db104f53268ff9d4c7722d77e93176f2508",
+  "analysis/extended_retention.log": "4279525215bcc03bacfe16f54350dce0b0249df1b3ffde4c2f73cbd4906182e2",
+  "analysis/hotset_coverage.json": "7550b076dff18c3795c8847fb1fe90ba587910a61b8c719213207bc09dbed053",
+  "analysis/metrics_run_summary.json": "21758fdfafc9fd5a8e3d47ca98ee9924908edab9778718d76f86fb158ba9a413",
+  "analysis/metrics_sample_layer.parquet": "d23118390fa7a45462fd93bae4c7f3e4a04f52a699113cc10e01448ff5b30e87",
+  "analysis/metrics_token_layer.parquet": "7a99e6cf5d00d5c666bd10f5a5cf7f603bba788f61d4d034fa27cb2cc8b5ea03",
+  "analysis/moe_cross_layer_jaccard.parquet": "1f4b5fdbdc637c2696701f54632bac8a3e0e562291ec85aaece11000cc4da9fd",
+  "analysis/moe_metrics_run_summary.json": "d0f62d92d2e928a56edfbda35a5b8a397f51bb13e9845b36d77fc67032ab3ae4",
+  "analysis/moe_metrics_sample_layer.parquet": "8d3fbb94f09d70f66500c11e8483a6fddfb364ca6bb0822f161833c0c663185e",
+  "analysis/validate.log": "980945d9f333ffc7513163e51c82f1a1ef1c10fc69b8609b302e9cdcc488745b",
+  "traces/indexer_trace.jsonl.gz.part00": "6de5c649b1bdcf5c29a718725782ec1e19230ccd216b0c58a5824a8dd12cf989",
+  "traces/indexer_trace.jsonl.gz.part01": "0faeb81a650a9684e2238771b14bb5bb28f8f3e6407f47d14d50fcbc0857abd2",
+  "traces/indexer_trace.jsonl.gz": {
+   "parts": 2,
+   "gz_bytes": 86942967,
+   "raw_bytes": 1605485366,
+   "raw_sha256": "4220d59837092453081fd81a1e83d720698f16ed4c43ee269a6ae31c46a0a19a"
+  },
+  "traces/moe_trace.jsonl.gz.part00": "a5b1072a89680f72ccdc4126b253def5d40a2a87854e46d106b0ec7565d44e6a",
+  "traces/moe_trace.jsonl.gz": {
+   "parts": 1,
+   "gz_bytes": 2573623,
+   "raw_bytes": 20300872,
+   "raw_sha256": "18aa4dfe7cf88cf47377a26d29e6871d52f72f6eda40a35d3f780efc7fc3b62f"
+  }
+ },
+ "reassemble": "cat traces/<name>.jsonl.gz.part* | gunzip > traces/<name>.jsonl; then scripts/gpu/ingest_trace_fast.py <run_dir>"
+}
