@@ -103,6 +103,8 @@ aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, poole
   working-set ratios), `README.md` (provenance, units, V3.2-replaces-in-same-schema note). Regenerate:
   `python3 work/experiment/scripts/export_hotness_fig_data.py` (copy in repo `scripts/`). Consumer: paper-owner.
 
+- 2026-08-29 all GPU-campaign data pushed to origin/main (analysis + reports in a28245c; 540 raw-trace run dirs in 26 batched commits 01bac9d..66a323e, ~34 GB, trees verified identical to local branch `gpu-campaign-raw-traces`). Push in <=1.5 GB batches — GitHub refuses single pushes >~2 GB.
+
 **In progress / parked:**
 - DeepSeek-V3.2 on CPU: engine patched and loads, but the only CPU-fittable GGUF (Unsloth TQ1_0) is
   dense-stripped; DSA-preserving GGUFs (`sszymczyk/DeepSeek-V3.2-*-light-GGUF`) are 404–714 GB.

@@ -109,3 +109,10 @@ GPU-h for probes ~8.
 - 77/78 (model × benchmark × prefix × mode) rows equivalent to the identical-rerun noise floor; the one exception (V3.2 impl B
   seed 7 at 32K) is a single high-variance document (seeds 8/9 and extra clean reruns confirm). RULER answers unchanged in
   every mode. `docs/reindex_accuracy/tier1_results.md`. Campaign total ≈ 65 GPU-h; final report `reports/final_20260829.md`.
+
+## Repository / push status (2026-08-29 15:35 UTC)
+- origin/main holds everything: analysis artifacts + reports (a28245c), and the 540 raw-trace run dirs
+  (`docs/gpu_sweep/runs/` 135 + `docs/glm_sweep/runs/` 135 + 135 `_b` + 135 GLM-5) pushed in 26 batches of <=1.5 GB
+  (01bac9d..66a323e) because GitHub rejects a single >2 GB push. Trees verified identical to the local full-history
+  branch `gpu-campaign-raw-traces` (tag `raw-traces-full`). Shards are <=45 MB gz parts with SHARDS.json sha256s;
+  reassemble with `cat traces/<name>.jsonl.gz.part* | gunzip` then `scripts/gpu/ingest_trace_fast.py`.
