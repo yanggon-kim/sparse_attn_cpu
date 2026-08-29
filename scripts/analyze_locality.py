@@ -45,7 +45,7 @@ def main():
         g = g.sort_values("selected_rank")
         idx = g.compressed_kv_index.tolist()
         sc = g.index_score.tolist()
-        sbi = {c: s for c, s in zip(idx, sc)}
+        sbi = {c: s for c, s in zip(idx, sc) if s is not None and s == s}  # scores optional (GPU traces)
         ratio = int(g.compression_ratio.iloc[0])
         nrow = ss[(ss.layer_id == lid) & (ss.decode_step == dstep)]
         n_comp = int(nrow.n_candidates_visible.iloc[0]) if len(nrow) else len(idx)

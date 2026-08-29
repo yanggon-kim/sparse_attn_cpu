@@ -1,0 +1,243 @@
+{
+ "model": "DeepSeek-V3.2",
+ "note": "exp3 \u00a77 unit test: 4 RULER niah 8K prompts x 128 greedy tokens, one engine load, modes switched via RPC",
+ "readback": {
+  "0": {
+   "shape": [
+    16165,
+    64,
+    132
+   ],
+   "dtype": "torch.uint8",
+   "row_bytes": 132,
+   "swap_readback_ok": true
+  }
+ },
+ "load_s": 157.7,
+ "modes": {
+  "clean": {
+   "mode": "off",
+   "impl": "A",
+   "correct": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "n_events": 0,
+   "n_swaps": 0,
+   "errors": [],
+   "text_head": [
+    "The special magic number for harmonious-uniform mentioned in",
+    "The special magic number for discreet-commodity mentioned in",
+    "The special magic number for uncovered-turkey mentioned in t",
+    "The special magic number for roasted-poetry mentioned in the"
+   ],
+   "permlog": {
+    "files": 0,
+    "events": 0,
+    "moved_units": 0,
+    "max_touched_slot": -1,
+    "min_margin_to_seq_len_minus_64": null
+   },
+   "first_divergence_vs_clean": [
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "clean2": {
+   "mode": "off",
+   "impl": "A",
+   "correct": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "n_events": 0,
+   "n_swaps": 0,
+   "errors": [],
+   "text_head": [
+    "The special magic number for harmonious-uniform mentioned in",
+    "The special magic number for discreet-commodity mentioned in",
+    "The special magic number for uncovered-turkey mentioned in t",
+    "The special magic number for roasted-poetry mentioned in the"
+   ],
+   "permlog": {
+    "files": 0,
+    "events": 0,
+    "moved_units": 0,
+    "max_touched_slot": -1,
+    "min_margin_to_seq_len_minus_64": null
+   },
+   "first_divergence_vs_clean": [
+    24,
+    24,
+    20,
+    24
+   ]
+  },
+  "ctrl_identity": {
+   "mode": "ctrl_identity",
+   "impl": "A",
+   "correct": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "n_events": 504,
+   "n_swaps": 0,
+   "errors": [],
+   "text_head": [
+    "The special magic number for harmonious-uniform mentioned in",
+    "The special magic number for discreet-commodity mentioned in",
+    "The special magic number for uncovered-turkey mentioned in t",
+    "The special magic number for roasted-poetry mentioned in the"
+   ],
+   "permlog": {
+    "files": 4,
+    "events": 504,
+    "moved_units": 0,
+    "max_touched_slot": 8063,
+    "min_margin_to_seq_len_minus_64": 1
+   },
+   "first_divergence_vs_clean": [
+    10,
+    24,
+    40,
+    38
+   ]
+  },
+  "perm_once_A": {
+   "mode": "perm_once",
+   "impl": "A",
+   "correct": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "n_events": 508,
+   "n_swaps": 479,
+   "errors": [],
+   "text_head": [
+    "The special magic number for harmonious-uniform mentioned in",
+    "The special magic number for discreet-commodity mentioned in",
+    "The special magic number for uncovered-turkey mentioned in t",
+    "The special magic number for roasted-poetry mentioned in the"
+   ],
+   "permlog": {
+    "files": 4,
+    "events": 4,
+    "moved_units": 479,
+    "max_touched_slot": 7935,
+    "min_margin_to_seq_len_minus_64": 36
+   },
+   "first_divergence_vs_clean": [
+    24,
+    24,
+    60,
+    38
+   ]
+  },
+  "perm_periodic_A": {
+   "mode": "perm_periodic",
+   "impl": "A",
+   "correct": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "n_events": 636,
+   "n_swaps": 1676,
+   "errors": [],
+   "text_head": [
+    "The special magic number for harmonious-uniform mentioned in",
+    "The special magic number for discreet-commodity mentioned in",
+    "The special magic number for uncovered-turkey mentioned in t",
+    "The special magic number for roasted-poetry mentioned in the"
+   ],
+   "permlog": {
+    "files": 4,
+    "events": 128,
+    "moved_units": 1910,
+    "max_touched_slot": 8063,
+    "min_margin_to_seq_len_minus_64": 2
+   },
+   "first_divergence_vs_clean": [
+    22,
+    24,
+    60,
+    24
+   ]
+  },
+  "perm_once_B": {
+   "mode": "perm_once",
+   "impl": "B",
+   "correct": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "n_events": 640,
+   "n_swaps": 25847,
+   "errors": [],
+   "text_head": [
+    "The special magic number for harmonious-uniform mentioned in",
+    "The special magic number for discreet-commodity mentioned in",
+    "The special magic number for uncovered-turkey mentioned in t",
+    "The special magic number is **5107245**.  \n\n(It appears in t"
+   ],
+   "permlog": {
+    "files": 4,
+    "events": 4,
+    "moved_units": 24171,
+    "max_touched_slot": 7986,
+    "min_margin_to_seq_len_minus_64": 1
+   },
+   "first_divergence_vs_clean": [
+    72,
+    24,
+    43,
+    4
+   ]
+  },
+  "perm_periodic_B": {
+   "mode": "perm_periodic",
+   "impl": "B",
+   "correct": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "n_events": 768,
+   "n_swaps": 98936,
+   "errors": [],
+   "text_head": [
+    "The special magic number for harmonious-uniform mentioned in",
+    "The special magic number for discreet-commodity mentioned in",
+    "The special magic number for uncovered-turkey mentioned in t",
+    "The special magic number is **5107245**.  \n\n(It appears in t"
+   ],
+   "permlog": {
+    "files": 4,
+    "events": 128,
+    "moved_units": 122007,
+    "max_touched_slot": 8108,
+    "min_margin_to_seq_len_minus_64": 1
+   },
+   "first_divergence_vs_clean": [
+    10,
+    24,
+    60,
+    4
+   ]
+  }
+ }
+}

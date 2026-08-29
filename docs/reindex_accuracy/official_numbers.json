@@ -1,0 +1,27 @@
+{
+  "_note": "Official published numbers for the exp3 benchmarks, fetched 2026-08-28. Only MMLU-Pro and GPQA-Diamond are published for these models; RULER, LongBench-v2 and InfiniteBench have no official numbers for DeepSeek-V3.2, GLM-5.2 or GLM-5 (GPU_CAMPAIGN.md §5(b) for those benchmarks: the clean-vs-re-indexed comparison is still run and reported, but no official-range gate applies).",
+  "DeepSeek-V3.2": {
+    "mmlu_pro": {"value": 85.0, "metric": "EM", "mode": "thinking, temperature 1.0, 128K context",
+                 "source": "DeepSeek-V3.2 technical report, Table 2 (huggingface.co/deepseek-ai/DeepSeek-V3.2/blob/main/assets/paper.pdf), fetched 2026-08-28"},
+    "gpqa": {"value": 82.4, "metric": "Pass@1", "mode": "thinking, temperature 1.0",
+             "source": "DeepSeek-V3.2 technical report, Table 2, fetched 2026-08-28"},
+    "ruler": {"value": null, "source": "none published"},
+    "longbench_v2": {"value": null, "source": "none published"},
+    "infinitebench": {"value": null, "source": "none published"}
+  },
+  "GLM-5.2": {
+    "gpqa": {"value": 91.2, "metric": "accuracy", "mode": "thinking", "source": "huggingface.co/zai-org/GLM-5.2 model card table, fetched 2026-08-28"},
+    "mmlu_pro": {"value": null, "source": "none published"},
+    "ruler": {"value": null, "source": "none published"},
+    "longbench_v2": {"value": null, "source": "none published"},
+    "infinitebench": {"value": null, "source": "none published"}
+  },
+  "GLM-5": {
+    "gpqa": {"value": 86.0, "metric": "accuracy", "mode": "thinking", "source": "huggingface.co/zai-org/GLM-5 model card table, fetched 2026-08-28"},
+    "mmlu_pro": {"value": null, "source": "none published"},
+    "ruler": {"value": null, "source": "none published"},
+    "longbench_v2": {"value": null, "source": "none published"},
+    "infinitebench": {"value": null, "source": "none published"}
+  },
+  "gate_rule": "clean run within the official range, or within 1 point where only a point estimate is published; our runs are greedy (temperature 0) so a 1-point band around the T=1.0 official value is the comparison used"
+}

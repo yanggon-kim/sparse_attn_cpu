@@ -74,6 +74,19 @@ aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, poole
 92.0/78.7/61.4 % = `analysis_longbench/longbench_aggregate.json` (identical to the published copy in
 `sparse_attn_cpu/docs/longbench_sweep/`). All match the Vercel/GitHub write-ups.
 
+**GPU campaign (8x B200 node, 2026-08-28 →):**
+- 2026-08-28 exp0 passed on <node: NVIDIA B200 x8, SM 10.0, driver 595.91.07 / CUDA 13.0>, vLLM 0.28.0 (2cf0a69), DSv3.2 FP8 loaded in 8.0 min (479 s cold, 33 s warm), 171 GB/GPU after load; backend FLASHINFER_MLA_SPARSE; hooks green; `docs/00_doc/reports/exp0_20260828.md`. Tracker: `docs/00_doc/PROGRESS.md`.
+
+- 2026-08-28 exp1 smoke passed (8K niah, 256 steps, batch 4 + solo): adj overlap 0.817, lift 3.02×, recency 0.43, A@99 67 % — on the CPU V4 curve. Greedy decode is NOT bit-reproducible run-to-run on this stack (fp8 TRTLLM MoE / FlashInfer sparse) — exp3 precondition to be solved. `docs/00_doc/reports/exp1_smoke_20260828.md`.
+
+- 2026-08-29 exp1 ladder passed: DeepSeek-V3.2 8K–128K, 135 runs — adj overlap 0.843/0.790/0.751/0.741/0.723, lift 2.6/5.3/10.2/21.9/41.5×, A@99 65/45/30/17/10 %, MEASURED_TOP10 0.30/0.57/0.79/0.94/0.98; MoE ≈0.25 (8×). `docs/gpu_sweep/gpu_sweep_summary.md`, report `docs/00_doc/reports/exp1_ladder_20260829.md`. Raw traces committed sharded under `docs/gpu_sweep/runs/`.
+
+- 2026-08-29 exp2 smoke passed (GLM-5.2): computing layers {0,1,2,6,…,74} == skip rule, shared layers bit-identical to producers, adj overlap 0.847 (a) / 0.849 (b), MoE 0.36. Ladder running. `docs/00_doc/reports/exp2_smoke_20260829.md`.
+
+- 2026-08-29 exp2 passed: GLM-5.2 (a: all 78 layers / b: 21 computing layers) and GLM-5 ladders — adj overlap 0.846→0.702 / 0.847→0.692 / 0.849→0.715 (8K→128K), lift 2.6→40×, A@99 62→11–12 %, MoE ≈0.29 (9×); all on the V3.2 curve (±0.02). `docs/glm_sweep/glm_sweep_summary.md`, `side_by_side.png`, report `docs/00_doc/reports/exp2_20260829.md`.
+
+- 2026-08-29 exp3 tier 1 passed (perplexity protocol, user-approved): re-indexing the KV prefix (block-level impl A and row-level impl B) leaves long-book PPL at 32K/64K/128K and WikiText-2 within the identical-rerun noise floor for DeepSeek-V3.2, GLM-5.2 and GLM-5 (77/78 rows); RULER answers unchanged. `docs/reindex_accuracy/`, reports `exp3_clean_20260829.md`, `exp3_reindex_20260829.md`, `final_20260829.md`. Campaign ≈ 65 GPU-h. Tiers 2/3 deferred; GPQA dropped (gated).
+
 - **v6 trace exports for the ramulator policy study (2026-08-28, sparse_attn_cpu 3c63760):**
   `work/experiment/exports/v6/<run_id>.npz` + `.manifest.json` for the 42 V4 runs (5 RULER `_moe_q2`,
   36 `lb_*`, `longform_p16k_g4k_q2`; 18,799 steps, 102 MB total; all uint16, k = 512, ratio = 4, 21 CSA
