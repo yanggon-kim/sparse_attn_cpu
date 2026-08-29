@@ -1,0 +1,21 @@
+[unit tests]
+  PASS: top-k picks highest two
+  PASS: ties broken by ascending index
+  PASS: all-negative top-1
+  PASS: N<k returns all, ranked
+  PASS: jaccard 2/4=0.5
+  PASS: jaccard empty=1
+  PASS: overlap 2/4
+  PASS: weighted overlap self=1
+  PASS: weighted overlap disjoint=0
+  PASS: random overlap k/N
+  PASS: random overlap N<=k -> 1
+  PASS: rank fallback ascending index
+[integrity] /opt/dlami/nvme/sparse_attn_gpu/runs/v32_lb2_code_65536_s03
+  PASS: all selected indices within [0, n_candidates)
+  PASS: selected ranks contiguous 0..k-1 per (step,layer)
+  PASS: valid_selected_count matches #selected rows
+  PASS: every decode step has all 61 CSA layer events
+  PASS: decode_tokens rows == generated tokens
+
+VALIDATION PASSED
