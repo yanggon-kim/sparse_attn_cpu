@@ -1,0 +1,21 @@
+{
+ "run_id": "glm52_ib_longbook_choice_eng_8192_s00_b",
+ "max_part_mb": 45,
+ "files": {
+  "run_manifest.json": "84210e460d3477d068b08aa08422f4d98a844820846b4f955313407259533910",
+  "model_config.json": "830432a1ef12e5f7757918f915467be2d59c219306c1ad05e746b714e785e709",
+  "outputs/generations.jsonl": "8756cd2cc49a0a72804b892450383fe795de2af9507ea43aa1fdc4168d31c116",
+  "analysis/cross_layer_jaccard.parquet": "922fed4af9179b1aaf2f6f85cffdadfebd64cc6b5dcacbd39369583eb6aacbfb",
+  "analysis/extended_retention.json": "ca39f8e381e9eafe75333c6374d387835bfe088fa00d0f0143e91ab26b862d73",
+  "analysis/extended_retention.log": "d476e4546f55af5e8858f9083d64629109cc8d321940d46ce09868a93a41631d",
+  "analysis/hotset_coverage.json": "5480759d08a8d918752164f77345811f598ec0115df2953452e4bcf4544a1236",
+  "analysis/metrics_run_summary.json": "c35e1c6353cf01700ac665b69140149a502b405b5274888384a60de16260946a",
+  "analysis/metrics_sample_layer.parquet": "deca618712a2576b5d3fa69006b5febc855ccac263236ac5f393e2803c959cc0",
+  "analysis/metrics_token_layer.parquet": "ef385f9e11f18742607f53225cf73d1e3249490b6c1f2266ce8e1a11359c4825",
+  "analysis/moe_cross_layer_jaccard.parquet": "35c9c3bb4afe3797562ce116159f13d39d80deb6f6050103a7e5446bf08b52dc",
+  "analysis/moe_metrics_run_summary.json": "a4aee35ca480c20e8bad7b03b68c73a9206c1efcd072d14122d4c890e99631af",
+  "analysis/moe_metrics_sample_layer.parquet": "2b905f49c048b42b5d7ad4fc4a168316b70f9fd66309367a99c00ef73c0507ef",
+  "analysis/validate.log": "c125c6565fd0078a2ed260617ae1966ec89bc25ed50c8aea5d29f68ed254e583"
+ },
+ "reassemble": "cat traces/<name>.jsonl.gz.part* | gunzip > traces/<name>.jsonl; then scripts/gpu/ingest_trace_fast.py <run_dir>"
+}
