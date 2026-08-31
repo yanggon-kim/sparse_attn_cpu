@@ -29,10 +29,11 @@ R1 KV top-k locality, R2 MoE routing locality, R3 hot-set coverage (% of pool to
   `v32/DeepSeek-V3.2-UD-TQ1_0.gguf` (151 GB, dense, NO DSA indexer — useless for sparse data);
   `v32_4L/DeepSeek-V3.2-4Layers-Q8_0.gguf` (16 GB, arch deepseek32 WITH indexer; dev-only).
 - `work/llama.cpp/` — pinned to 683f0c72e (2026-07-09) with local patches (see §5). Not pushed anywhere.
-- `01_github/sparse_attn_cpu/` — published repo (git@github.com:yanggon-kim/sparse_attn_cpu). HEAD = 1c2a3f2 + our
-  2026-08-29 commit (GPU-campaign data: a28245c analysis, 26 raw-trace batches, 1c2a3f2; before it 758e78f/fa69406 fig:hotness, 3c63760 v6 export), pushed to
-  origin main. Holds `docs/00_doc/GPU_CAMPAIGN.md`, `exp0..exp3`, and a path-scrubbed copy of this HANDOFF.md
-  (refresh it when this file changes and a commit is due).
+- `01_github/sparse_attn_cpu/` — published repo (git@github.com:yanggon-kim/sparse_attn_cpu). HEAD = 1759b17
+  (fast-forwarded 2026-08-31: exp3 tier-2 commits from the GPU node — d2a6d8f PPL block, 4e7468a START_HERE.md,
+  1759b17 generation block; 25 files, ~230 MB permlog shards; before them 73db862 our v6/analysis exports,
+  1c2a3f2 GPU-campaign raw traces). Holds `docs/00_doc/GPU_CAMPAIGN.md`, `exp0..exp3`, and a path-scrubbed copy
+  of this HANDOFF.md (refresh it when this file changes and a commit is due).
 - `01_github/versel_distribute/` — static site → https://versel-distribute.vercel.app. Local HEAD deaaaa9,
   clean, **6 commits behind origin/main (e00b92a, user's Part X/Part III-of-05_ramulator edits; none
   touch `04_sparse_attn/02_part3*`, `03_part4*`; `index.html` 1 line)** — rebase before any push.
@@ -105,7 +106,8 @@ aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, poole
   bit-for-bit -> variants (a) all-78-layer view and (b) computing-only differ <= 0.01 overlap; GLM checkpoints are BF16 ->
   official `-FP8` repos; decode is NOT run-to-run deterministic (11 probes, `docs/reindex_accuracy/determinism_probes.md`)
   -> exp3 bit-identity replaced by teacher-forced PPL vs identical-rerun noise floor (user decision); GPQA gated -> dropped;
-  exp3 tier 2 run for V3.2 only (PPL block: 30 docs × 3 lengths × 10 modes + WikiText-2/PTB, 38/40 rows in the rerun floor, `docs/reindex_accuracy/tier2/`, `reports/exp3_tier2_20260829.md`; generation block stopped by the user, GLM tier 2 / tier 3 not run); per-index scores not traced (score columns NaN); fast analysis twins `scripts/gpu/*_fast.py`.
+  exp3 tier 2 run for V3.2 only (see the tier-2 bullet below; GLM tier 2 / tier 3 not run); per-index scores not
+  traced (score columns NaN); fast analysis twins `scripts/gpu/*_fast.py`.
   - **Data:** `docs/gpu_sweep/` (V3.2: R1/R2/R3/accuracy CSVs with per-run rows + CI columns, `sweep_v32.json`,
     `gpu_sweep_summary.md`, 4 PNGs) and `docs/glm_sweep/` (GLM-5.2 a/b + GLM-5, same layout, `side_by_side.png`);
     per run `docs/<sweep>/runs/<run_id>/{req,meta,run_manifest,model_config}.json, outputs/generations.jsonl,
@@ -167,9 +169,28 @@ aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, poole
     by seeds 8/9); e.g. V3.2 books impl B dPPL -0.0009/+0.0014/-0.0012 vs floor -0.0008/+0.0015/-0.0031; RULER
     niah+qa accuracy unchanged in every mode (V3.2 16/20, GLM-5.2 18/20, GLM-5 20/20). No official-number gate (no
     published PPL; MMLU-Pro/GPQA deferred/dropped).
+  - **exp3 tier 2 (V3.2 only; PPL 2026-08-29 + generation addendum 2026-08-31; pulled here 2026-08-31, commits
+    d2a6d8f/4e7468a/1759b17):** PPL block COMPLETE — 30 long books × {32K,64K,128K} × 10 modes (clean, clean2,
+    ctrl_identity, ctrl_numeric, perm_once_A/B × seeds 7/8/9) + WikiText-2 (93 windows) + PTB (32) = 2,150 rows,
+    1,505 re-index events, 0 hook errors; **38/40 mode rows within the identical-rerun floor and ALL 30 long-book
+    rows pass** — tier 1's single exception (impl B seed 7 @32K) disappears at n = 30 (+0.0010 [−0.0016, +0.0039]);
+    the 2 flagged rows are PTB impl-B seeds 7/9 (+0.006/+0.008 on PPL 5.80, ≈1 SE, CIs include 0, batch-composition
+    control reproduces the token p90 — under-powered mean test, not a re-index effect). Baseline PPL 1.3058/1.2678/
+    1.3674 at 32K/64K/128K; per-token |Δlogprob| p90 identical across all modes (0.048–0.051/0.063–0.067/0.089–0.094
+    nats). Re-indexed GENERATION (400 items: RULER niah_single_2/niah_multikey_2/vt/qa_1 × 3 lengths × 25 +
+    LongBench-v2 100): clean 329/400, perm_once_B **331/400 (+2**, all 10 flips are qa_1/LB-v2 near-ties; niah/vt
+    25/25 at every length in every mode), perm_periodic_B partial 225/400 → **210 vs 210 baseline on the same items,
+    0 flips**. Interrupted by an external SIGTERM 2026-08-31 05:54 UTC (node taken by another workload); NOT run:
+    last 175 perm_periodic_B items, the clean2 generation floor, GLM-5.2/GLM-5 tier 2, tier 3. Resume:
+    `scripts/gpu/exp3_tier2.py --resume` (TP8 required for reduction-order comparability). Artifacts:
+    `docs/reindex_accuracy/tier2/{tier2_results.md,results.csv,per_item.jsonl,tier2_v32.json,permlogs/}`,
+    `docs/reindex_accuracy/START_HERE.md` (the exp3 study's own onboarding doc), `docs/00_doc/reports/
+    exp3_tier2_20260829.md` (+ 2026-08-31 addendum §8–11), `paper_accuracy_section.md` tier-2 addendum with
+    ready-to-adapt Tables 3/4. GPU-h: tier 2 ≈63; campaign cumulative ≈128 of 1,000.
   - **Consumers to notify:** ramulator `MEASURED_OVERLAP`/`MEASURED_TOP10` (V3.2 values above replace V4), v6 policy
     study (needs the npz exports), evaluation §6 hit-ratio inputs, paper §3.3 (generality claim in exp2 report §6) and
-    the correctness paragraph (`paper_accuracy_section.md`), `ref_dsv4_kv_locality_study.md` digest.
+    the correctness paragraph (`paper_accuracy_section.md` — now with the tier-2 addendum + Tables 3/4: 30-doc PPL
+    equivalence and task-accuracy-under-re-indexing table), `ref_dsv4_kv_locality_study.md` digest.
 
 **In progress / parked:**
 - DeepSeek-V3.2 on CPU: engine patched and loads, but the only CPU-fittable GGUF (Unsloth TQ1_0) is
@@ -178,12 +199,16 @@ aggregate (36 runs) multi_news 0.914 / gov_report 0.755 / qmsum 0.732 adj, poole
   `llama-eval-callback`) works at short context but crashes on prompts >~256 tokens
   (`ops.cpp set_rows: leaf_90 uninitialized`) while `llama-server` handles the same prompt fine.
   Fix path: hook the trace into llama-server's decode path instead. PARKED — user pivoted to GPU.
-- GPU campaign (decided, not started): rent **8 GPUs with >= ~1 TB HBM total (H200/B200-class; GPU type
-  NOT decided yet — exp0 detects it and picks kernels)**, native FP8
-  `deepseek-ai/DeepSeek-V3.2`, vLLM TP8, `enforce_eager=True`; ladder 8K/16K/32K/64K/128K input,
-  **~2K decode steps** per run, n≈20/rung; RULER + LongBench v1 + LongBench v2 + InfiniteBench;
-  decode-only trace + sampled prefill. Budget ~1,000 GPU-h. GLM-5/5.2 (~750B, also DSA) fit the
-  same node → cross-model generality opportunity. Guide: `sparse_attn_cpu/docs/vllm_selection_history_collection_guide.md`.
+- **GPU campaign: EXECUTED and delivered 2026-08-29/31** (8× B200, vLLM 0.28.0; see the "GPU campaign
+  delivered" bullet above for the full result set). §7/§7b below are kept as the historical package spec.
+  **Open GPU work, all needing 8 free GPUs at TP8** (the node was taken over by another workload
+  2026-08-31 05:58 UTC — four external `Qwen2.5-72B-Instruct` vLLM servers on GPUs 0–7):
+  (a) exp3 tier 2 V3.2 generation — last 175 `perm_periodic_B` items + the `clean2` identical-rerun
+  generation floor (the floor for the "identical token streams" column); (b) GLM-5.2 / GLM-5 tier-2
+  PPL (~2.5 h each) + ACC; (c) exp3 tier 3 (not designed/run). Resume verbatim with
+  `scripts/gpu/exp3_tier2.py --resume` (`--skip-ppl` for the generation block only); TP=8 is required —
+  TP=4 changes reduction order and breaks comparability with the recorded baseline, and the GLM FP8
+  weights do not fit in 4 GPUs. ≈10 h wall per model if resumed.
 
 ## 4. Recent decisions and why
 - Stay on **native FP8 / 8 GPUs, >= ~1 TB HBM** (GPU model open, 2026-08-27; not H100: 640 GB < ~690 GB weights; not 6/7 GPUs: 128 heads &
@@ -247,7 +272,7 @@ Trace records: `indexer_trace.jsonl {phase,layer,pos,n_comp,top_k,sel[],scores[]
 `moe_trace.jsonl {phase,layer,pos,token,is_hash,sel[6],weights[6]}`.
 
 ## 7. Next steps (priority)
-0. **GPU campaign package written (2026-08-27, not executed):** `01_github/sparse_attn_cpu/docs/00_doc/
+0. **[HISTORICAL — the package below was executed 2026-08-29/31; kept as the method spec]** GPU campaign package (2026-08-27): `01_github/sparse_attn_cpu/docs/00_doc/
    GPU_CAMPAIGN.md` is the top-level file to hand to the agent on the rented 8-GPU node (its §8 has the
    ready-to-paste prompt); it links `exp0_environment.md` (pin/install vLLM, models, TP8 smoke, hook unit
    checks), `exp1_dsv32_gather_index.md` (V3.2 hook at `flashmla_sparse.py:838 forward_mqa`, adapter to the
@@ -263,17 +288,19 @@ Trace records: `indexer_trace.jsonl {phase,layer,pos,n_comp,top_k,sel[],scores[]
    stops**: gates are self-checks, per-gate report is a file `docs/00_doc/reports/<phase>_<date>.md` + HANDOFF
    Status line + per-experiment summary md; stop only for §5 (a)–(d) (gate fails after one retry / method-
    changing VERIFY outcome / undecided decision incl. budget > 20 % overrun / clean run outside official range).
-1. Remaining pre-node prep (no GPU needed): pre-build prompt sets (RULER 8K–128K via `prepare.py`,
-   LongBench v1/v2, InfiniteBench manifests in the `longbench_samples.jsonl` schema); optionally draft
-   `scripts/vllm_to_ds4_run.py` (adapter of exp1 §4) and test it on a synthetic trace (`scripts/_synth_test.py`).
-2. GLM-5/5.2 hook = same code path (`GlmMoeDsaForCausalLM`); the only open point is whether plain GLM-5 has
-   `index_topk` (checked on the node, exp2 §1).
+1. **Top open item — resume exp3 tier 2 when 8 GPUs are free** (see §3 "Open GPU work"): the 175
+   remaining `perm_periodic_B` generation items, the `clean2` generation floor, then GLM-5.2/GLM-5
+   tier-2 PPL+ACC. Nothing else in the campaign is outstanding. (Items 1–2 of the old pre-node prep
+   list and the GLM-5 `index_topk` question are DONE: GLM-5 has DSA, 78 layers, no index sharing.)
+2. Re-sweep the v6 migration-policy study on the V3.2 exports (`exports/v6_v32/`) — the v6 conclusions
+   were fit on V4 traces, and V3.2 is *more* local at 64K (0.79 ld vs 0.67), so they should hold but
+   are not yet verified. Consumer: ramulator-owner, branch v6.
 3. Optional: ROUGE-score the LongBench generations (`runs/lb_*/outputs/generations.jsonl`) for a
    quality-sanity table; optional 128K CPU RULER point (~75 h, needs prompt via
    `benchmark/RULER prepare.py --max_seq_length 131072` + `build_prompts.py` LENGTHS edit).
 4. If the CPU V3.2 tracer is resumed: move the `dsa_trace_cb` hook into `llama-server`.
 
-## 7b. GPU campaign — prerequisites the user must supply before it can start
+## 7b. GPU campaign — prerequisites (SATISFIED 2026-08-29; historical)
 Rental account/credentials for an 8-GPU node with >= ~1 TB HBM (H200/B200-class; ~1,000 GPU-h budget) and the go date; confirmation of the
 model (`deepseek-ai/DeepSeek-V3.2` native FP8, plus GLM-5/5.2 if wanted); HF token if any target repo is
 gated; the session URL for the commit trailer. Everything else (vLLM pin, hook points, schema adapter,
