@@ -58,8 +58,12 @@ Teacher-forced perplexity of the scored continuation after the KV prefix was phy
 | model | benchmark | context | mode | n | accuracy | Δ vs clean [95 % CI] | flips | identical token streams | median first divergence |
 |---|---|---:|---|---:|---:|---|---:|---:|---:|
 | DeepSeek-V3.2 | longbench_v2:Code Repository Understanding | mixed | clean | 10 | 0.500 | +0.000 [+0.000, +0.000] | 0 | 10/10 | 9999.0 |
-| DeepSeek-V3.2 | longbench_v2:Long In-context Learning | mixed | clean | 15 | 0.600 | +0.000 [+0.000, +0.000] | 0 | 15/15 | 9999 |
-| DeepSeek-V3.2 | longbench_v2_all | pooled | clean | 25 | 0.560 | +0.000 [+0.000, +0.000] | 0 | 25/25 | 9999 |
+| DeepSeek-V3.2 | longbench_v2:Long In-context Learning | mixed | clean | 16 | 0.625 | +0.000 [+0.000, +0.000] | 0 | 16/16 | 9999.0 |
+| DeepSeek-V3.2 | longbench_v2:Long Structured Data Understanding | mixed | clean | 7 | 0.143 | +0.000 [+0.000, +0.000] | 0 | 7/7 | 9999 |
+| DeepSeek-V3.2 | longbench_v2:Long-dialogue History Understanding | mixed | clean | 8 | 0.500 | +0.000 [+0.000, +0.000] | 0 | 8/8 | 9999.0 |
+| DeepSeek-V3.2 | longbench_v2:Multi-Document QA | mixed | clean | 25 | 0.600 | +0.000 [+0.000, +0.000] | 0 | 25/25 | 9999 |
+| DeepSeek-V3.2 | longbench_v2:Single-Document QA | mixed | clean | 34 | 0.588 | +0.000 [+0.000, +0.000] | 0 | 34/34 | 9999.0 |
+| DeepSeek-V3.2 | longbench_v2_all | pooled | clean | 100 | 0.550 | +0.000 [+0.000, +0.000] | 0 | 100/100 | 9999.0 |
 | DeepSeek-V3.2 | ruler_niah_multikey_2 | 32768 | clean | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 | 9999 |
 | DeepSeek-V3.2 | ruler_niah_multikey_2 | 65536 | clean | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 | 9999 |
 | DeepSeek-V3.2 | ruler_niah_multikey_2 | 131072 | clean | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 | 9999 |
@@ -73,5 +77,35 @@ Teacher-forced perplexity of the scored continuation after the KV prefix was phy
 | DeepSeek-V3.2 | ruler_vt | 65536 | clean | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 | 9999 |
 | DeepSeek-V3.2 | ruler_vt | 131072 | clean | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 | 9999 |
 | DeepSeek-V3.2 | ruler_all | pooled | clean | 300 | 0.913 | +0.000 [+0.000, +0.000] | 0 | 300/300 | 9999.0 |
+| DeepSeek-V3.2 | longbench_v2:Code Repository Understanding | mixed | perm_once_B | 10 | 0.400 | -0.100 [-0.300, +0.000] | 1 | 8/10 | 9999.0 |
+| DeepSeek-V3.2 | longbench_v2:Long In-context Learning | mixed | perm_once_B | 16 | 0.500 | -0.125 [-0.312, +0.000] | 2 | 11/16 | 9999.0 |
+| DeepSeek-V3.2 | longbench_v2:Long Structured Data Understanding | mixed | perm_once_B | 7 | 0.143 | +0.000 [+0.000, +0.000] | 0 | 3/7 | 112 |
+| DeepSeek-V3.2 | longbench_v2:Long-dialogue History Understanding | mixed | perm_once_B | 8 | 0.625 | +0.125 [+0.000, +0.375] | 1 | 6/8 | 9999.0 |
+| DeepSeek-V3.2 | longbench_v2:Multi-Document QA | mixed | perm_once_B | 25 | 0.640 | +0.040 [+0.000, +0.120] | 1 | 17/25 | 9999 |
+| DeepSeek-V3.2 | longbench_v2:Single-Document QA | mixed | perm_once_B | 34 | 0.559 | -0.029 [-0.088, +0.000] | 1 | 27/34 | 9999.0 |
+| DeepSeek-V3.2 | longbench_v2_all | pooled | perm_once_B | 100 | 0.530 | -0.020 [-0.070, +0.030] | 6 | 72/100 | 9999.0 |
+| DeepSeek-V3.2 | ruler_niah_multikey_2 | 32768 | perm_once_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 20/25 | 9999 |
+| DeepSeek-V3.2 | ruler_niah_multikey_2 | 65536 | perm_once_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 21/25 | 9999 |
+| DeepSeek-V3.2 | ruler_niah_multikey_2 | 131072 | perm_once_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 21/25 | 9999 |
+| DeepSeek-V3.2 | ruler_niah_single_2 | 32768 | perm_once_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 18/25 | 9999 |
+| DeepSeek-V3.2 | ruler_niah_single_2 | 65536 | perm_once_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 18/25 | 9999 |
+| DeepSeek-V3.2 | ruler_niah_single_2 | 131072 | perm_once_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 22/25 | 9999 |
+| DeepSeek-V3.2 | ruler_qa_1 | 32768 | perm_once_B | 25 | 0.760 | +0.040 [+0.000, +0.120] | 1 | 16/25 | 9999 |
+| DeepSeek-V3.2 | ruler_qa_1 | 65536 | perm_once_B | 25 | 0.760 | +0.080 [+0.000, +0.200] | 2 | 20/25 | 9999 |
+| DeepSeek-V3.2 | ruler_qa_1 | 131072 | perm_once_B | 25 | 0.600 | +0.040 [+0.000, +0.120] | 1 | 14/25 | 9999 |
+| DeepSeek-V3.2 | ruler_vt | 32768 | perm_once_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 1/25 | 22 |
+| DeepSeek-V3.2 | ruler_vt | 65536 | perm_once_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 2/25 | 31 |
+| DeepSeek-V3.2 | ruler_vt | 131072 | perm_once_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 0/25 | 1 |
+| DeepSeek-V3.2 | ruler_all | pooled | perm_once_B | 300 | 0.927 | +0.013 [+0.003, +0.027] | 4 | 173/300 | 9999.0 |
+| DeepSeek-V3.2 | ruler_niah_multikey_2 | 32768 | perm_periodic_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 20/25 | 9999 |
+| DeepSeek-V3.2 | ruler_niah_multikey_2 | 65536 | perm_periodic_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 21/25 | 9999 |
+| DeepSeek-V3.2 | ruler_niah_single_2 | 32768 | perm_periodic_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 20/25 | 9999 |
+| DeepSeek-V3.2 | ruler_niah_single_2 | 65536 | perm_periodic_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 19/25 | 9999 |
+| DeepSeek-V3.2 | ruler_niah_single_2 | 131072 | perm_periodic_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 23/25 | 9999 |
+| DeepSeek-V3.2 | ruler_qa_1 | 32768 | perm_periodic_B | 25 | 0.720 | +0.000 [+0.000, +0.000] | 0 | 17/25 | 9999 |
+| DeepSeek-V3.2 | ruler_qa_1 | 65536 | perm_periodic_B | 25 | 0.680 | +0.000 [+0.000, +0.000] | 0 | 22/25 | 9999 |
+| DeepSeek-V3.2 | ruler_vt | 32768 | perm_periodic_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 2/25 | 22 |
+| DeepSeek-V3.2 | ruler_vt | 65536 | perm_periodic_B | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 1/25 | 24 |
+| DeepSeek-V3.2 | ruler_all | pooled | perm_periodic_B | 225 | 0.933 | +0.000 [+0.000, +0.000] | 0 | 145/225 | 9999 |
 
 ![ΔPPL](reindex_ppl_delta_tier2.png)

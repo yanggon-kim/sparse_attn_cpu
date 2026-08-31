@@ -13,7 +13,8 @@ Node: 8x NVIDIA B200 183 GB (1.47 TB HBM), SM 10.0, driver 595.91.07 / CUDA 13.2
 | exp2 GLM-5.2 + GLM-5 | PASS | 2026-08-29 03:45 UTC | 2026-08-29 08:40 UTC | `reports/exp2_20260829.md` | 48 |
 | exp3 tier 1 (PPL + RULER sanity, 3 models) | PASS | 2026-08-29 09:10 UTC | 2026-08-29 13:50 UTC | `reports/exp3_clean_20260829.md`, `reports/exp3_reindex_20260829.md` | 65 |
 | exp3 tier 2 (V3.2 PPL ×30 docs, all modes/seeds; stopped before re-indexed generation) | PASS (PPL) / stopped | 2026-08-29 16:58 UTC | 2026-08-29 21:25 UTC | `reports/exp3_tier2_20260829.md` | 93 |
-| exp3 tier 2 GLM-5.2 / GLM-5, tier 3 | not run (user decision) | | | | |
+| exp3 tier 2 V3.2 generation (clean + perm_once_B complete, perm_periodic_B 225/400) | partial — node taken by another workload | 2026-08-31 02:35 UTC | 2026-08-31 05:54 UTC | `reports/exp3_tier2_20260829.md` §addendum | 128 |
+| exp3 tier 2 GLM-5.2 / GLM-5 PPL, tier 3 | not run (blocked: GPUs busy) | | | | |
 | final | DONE | | 2026-08-29 14:00 UTC | `reports/final_20260829.md` | 65 |
 
 ## Setup (2026-08-28, no GPU time spent)
@@ -125,3 +126,11 @@ GPU-h for probes ~8.
 - Generation block reached `clean` 325/400 (niah/vt 25/25 everywhere, qa_1 18/17/14, LongBench-v2 14/25) and was stopped; no re-indexed
   generation rows for tier 2 (tier-1 RULER rows remain that evidence). RULER `vt` needs a 256-token cap with our prompt format (fixed in script).
 - GLM-5.2 / GLM-5 tier 2 not started; `exp3_tier2.py --resume` continues from the JSON if ever resumed (≈10 h wall per model).
+
+## exp3 tier 2 generation — DeepSeek-V3.2 (2026-08-31 02:35–05:54 UTC, ≈35 GPU-h) — partial
+- 400 items (RULER niah_single_2 / niah_multikey_2 / vt / qa_1 × 32K/64K/128K × 25 + LongBench-v2 100): baseline 329/400,
+  `perm_once_B` 331/400 (+2), `perm_periodic_B` 210/225 = baseline on the same items with 0 flips. Needle tasks 25/25 everywhere;
+  all flips are qa_1/LongBench-v2 near-ties. 245/400 and 145/225 token streams bit-identical; 0 hook errors, 20,183 events.
+- Interrupted by an external SIGTERM at 05:54 UTC; since 05:58 the node runs another project's Qwen2.5-72B API servers
+  (`<NODE>/symbiosys_72b/`). Remaining: 175 periodic items, the `clean2` generation floor, GLM-5.2/GLM-5 tier-2 PPL —
+  all `--resume`-able once 8 GPUs are free (TP=8 required; GLM FP8 does not fit on 4 GPUs).

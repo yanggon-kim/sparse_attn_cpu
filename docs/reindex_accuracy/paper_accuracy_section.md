@@ -170,3 +170,48 @@ Task accuracy is likewise unchanged (Table 2): on RULER needle retrieval and QA,
 *✗ rows: PTB entry-level seeds 7 and 9, +0.1 % PPL, ≈1 SE, CIs include 0 (see `tier2/README.md`).*
 
 ![ΔPPL tier 2](tier2/reindex_ppl_delta_tier2.png)
+
+## Table 4 — DeepSeek-V3.2 tier-2 task accuracy under re-indexing (greedy generation, 400 items; RULER 25 per task/length, LongBench-v2 100)
+
+| benchmark | context | configuration | n | accuracy | Δ vs baseline [95 % CI] | flips | identical token streams |
+|---|---:|---|---:|---:|---|---:|---:|
+| LongBench-v2 (pooled) | pooled | baseline | 100 | 0.550 | +0.000 [+0.000, +0.000] | 0 | 100/100 |
+| RULER all | pooled | baseline | 300 | 0.913 | +0.000 [+0.000, +0.000] | 0 | 300/300 |
+| RULER niah_multikey_2 | 128K | baseline | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER niah_multikey_2 | 32K | baseline | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER niah_multikey_2 | 64K | baseline | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER niah_single_2 | 128K | baseline | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER niah_single_2 | 32K | baseline | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER niah_single_2 | 64K | baseline | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER qa_1 | 128K | baseline | 25 | 0.560 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER qa_1 | 32K | baseline | 25 | 0.720 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER qa_1 | 64K | baseline | 25 | 0.680 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER vt | 128K | baseline | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER vt | 32K | baseline | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| RULER vt | 64K | baseline | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 25/25 |
+| LongBench-v2 (pooled) | pooled | entry-level re-index (impl B), once after prefill | 100 | 0.530 | -0.020 [-0.070, +0.030] | 6 | 72/100 |
+| RULER all | pooled | entry-level re-index (impl B), once after prefill | 300 | 0.927 | +0.013 [+0.003, +0.027] | 4 | 173/300 |
+| RULER niah_multikey_2 | 128K | entry-level re-index (impl B), once after prefill | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 21/25 |
+| RULER niah_multikey_2 | 32K | entry-level re-index (impl B), once after prefill | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 20/25 |
+| RULER niah_multikey_2 | 64K | entry-level re-index (impl B), once after prefill | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 21/25 |
+| RULER niah_single_2 | 128K | entry-level re-index (impl B), once after prefill | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 22/25 |
+| RULER niah_single_2 | 32K | entry-level re-index (impl B), once after prefill | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 18/25 |
+| RULER niah_single_2 | 64K | entry-level re-index (impl B), once after prefill | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 18/25 |
+| RULER qa_1 | 128K | entry-level re-index (impl B), once after prefill | 25 | 0.600 | +0.040 [+0.000, +0.120] | 1 | 14/25 |
+| RULER qa_1 | 32K | entry-level re-index (impl B), once after prefill | 25 | 0.760 | +0.040 [+0.000, +0.120] | 1 | 16/25 |
+| RULER qa_1 | 64K | entry-level re-index (impl B), once after prefill | 25 | 0.760 | +0.080 [+0.000, +0.200] | 2 | 20/25 |
+| RULER vt | 128K | entry-level re-index (impl B), once after prefill | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 0/25 |
+| RULER vt | 32K | entry-level re-index (impl B), once after prefill | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 1/25 |
+| RULER vt | 64K | entry-level re-index (impl B), once after prefill | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 2/25 |
+| RULER all | pooled | entry-level re-index, periodic during decode | 225 | 0.933 | +0.000 [+0.000, +0.000] | 0 | 145/225 |
+| RULER niah_multikey_2 | 32K | entry-level re-index, periodic during decode | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 20/25 |
+| RULER niah_multikey_2 | 64K | entry-level re-index, periodic during decode | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 21/25 |
+| RULER niah_single_2 | 128K | entry-level re-index, periodic during decode | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 23/25 |
+| RULER niah_single_2 | 32K | entry-level re-index, periodic during decode | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 20/25 |
+| RULER niah_single_2 | 64K | entry-level re-index, periodic during decode | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 19/25 |
+| RULER qa_1 | 32K | entry-level re-index, periodic during decode | 25 | 0.720 | +0.000 [+0.000, +0.000] | 0 | 17/25 |
+| RULER qa_1 | 64K | entry-level re-index, periodic during decode | 25 | 0.680 | +0.000 [+0.000, +0.000] | 0 | 22/25 |
+| RULER vt | 32K | entry-level re-index, periodic during decode | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 2/25 |
+| RULER vt | 64K | entry-level re-index, periodic during decode | 25 | 1.000 | +0.000 [+0.000, +0.000] | 0 | 1/25 |
+
+*`perm_periodic_B` covers the first 225 of the 400 items (run interrupted by an external process on the shared node). The identical-rerun (`clean2`) generation baseline, which would give the noise floor for the last column, was queued but did not run; tier-1 §Table 2 and `determinism_probes.md` are the current evidence that identical reruns also diverge (after 10–24 tokens).*

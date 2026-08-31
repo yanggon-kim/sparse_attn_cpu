@@ -54,10 +54,13 @@ baseline twice (`clean` vs `clean2`). A configuration is "equivalent" when it is
 | tier | models | PPL items | modes | generation | verdict |
 |---|---|---|---|---|---|
 | 1 (done) | V3.2, GLM-5.2, GLM-5 | 10 books × 32K/64K/128K (2K scored) + WikiText-2 50 windows | 32K: all six; 64K: clean, clean2, A, B; 128K: clean, clean2, B; V3.2 extra: clean3/4, A@8, B@8, B@9 at 32K | RULER niah_single_2 + qa_1, 5 + 5 at 32K and 128K, modes clean / perm_once_B / perm_periodic_B | **77/78 rows in the floor**; RULER accuracy identical in every mode (16/20, 18/20, 20/20) |
-| 2 (V3.2 only, stopped) | V3.2 | 30 books × 32K/64K/128K + WikiText-2 93 windows + PTB 32 windows | **all 10 modes at every prefix** (clean, clean2, identity, numeric, A×3 seeds, B×3 seeds) | `clean` only, 325/400 items (RULER niah_single_2 / niah_multikey_2 / vt / qa_1 × 3 lengths × 25 + LongBench-v2 25) — stopped by the user before the re-indexed passes | **38/40 rows in the floor, all 30 long-book rows**; tier-1's single exception disappears at n = 30 |
+| 2 (V3.2 only, partial) | V3.2 | 30 books × 32K/64K/128K + WikiText-2 93 windows + PTB 32 windows | **all 10 modes at every prefix** (clean, clean2, identity, numeric, A×3 seeds, B×3 seeds) | 400 items (RULER niah_single_2 / niah_multikey_2 / vt / qa_1 × 3 lengths × 25 + LongBench-v2 100): `clean` 400/400, `perm_once_B` 400/400, `perm_periodic_B` 225/400 | PPL **38/40 rows in the floor, all 30 long-book rows** (tier-1's exception disappears at n = 30); generation **331 vs 329 of 400** for `perm_once_B` and **exactly baseline, 0 flips**, for `perm_periodic_B` |
 
-Not run: GLM-5.2 / GLM-5 tier 2; tier-2 re-indexed generation; tier 3 (MMLU-Pro thinking, InfiniteBench tasks,
-impl A in generation). GPQA is gated (no access) and was dropped. GPU-h spent on exp3 ≈ 15 (tier 1) + 28 (tier 2).
+Not run / interrupted: the last 175 `perm_periodic_B` items and the `clean2` identical-rerun generation baseline (the floor for the
+"identical token streams" column) — an external SIGTERM stopped the run on 2026-08-31 05:54 UTC and the node was then taken over by
+another project's Qwen2.5-72B servers; GLM-5.2 / GLM-5 tier-2 PPL; tier 3 (MMLU-Pro thinking, InfiniteBench tasks, impl A in
+generation). GPQA is gated (no access) and was dropped. Resuming needs **all 8 GPUs** (TP=8 for comparability with the recorded
+baseline; the GLM FP8 weights do not fit on 4). GPU-h on exp3 ≈ 15 (tier 1) + 63 (tier 2).
 
 ## 4. Headline numbers (ΔPPL vs clean; floor = clean2; paired over documents)
 
@@ -86,6 +89,10 @@ Interpretation notes an agent should not re-discover:
   each, seed 8 −0.0019, both CIs include 0). Rule (i) compares a mean against a bound derived from the lower-variance
   rerun distribution and is under-powered on 32 windows. The tier-1 exception (V3.2 32K impl B seed 7, +0.0062) was one
   document (+0.057); seeds 8/9 and two extra reruns cleared it, and at 30 documents the same seed gives +0.0010.
+- Generation (tier 2, 400 items): the flips under re-indexing are all on qa_1 / LongBench-v2 (6 gained, 4 lost for `perm_once_B`);
+  every needle task stays 25/25 at every length. Token-stream identity is *not* a defect metric here: `vt` decodes 256 greedy steps, so
+  a near-tie flip is near-certain (0–2 of 25 identical) even though accuracy is 25/25 — the `clean2` rerun that would quantify this floor
+  is the missing control.
 - Generation: RULER `vt` (variable tracking) needs `max_new_tokens=256` with our prompt format — the exp3 prompts omit
   RULER's "Answer: … they are:" prefix, so with RULER's 30-token default the chat model is cut off mid-trace (0/25).
   Fixed in `exp3_tier2.py`; tier-1 RULER used only niah_single_2 and qa_1 and is unaffected.
